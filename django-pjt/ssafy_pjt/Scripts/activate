@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\SSAFY\Desktop\SSAFY_1_final\pjt"
+VIRTUAL_ENV="C:\Users\SSAFY\Desktop\SSAFY_1_final\django-pjt\ssafy_pjt"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -54,7 +54,7 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    PS1="(pjt) ${PS1:-}"
+    PS1="(ssafy_pjt) ${PS1:-}"
     export PS1
 fi
 
