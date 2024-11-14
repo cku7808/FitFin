@@ -134,6 +134,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.ssafy_pjt
 env/
 venv/
 ENV/
