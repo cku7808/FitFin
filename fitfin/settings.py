@@ -32,7 +32,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "accounts",
     "finances",
+    # API 통신 및 회원가입, 로그인 권한을 위한 패키지 추가 
+    # --------------
     "rest_framework",
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'corsheaders',
+    # --------------
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -40,6 +46,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+SITE_ID = 1
+
+# 사용자 권한을 위한 설정 추가
+REST_FRAMEWORK = {
+    # Authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # permission
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -49,6 +69,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'allauth.account.middleware.AccountMiddleware',
+]
+
+# Vue.js 연동을 위한 CORS 설정 추가 
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5173',
+    'http://localhost:5173',
 ]
 
 ROOT_URLCONF = "fitfin.urls"
@@ -124,4 +151,5 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "auth.User" 
+# 유저 모델 대체 
+AUTH_USER_MODEL = "accounts.User" 
