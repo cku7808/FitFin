@@ -23,4 +23,5 @@ urlpatterns = [
     # path('api/v1/', include('finances.urls')),
     path('accounts', include('dj_rest_auth.urls')),
     path('accounts/signup/', include('dj_rest_auth.registration.urls')),
+    # path('accounts/login/', include('dj_rest_auth.registration.urls')),
 ]
