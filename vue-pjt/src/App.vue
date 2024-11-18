@@ -1,15 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
   <header>
-    <nav>
-      <RouterLink :to="{ name: 'SignUpView'}">SignUp</RouterLink> | 
-      <RouterLink :to="{ name: 'LogInView'}">LogIn</RouterLink>
-    </nav>
+    <NavBar></NavBar>
   </header>
-  <RouterView></RouterView>
 </template>
 
 <style scoped>

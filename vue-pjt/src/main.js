@@ -5,6 +5,9 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 const app = createApp(App)
 const pinia = createPinia()
 
@@ -14,3 +17,4 @@ app.use(pinia)
 app.use(router)
 
 app.mount('#app')
+window.Kakao.init("242327ad0274c1e85ab4064278373781");
