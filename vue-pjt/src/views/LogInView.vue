@@ -1,15 +1,24 @@
 <template>
-    <div>
-      <h1>Login page</h1>
-      <form @submit.prevent="logIn">
-        <label for="username">ID : </label>
-        <input type="text" id="username" v-model.trim="username" /><br />
-  
-        <label for="password">Password : </label>
-        <input type="password" id="password" v-model.trim="password" /><br />
-  
-        <input type="submit" value="Log In" />
-      </form>
+    <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+      <div>
+        <div class="fs-2 d-flex align-items-center">
+          <span class="pe-2">나에게 Fit한 Finance,</span>
+          <img src="@/assets/images/logo/Logo2.png" width="94" height="31"><br>
+        </div>
+        <p class="fs-6">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
+      </div>
+      <div class="">
+        <form @submit.prevent="logIn">
+          <input type="text" id="username" v-model.trim="username" placeholder="아이디를 입력해주세요." 
+            class="login-form login-box col-12"
+          /><br />
+          <input type="password" id="password" v-model.trim="password" placeholder="비밀번호를 입력해주세요."
+            class="login-form pw-box col-12"
+          /><br />
+    
+          <input type="submit" value="Log In" />
+        </form>
+      </div>
   
       <KakaoLogin @kakaoLogin="handleKakaoLoginSuccess" />
     </div>
@@ -45,6 +54,15 @@
   </script>
   
   <style scoped>
-  /* 스타일링 필요시 추가 */
+  .login-form {
+    box-sizing: border-box;
+    height: 80px;
+
+    border: 1px solid #79F297;
+    border-radius: 20px;
+  }
+
+
+ 
   </style>
   
