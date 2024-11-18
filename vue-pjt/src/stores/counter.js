@@ -9,6 +9,10 @@ export const useCounterStore = defineStore('counter', () => {
   const refreshToken = ref(null);
   const router = useRouter()
 
+  const isLogin = computed(() => {
+    return accessToken.value === null ? false : true
+  })
+
   const signUp = function (payload) {
     const { username, email, password1, password2 } = payload 
 
@@ -38,8 +42,8 @@ export const useCounterStore = defineStore('counter', () => {
       .then((res) => {
         console.log('로그인 완료');
         console.log(res.data)
-        accessToken.value = res.data.accessToken;
-        refreshToken.value = res.data.refreshToken;
+        accessToken.value = res.data.access;
+        refreshToken.value = res.data.refresh;
         router.push({ name: 'MainView' });
       })
       .catch((err) => {
@@ -64,7 +68,22 @@ export const useCounterStore = defineStore('counter', () => {
         console.error(err);
       });
   };
+  const logOut = function () {
+    axios({
+      method: 'post',
+      url: `${API_URL}/accounts/logout/`,
+    })
+      .then((res) => {
+        console.log(res.data)
+        accessToken.value = null
+        refreshToken.value = null
+        router.push({ name: 'MainView' })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  };
 
-  return { API_URL, logIn, socialLogIn, accessToken, refreshToken };
+  return { API_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut };
 }, { persist: true });
 

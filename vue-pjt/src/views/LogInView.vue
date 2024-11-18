@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h1>Login page</h1>
       <form @submit.prevent="logIn">
         <label for="username">ID : </label>
         <input type="text" id="username" v-model.trim="username" /><br />
