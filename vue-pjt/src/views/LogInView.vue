@@ -1,25 +1,23 @@
 <template>
-    <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+    <div class="col-12 d-flex justify-content-center flex-column align-items-center pt-lg-5">
       <div>
         <div class="fs-2 d-flex align-items-center">
-          <span class="pe-2">나에게 Fit한 Finance,</span>
+          <span class="pe-2 poppins-bold">나에게 Fit한 Finance,</span>
           <img src="@/assets/images/logo/Logo2.png" width="94" height="31"><br>
         </div>
-        <p class="fs-6">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
+        <p class="fs-6 poppins-regular">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
       </div>
-      <div class="">
+      <div class="col-4">
         <form @submit.prevent="logIn">
           <input type="text" id="username" v-model.trim="username" placeholder="아이디를 입력해주세요." 
-            class="login-form login-box col-12"
-          /><br />
+            class="login-form form-control poppins-regular ps-4 mb-2"/>
           <input type="password" id="password" v-model.trim="password" placeholder="비밀번호를 입력해주세요."
-            class="login-form pw-box col-12"
-          /><br />
-    
-          <input type="submit" value="Log In" />
+            class="login-form form-control poppins-regular ps-4 mb-4"/>
+          <input type="submit" value="로그인 하기" class="login-box form-control text-light poppins-semibold fs-6 mb-4"/>
         </form>
+        <img src="@/assets/images/login/line.png" class="w-100">
       </div>
-  
+      <br>
       <KakaoLogin @kakaoLogin="handleKakaoLoginSuccess" />
     </div>
   </template>
@@ -54,12 +52,33 @@
   </script>
   
   <style scoped>
+  
   .login-form {
     box-sizing: border-box;
-    height: 80px;
+    height: 70px;
 
     border: 1px solid #79F297;
     border-radius: 20px;
+  }
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .login-box {
+    border-radius: 20px;
+    background-color: #203359;
+    height: 70px;
+  }
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
   }
 
 
