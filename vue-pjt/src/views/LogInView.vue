@@ -13,7 +13,7 @@
             class="login-form form-control poppins-regular ps-4 mb-2"/>
           <input type="password" id="password" v-model.trim="password" placeholder="비밀번호를 입력해주세요."
             class="login-form form-control poppins-regular ps-4 mb-4"/>
-          <input type="submit" value="로그인 하기" class="login-box form-control text-light poppins-semibold fs-6 mb-4"/>
+          <button type="submit" class="btn login-box form-control text-light poppins-semibold fs-6 mb-4 border-none">로그인 하기</button>
         </form>
         <img src="@/assets/images/login/line.png" class="w-100">
       </div>
@@ -57,7 +57,7 @@
     box-sizing: border-box;
     height: 70px;
 
-    border: 1px solid #79F297;
+    border: 1px solid #ccc;
     border-radius: 20px;
   }
   .poppins-bold {
@@ -80,7 +80,32 @@
     font-weight: 600;
     font-style: normal;
   }
+  input:focus {
+    border: 1px solid #79F297 !important;
+    box-shadow: none !important;
+  }
+  .btn:focus {
+    border:none !important;
+    box-shadow: none !important;
+    background-color: #203359 !important;
+  }
 
+  input:active {
+    background-color: inherit !important; 
+    border: 1px solid #79F297 !important;
+    box-shadow: none !important;
+  }
+  .btn:active {
+    border:none !important;
+    box-shadow: none !important;
+    background-color: #203359 !important;
+  }
+  .btn:hover {
+    border:none !important;
+    background-color: #203359 !important;
+    outline: none !important;
+    transform: none !important;
+  }
 
  
   </style>
