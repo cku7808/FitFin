@@ -15,6 +15,20 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 환경 변수 설정
+import os
+import environ
+
+env = environ.Env(DEBUG=(bool, True))
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
+API_KEY = {
+    'financial': env('api_key_financial'),
+    'currency': env('api_key_currency'),
+    'kakaomaps': env('api_key_kakaomaps'),
+    'kakaosocial_mainjs': env('api_key_kakaosocial_mainjs'),
+    }
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
