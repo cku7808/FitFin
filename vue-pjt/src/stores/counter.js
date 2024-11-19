@@ -29,6 +29,7 @@ export const useCounterStore = defineStore('counter', () => {
     })
     .catch(err => {
       console.log(err)
+      alert('회원가입 실패')
     })
   }
   const logIn = (payload) => {
@@ -48,6 +49,7 @@ export const useCounterStore = defineStore('counter', () => {
       })
       .catch((err) => {
         console.error(err);
+        alert('로그인 실패 : 가입되지 않은 회원이거나 비밀번호가 일치하지 않습니다')
       });
   };
 
@@ -78,6 +80,7 @@ export const useCounterStore = defineStore('counter', () => {
         accessToken.value = null
         refreshToken.value = null
         router.push({ name: 'MainView' })
+        alert('로그아웃되었습니다.')
       })
       .catch((err) => {
         console.log(err)
