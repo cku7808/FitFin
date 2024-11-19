@@ -1,7 +1,12 @@
 from rest_framework import serializers
 from .models import DepositOptions, DepositProducts
 
-class DepositProductsSerializer(serializers.ModelSerializer):
+class DepositProductsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DepositProducts
+        fields = ('fin_prdt_cd', 'kor_co_nm', 'fin_prdt_nm')
+        
+class DepositProductsDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = DepositProducts
         fields = "__all__"

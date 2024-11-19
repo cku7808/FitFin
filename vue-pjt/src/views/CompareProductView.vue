@@ -2,8 +2,11 @@
     <div>
         <h1>예적금 비교 페이지</h1>
         <div>
-            <ul v-for="d in data">
-                <li>{{ d }}</li>
+            <ul v-for="data in datas">
+                <li>금융 회사명 : {{ data.kor_co_nm }}</li>
+                <li>금융 상품명 : {{ data.fin_prdt_nm }}</li>
+                <RouterLink :to="{name:'CompareProductDetailView', params:{id: data.fin_prdt_cd}}" >상품 상세 정보</RouterLink>
+                <hr>
             </ul>
         </div>
     </div>
@@ -13,9 +16,11 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
+import CompareProductDetailView from './CompareProductDetailView.vue';
+import { RouterLink } from 'vue-router';
 
 const BASE_URL = 'http://127.0.0.1:8000'
-const data = ref([])
+const datas = ref([])
 const loadDepositProduct = function () {
     axios({
         method: 'get',
@@ -23,8 +28,8 @@ const loadDepositProduct = function () {
     })
     .then((res) => {
         console.log(res.data)
-        data.value.push(res.data)
-        console.log(data.value)
+        datas.value = res.data
+        console.log(datas.value)
     })
     .catch((err) => {
         console.log(err)

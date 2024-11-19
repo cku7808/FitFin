@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import DepositProducts, DepositOptions
-from .serializers import DepositProductsSerializer, DepositOptionsSerializer
+from .serializers import DepositProductsListSerializer, DepositProductsDetailSerializer, DepositOptionsSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
@@ -10,13 +10,13 @@ from rest_framework.decorators import api_view
 @api_view(["GET"])
 def product_list(request):
     products = DepositProducts.objects.all()
-    serializer = DepositProductsSerializer(products, many=True)
+    serializer = DepositProductsListSerializer(products, many=True)
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])
 def product_list_detail(request, product_id):
-    product = get_object_or_404(DepositProducts, pk=product_id)
-    serializer = DepositProductsSerializer(product)
+    product = get_object_or_404(DepositProducts, fin_prdt_cd=product_id)
+    serializer = DepositProductsDetailSerializer(product)
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])

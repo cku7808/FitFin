@@ -9,6 +9,7 @@ import BankPosView from '@/views/BankPosView.vue'
 import CommunityView from '@/views/CommunityView.vue'
 import MyPageView from '@/views/MyPageView.vue'
 import CartView from '@/views/CartView.vue'
+import CompareProductDetailView from '@/views/CompareProductDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,11 @@ const router = createRouter({
       path: '/compareproduct',
       name: 'CompareProductView',
       component: CompareProductView,
+    },
+    {
+      path: '/compareproduct/:id',
+      name: 'CompareProductDetailView',
+      component: CompareProductDetailView,
     },
     {
       path: '/exchangerate',
