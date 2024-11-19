@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg" v-if="store.isLogin">
             <div class="container-fluid">
                 <RouterLink :to="{ name: 'MainView'}">
-                    <img src="@/assets/images/logo.png" alt="Bootstrap" width="110" height="50" class="ms-2">
+                    <img src="@/assets/images/logo/Logo.png" alt="Bootstrap" width="110" height="49" class="ms-2">
                 </RouterLink>
 
                 <div class="navbar-expand-lg justify-content-end" id="navbarNavDropdown">
@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-lg" v-else>
             <div class="container-fluid">
                 <RouterLink :to="{ name: 'MainView'}">
-                    <img src="@/assets/images/logo.png" alt="Bootstrap" width="110" height="50" class="ms-2">
+                    <img src="@/assets/images/logo/Logo.png" alt="Bootstrap" width="110" height="50" class="ms-2">
                 </RouterLink>
 
                 <div class="navbar-expand-lg justify-content-end" id="navbarNavDropdown">
