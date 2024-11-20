@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 export const useCounterStore = defineStore('counter', () => {
-  const API_URL = 'http://127.0.0.1:8000'
+  const BASE_URL = 'http://127.0.0.1:8000'
   const accessToken = ref(null);
   const refreshToken = ref(null);
   const router = useRouter()
@@ -18,7 +18,7 @@ export const useCounterStore = defineStore('counter', () => {
 
     axios({
       method: 'post',
-      url: `${API_URL}/accounts/signup/`,
+      url: `${BASE_URL}/accounts/signup/`,
       data: {
         username, email, password1, password2
       }
@@ -29,6 +29,7 @@ export const useCounterStore = defineStore('counter', () => {
     })
     .catch(err => {
       console.log(err)
+      alert('회원가입 실패')
     })
   }
   const logIn = (payload) => {
@@ -36,7 +37,7 @@ export const useCounterStore = defineStore('counter', () => {
 
     axios({
       method: 'post',
-      url: `${API_URL}/accounts/login/`,
+      url: `${BASE_URL}/accounts/login/`,
       data: { username, password },
     })
       .then((res) => {
@@ -48,6 +49,7 @@ export const useCounterStore = defineStore('counter', () => {
       })
       .catch((err) => {
         console.error(err);
+        alert('로그인 실패 : 가입되지 않은 회원이거나 비밀번호가 일치하지 않습니다')
       });
   };
 
@@ -55,7 +57,7 @@ export const useCounterStore = defineStore('counter', () => {
   const socialLogIn = (email) => {
     axios({
       method: 'post',
-      url: `${API_URL}/api/v1/social_login/`,
+      url: `${BASE_URL}/api/v1/social_login/`,
       data: { email },
     })
       .then((res) => {
@@ -78,12 +80,13 @@ export const useCounterStore = defineStore('counter', () => {
         accessToken.value = null
         refreshToken.value = null
         router.push({ name: 'MainView' })
+        alert('로그아웃되었습니다.')
       })
       .catch((err) => {
         console.log(err)
       })
   };
 
-  return { API_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut };
+  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut };
 }, { persist: true });
 

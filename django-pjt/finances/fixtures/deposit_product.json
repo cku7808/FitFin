@@ -1,0 +1,17 @@
+[
+    {
+        "model": "finances.depositproducts",
+        "pk": 1,
+        "fields":
+        {
+            "fin_prdt_cd": "SH560873",
+            "kor_co_nm": "카카오뱅크",
+            "fin_prdt_nm": "카카오뱅크 프리미엄예금",
+            "etc_note": "- 가입기간: 12개월\n- 최소가입금액: 310000원 이상",
+            "join_deny": 3,
+            "join_member": "실명의 개인",
+            "join_way": "영업점,인터넷",
+            "spcl_cnd": "우대금리 제공 (최대 0.5%)"
+        }
+    }
+]
