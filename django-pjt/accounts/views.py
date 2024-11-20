@@ -51,7 +51,7 @@ def social_login(request):
     })
 
 @api_view(["POST"])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def signup_products(request):
     user = request.user
     product_id = request.data.get('product_id')

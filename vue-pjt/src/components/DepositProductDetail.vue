@@ -14,7 +14,7 @@
                 <RouterLink :to="{ name: 'DepositSavingView', query: { bank: route.query.bank } }">
                     뒤로 가기
                 </RouterLink>
-                <button @click="signUpForDepositProduct">가입하기</button>
+                <button @click="signUpForDepositProduct" v-if="store.isLogin">가입하기</button>
             </ul>
             
         </div>
@@ -28,7 +28,6 @@ import { onMounted } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useCounterStore } from '@/stores/counter';
 
-
 const store = useCounterStore()
 const route = useRoute()
 const data = ref([])
@@ -38,6 +37,9 @@ const loadDepositDetailProduct = function (id) {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/deposit-products/${id}/`,
+        headers: {
+            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
+        },
     })
     .then((res) => {
         data.value = res.data
@@ -45,6 +47,8 @@ const loadDepositDetailProduct = function (id) {
     })
     .catch((err) => {
         console.log(err)
+        alert('로그인을 먼저 해주세요')
+        router.push({name: 'LogInView'})
     })
 }
 onMounted(() => {
