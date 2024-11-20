@@ -1,4 +1,0 @@
-api_key_financial='f25b37f652831844ed819b2e634884c1'  # 금융상품통합비교공시 API
-api_key_currency='s5Wxh3xvCwW56nXrn6rwws1uJoyRs7Au'  # 한국수출입은행 환율정보 API
-api_key_kakaomaps='4f1912d2af67739b90dc33d450cd002c'  # Kakao Maps JS API
-api_key_kakaosocial_mainjs='242327ad0274c1e85ab4064278373781'  # Kakao social login
