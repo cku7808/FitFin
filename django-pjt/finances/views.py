@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 
 from django.http import JsonResponse
 import requests
@@ -9,7 +10,9 @@ import requests
 from django.conf import settings
 
 from .models import Currency, DepositProducts, DepositOption, SavingProducts, SavingOption
-from .serializers import CurrencySerializer, DepositProductsSerializer, SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer
+from .serializers import CurrencySerializer, DepositProductsSerializer, \
+    SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer, \
+    DepositProductsDetailSerializer
 
 
 # 환율 계산
@@ -204,4 +207,26 @@ def save_saving_products(request):  # 적금 상품
 
     return JsonResponse({'message': '저장 성공!'})
 
-    
+@api_view(["GET"])
+def deposit_products(request):
+    products = DepositProducts.objects.all()
+    serializer = DepositProductsSerializer(products, many=True)
+    return Response(serializer.data, status.HTTP_200_OK)
+
+@api_view(["GET"])
+def deposit_products_detail(request, product_id):
+    product = get_object_or_404(DepositProducts, pk=product_id)
+    serializer = DepositProductsDetailSerializer(product)
+    return Response(serializer.data, status.HTTP_200_OK)
+
+@api_view(["GET"])
+def saving_products(request):
+    products = SavingProducts.objects.all()
+    serializer = SavingProductsSerializer(products, many=True)
+    return Response(serializer.data, status.HTTP_200_OK)
+
+@api_view(["GET"])
+def saving_products_detail(request, product_id):
+    product = get_object_or_404(SavingProducts, pk=product_id)
+    serializer = DepositProductsDetailSerializer(product)
+    return Response(serializer.data, status.HTTP_200_OK)

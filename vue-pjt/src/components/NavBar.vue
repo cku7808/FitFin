@@ -5,18 +5,18 @@
                 <!-- 로고와 토글 버튼 -->
                 <div class="d-flex align-items-center">
                     <RouterLink :to="{ name: 'MainView'}">
-                    <img src="@/assets/images/logo/Logo.png" alt="FitFin Logo" width="110" height="49" class="me-2">
+                        <img src="@/assets/images/logo/Logo.png" alt="FitFin Logo" width="110" height="49" class="me-2">
                     </RouterLink>
                     <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        >
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 
@@ -57,7 +57,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                     <li class="nav-item poppins-medium">
-                        <RouterLink :to="{ name: 'CompareProductView'}" class="text-decoration-none text-black nav-link">예적금 상품 비교</RouterLink>
+                        <RouterLink :to="{ name: 'DepositSavingView'}" class="text-decoration-none text-black nav-link">예적금 상품 비교</RouterLink>
                     </li>
                     <li class="nav-item poppins-medium">
                         <RouterLink :to="{ name: 'ExchangeRateView'}" class="text-decoration-none text-black nav-link">환율 계산</RouterLink>
