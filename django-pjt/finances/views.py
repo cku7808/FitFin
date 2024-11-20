@@ -2,28 +2,83 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
 from django.http import JsonResponse
-import requests
-
 from django.conf import settings
+import requests
 
 from .models import Currency, DepositProducts, DepositOption, SavingProducts, SavingOption
 from .serializers import CurrencySerializer, DepositProductsSerializer, SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer
 
+  
+ 
+
+ 
+
+        
+
+
 
 # 환율 계산
 @api_view(['GET'])
-def exchangerate(request):
+def save_exchangerate(request):
     api_key = settings.API_KEY['currency']
     url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&data=AP01'
     response = requests.get(url, verify=False).json()
-    serializers = CurrencySerializer(data=response, many=True)
-    if serializers.is_valid(raise_exception=True):
-        serializers.save()
+    
+    Currency.objects.all().delete()  # 초기화
+
+
+
+    for li in response:  # 환율 정보 저장
+        cur_unit = li.get('cur_unit').replace('(100)', '')
+        cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
+        ttb = li.get('ttb')
+        tts = li.get('tts')
+        deal_bas_r = li.get('deal_bas_r')
+        bkpr = li.get('bkpr')
+        yy_efee_r = li.get('yy_efee_r')
+        ten_dd_efee_r = li.get('ten_dd_efee_r')
+        kftc_deal_bas_r = li.get('kftc_deal_bas_r')
+        kftc_bkpr = li.get('kftc_bkpr')
+
+        if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
+            ttb = float(ttb)/100
+            tts = float(tts)/100
+            deal_bas_r = float(deal_bas_r)/100
+            bkpr = float(bkpr)/100
+            yy_efee_r = float(yy_efee_r)/100
+            ten_dd_efee_r = float(ten_dd_efee_r)/100
+            kftc_deal_bas_r = float(kftc_deal_bas_r)/100
+            kftc_bkpr = float(kftc_bkpr)/100
+
+        save_data = {
+            'cur_unit': cur_unit,
+            'cur_nm': cur_nm.split()[1],
+            'cur_con': cur_nm.split()[0],
+            'ttb': ttb,
+            'tts': tts,
+            'deal_bas_r': deal_bas_r,
+            'bkpr': bkpr,
+            'yy_efee_r': yy_efee_r,
+            'ten_dd_efee_r': ten_dd_efee_r,
+            'kftc_deal_bas_r': kftc_deal_bas_r,
+            'kftc_bkpr': kftc_bkpr,
+        } 
+    
+        # print(cur_nm.split()[0], ':', ttb)
+
+        serializer = CurrencySerializer(data=save_data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
 
     # 스케줄러로 매일 11시마다 db에 환율 저장
     
+    return JsonResponse({'message': '저장 성공!'})
+
+@api_view(['GET'])
+def load_exchagerate(request):
+    currencies = Currency.objects.all()
+    serializers = CurrencySerializer(currencies, many=True)
     return Response(serializers.data)
 
 

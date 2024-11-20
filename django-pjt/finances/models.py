@@ -5,7 +5,8 @@ from django.db import models
 # 환율 (일 데이터만 저장 - 매일 11시 업데이트)
 class Currency(models.Model):
     cur_unit = models.CharField(max_length=100)         # 통화코드
-    cur_nm = models.CharField(max_length=100)           # 국가/통화명
+    cur_nm = models.CharField(max_length=100)           # 통화명
+    cur_con = models.CharField(max_length=100)          # 국가
     ttb = models.CharField(max_length=100)              # 전신환(송금) 받으실때
     tts = models.CharField(max_length=100)              # 전신환(송금) 보내실때
     deal_bas_r = models.CharField(max_length=100)       # 매매 기준율
