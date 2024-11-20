@@ -1,11 +1,15 @@
 <template>
     <div>
-      <input
-        type="text"
-        v-model="addressInput"
-        placeholder="주소를 입력하세요"
-        style="width: 300px; margin-bottom: 10px;"
-      />
+      <label for="sido">특별시 / 광역시 / 도 : </label>
+      <input type="text" name="sido" v-model="siDo" style="width: 300px; margin-bottom: 10px;"/>
+      
+      <label for="sigungu">시 / 군 / 구 : </label>
+      <input type="text" name="sigungu" v-model="siGunGu" style="width: 300px; margin-bottom: 10px;"/>
+      
+      <label for="eupmyeondong">읍 / 면 / 동 : </label>
+      <input type="text" name="eupmyeondong" v-model="eupMyeonDong" style="width: 300px; margin-bottom: 10px;"/>
+      
+      
       <button @click="searchAddressAndBanks(addressInput)">주소 검색</button>
       <div ref="mapContainer" style="width: 100%; height: 70vh"></div>
     </div>
@@ -13,7 +17,7 @@
   
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 // Kakao Map API Key
 const VITE_KAKAO_MAP_KEY = "242327ad0274c1e85ab4064278373781";
@@ -24,8 +28,25 @@ const mapInstance = ref(null);
 const placesService = ref(null); // 장소 검색 서비스
 const markers = ref([]);
 const geocoder = ref(null); // Geocoder 인스턴스
-const addressInput = ref("해남군 송지면"); // 기본 입력 값
+// const addressInput = ref('서울특별시 역삼동')
 
+// 특별시, 광역시, 도
+const siDo = ref('')
+// 시, 군, 구
+const siGunGu = ref('')
+// 읍, 면, 동
+const eupMyeonDong = ref('')
+
+const addressInput = computed(() => {
+    const inputLength = siDo.value.length + siGunGu.value.length + eupMyeonDong.value.length
+    if (inputLength === 0) {
+        return "서울특별시 역삼동"
+    } else {
+        return siDo.value + siGunGu.value + eupMyeonDong.value
+    }
+})
+
+console.log(addressInput)
 
 // Kakao Map API 로드 및 초기화
 onMounted(() => {
