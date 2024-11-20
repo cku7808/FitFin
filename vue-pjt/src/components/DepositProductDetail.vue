@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>예적금 비교 페이지</h1>
+        <h1>상품 상세 정보 페이지</h1>
         <div>
             <ul>
                 <li>금융 상품 코드: {{ data.fin_prdt_cd }}</li>
@@ -11,7 +11,12 @@
                 <li>가입 대상: {{ data.join_member }}</li>
                 <li>가입 방법: {{ data.join_way }}</li>
                 <hr>
+                <RouterLink :to="{ name: 'DepositSavingView', query: { bank: route.query.bank } }">
+                    뒤로 가기
+                </RouterLink>
+
             </ul>
+            
         </div>
     </div>
 </template>
@@ -20,8 +25,9 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useCounterStore } from '@/stores/counter';
+
 
 const store = useCounterStore()
 const route = useRoute()
@@ -30,12 +36,10 @@ const data = ref({})
 const loadDepositDetailProduct = function (id) {
     axios({
         method: 'get',
-        url: `${store.BASE_URL}/finances/product-list/${id}/`,
+        url: `${store.BASE_URL}/api/v2/load-deposit-products/${id}/`,
     })
     .then((res) => {
-        console.log(res.data)
         data.value = res.data
-        console.log(data.value)
     })
     .catch((err) => {
         console.log(err)

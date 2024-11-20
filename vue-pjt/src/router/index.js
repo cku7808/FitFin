@@ -1,15 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import SignUpView from '@/views/SignUpView.vue'
 import LogInView from '@/views/LogInView.vue'
-import MainView from '@/views/MainView.vue'
 import KakaoLogin from '@/components/KakaoLogin.vue'
-import CompareProductView from '@/views/CompareProductView.vue'
+
+import MainView from '@/views/MainView.vue'
+
 import ExchangeRateView from '@/views/ExchangeRateView.vue'
+
 import BankPosView from '@/views/BankPosView.vue'
+
 import CommunityView from '@/views/CommunityView.vue'
+
 import MyPageView from '@/views/MyPageView.vue'
+
 import CartView from '@/views/CartView.vue'
-import CompareProductDetailView from '@/views/CompareProductDetailView.vue'
+
+import DepositSavingView from '@/views/DepositSavingView.vue'
+import DepositProduct from '@/components/DepositProduct.vue'
+import DepositProductDetail from '@/components/DepositProductDetail.vue'
+import SavingProduct from '@/components/SavingProduct.vue'
+import SavingProductDetail from '@/components/SavingProductDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,14 +46,29 @@ const router = createRouter({
       component: KakaoLogin,
     },
     {
-      path: '/compareproduct',
-      name: 'CompareProductView',
-      component: CompareProductView,
+      path: '/depositsavingproducts',
+      name: 'DepositSavingView',
+      component: DepositSavingView,
     },
     {
-      path: '/compareproduct/:id',
-      name: 'CompareProductDetailView',
-      component: CompareProductDetailView,
+      path: '/depositproduct',
+      name: 'DepositProduct',
+      component: DepositProduct,
+    },
+    {
+      path: '/depositproduct/:id',
+      name: 'DepositProductDetail',
+      component: DepositProductDetail,
+    },
+    {
+      path: '/savingproduct',
+      name: 'SavingProduct',
+      component: SavingProduct,
+    },
+    {
+      path: '/savingproduct/:id',
+      name: 'SavingProductDetail',
+      component: SavingProductDetail,
     },
     {
       path: '/exchangerate',
