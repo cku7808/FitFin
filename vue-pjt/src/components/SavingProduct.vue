@@ -39,7 +39,7 @@ const uniqueBanks = ref([]);
 const loadDepositProduct = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v2/load-saving-products/`,
+        url: `${BASE_URL}/api/v2/saving-products/`,
     })
     .then((res) => {
         datas.value = res.data

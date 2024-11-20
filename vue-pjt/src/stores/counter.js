@@ -32,6 +32,7 @@ export const useCounterStore = defineStore('counter', () => {
       alert('회원가입 실패')
     })
   }
+  
   const logIn = (payload) => {
     const { username, password } = payload;
 
@@ -70,10 +71,11 @@ export const useCounterStore = defineStore('counter', () => {
         console.error(err);
       });
   };
+
   const logOut = function () {
     axios({
       method: 'post',
-      url: `${API_URL}/accounts/logout/`,
+      url: `${BASE_URL}/accounts/logout/`,
     })
       .then((res) => {
         console.log(res.data)

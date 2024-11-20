@@ -14,7 +14,7 @@
                 <RouterLink :to="{ name: 'DepositSavingView', query: { bank: route.query.bank } }">
                     뒤로 가기
                 </RouterLink>
-
+                <button @click="signUpForDepositProduct">가입하기</button>
             </ul>
             
         </div>
@@ -31,15 +31,17 @@ import { useCounterStore } from '@/stores/counter';
 
 const store = useCounterStore()
 const route = useRoute()
-const data = ref({})
+const data = ref([])
+const product_id = ref(null)
 
 const loadDepositDetailProduct = function (id) {
     axios({
         method: 'get',
-        url: `${store.BASE_URL}/api/v2/load-deposit-products/${id}/`,
+        url: `${store.BASE_URL}/api/v2/deposit-products/${id}/`,
     })
     .then((res) => {
         data.value = res.data
+        product_id.value = data.value.fin_prdt_cd
     })
     .catch((err) => {
         console.log(err)
@@ -48,6 +50,25 @@ const loadDepositDetailProduct = function (id) {
 onMounted(() => {
     loadDepositDetailProduct(route.params.id)
 })
+
+const signUpForDepositProduct = () => {
+    axios({
+        method: 'post',
+        url: `${store.BASE_URL}/api/v1/signup_products/`,
+        headers: {
+            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
+        },
+        data: {
+            product_id: product_id.value,
+        },
+    })
+    .then((res) => {
+        console.log(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
 
 </script>
 

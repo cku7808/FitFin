@@ -34,13 +34,12 @@ const datas = ref([])
 const route = useRoute();
 const router = useRouter();
 const selectedBank = ref(route.query.bank || "");
-const selectedType = ref(route.query.type);
 const uniqueBanks = ref([]);
 
 const loadDepositProduct = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v2/load-deposit-products/`,
+        url: `${BASE_URL}/api/v2/deposit-products/`,
     })
     .then((res) => {
         datas.value = res.data
