@@ -28,8 +28,9 @@ import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute, useRouter } from 'vue-router';
+import { useCounterStore } from '@/stores/counter';
 
-const BASE_URL = 'http://127.0.0.1:8000'
+const store = useCounterStore()
 const datas = ref([])
 const route = useRoute();
 const router = useRouter();
@@ -39,7 +40,10 @@ const uniqueBanks = ref([]);
 const loadDepositProduct = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v2/deposit-products/`,
+        url: `${store.BASE_URL}/api/v2/deposit-products/`,
+        headers: {
+            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
+        },
     })
     .then((res) => {
         datas.value = res.data
@@ -48,6 +52,8 @@ const loadDepositProduct = function () {
     })
     .catch((err) => {
         console.log(err)
+        alert('로그인을 먼저 해주세요')
+        router.push({name: 'LogInView'})
     })
 }
 onMounted(() => {
