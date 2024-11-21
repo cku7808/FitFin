@@ -99,6 +99,10 @@ def updatetoday_exchangerate():
         ax.axis("off")
         # 저장
         plt.savefig(path_graph, bbox_inches='tight')
+        
+        plt.cla()   # clear the current axes
+        plt.clf()   # clear the current figure 
+        plt.close() # closes the current figure
 
 # 환율 db 저장 (초기 세팅)
 def save_exchangerate():
