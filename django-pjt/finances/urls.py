@@ -8,6 +8,4 @@ urlpatterns = [
     path('load-exchangerate/', views.load_exchagerate),
     path('save-deposit-products/', views.save_deposit_products),
     path('save-saving-products/', views.save_saving_products),
- 
-    # path('test/', views.scheduler_dbupdate),
 ]

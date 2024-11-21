@@ -5,82 +5,81 @@ from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from django.conf import settings
 import requests
+from datetime import datetime, timedelta
 
 from .models import Currency, DepositProducts, DepositOption, SavingProducts, SavingOption
 from .serializers import CurrencySerializer, DepositProductsSerializer, SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer
 
-  
- 
-
- 
-
-        
-
-
-
-# 환율 계산
+# X환율 계산X (테스트 용)
 @api_view(['GET'])
 def save_exchangerate(request):
     api_key = settings.API_KEY['currency']
     url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&data=AP01'
     response = requests.get(url, verify=False).json()
     
-    Currency.objects.all().delete()  # 초기화
-
-
-
-    for li in response:  # 환율 정보 저장
-        cur_unit = li.get('cur_unit').replace('(100)', '')
-        cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
-        ttb = li.get('ttb')
-        tts = li.get('tts')
-        deal_bas_r = li.get('deal_bas_r')
-        bkpr = li.get('bkpr')
-        yy_efee_r = li.get('yy_efee_r')
-        ten_dd_efee_r = li.get('ten_dd_efee_r')
-        kftc_deal_bas_r = li.get('kftc_deal_bas_r')
-        kftc_bkpr = li.get('kftc_bkpr')
-
-        if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
-            ttb = float(ttb)/100
-            tts = float(tts)/100
-            deal_bas_r = float(deal_bas_r)/100
-            bkpr = float(bkpr)/100
-            yy_efee_r = float(yy_efee_r)/100
-            ten_dd_efee_r = float(ten_dd_efee_r)/100
-            kftc_deal_bas_r = float(kftc_deal_bas_r)/100
-            kftc_bkpr = float(kftc_bkpr)/100
-
-        save_data = {
-            'cur_unit': cur_unit,
-            'cur_nm': cur_nm.split()[1],
-            'cur_con': cur_nm.split()[0],
-            'ttb': ttb,
-            'tts': tts,
-            'deal_bas_r': deal_bas_r,
-            'bkpr': bkpr,
-            'yy_efee_r': yy_efee_r,
-            'ten_dd_efee_r': ten_dd_efee_r,
-            'kftc_deal_bas_r': kftc_deal_bas_r,
-            'kftc_bkpr': kftc_bkpr,
-        } 
+#     if not response:
+#         yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y%m%d')
+#         url = url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&searchdate={yesterday}&data=AP01'
+#         response = requests.get(url, verify=False).json()
+#         print('오늘자 환율 업데이트 전!')
     
-        # print(cur_nm.split()[0], ':', ttb)
+    # Currency.objects.all().delete()  # 초기화
 
-        serializer = CurrencySerializer(data=save_data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
+    # for li in response:  # 환율 정보 저장
+    #     cur_unit = li.get('cur_unit').replace('(100)', '')
+    #     cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
+    #     ttb = li.get('ttb')
+    #     tts = li.get('tts')
+    #     deal_bas_r = li.get('deal_bas_r')
+    #     bkpr = li.get('bkpr')
+    #     yy_efee_r = li.get('yy_efee_r')
+    #     ten_dd_efee_r = li.get('ten_dd_efee_r')
+    #     kftc_deal_bas_r = li.get('kftc_deal_bas_r')
+    #     kftc_bkpr = li.get('kftc_bkpr')
 
-    # 스케줄러로 매일 11시마다 db에 환율 저장
+    #     if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
+    #         ttb = float(ttb)/100
+    #         tts = float(tts)/100
+    #         deal_bas_r = float(deal_bas_r)/100
+    #         bkpr = float(bkpr)/100
+    #         yy_efee_r = float(yy_efee_r)/100
+    #         ten_dd_efee_r = float(ten_dd_efee_r)/100
+    #         kftc_deal_bas_r = float(kftc_deal_bas_r)/100
+    #         kftc_bkpr = float(kftc_bkpr)/100
+
+    #     save_data = {
+    #         'cur_unit': cur_unit,
+    #         'cur_nm': cur_nm.split()[1],
+    #         'cur_con': cur_nm.split()[0],
+    #         'ttb': ttb,
+    #         'tts': tts,
+    #         'deal_bas_r': deal_bas_r,
+    #         'bkpr': bkpr,
+    #         'yy_efee_r': yy_efee_r,
+    #         'ten_dd_efee_r': ten_dd_efee_r,
+    #         'kftc_deal_bas_r': kftc_deal_bas_r,
+    #         'kftc_bkpr': kftc_bkpr,
+    #     } 
+    
+    #     # print(cur_nm.split()[0], ':', ttb)
+
+    #     serializer = CurrencySerializer(data=save_data)
+    #     if serializer.is_valid(raise_exception=True):
+    #         serializer.save()
     
     return JsonResponse({'message': '저장 성공!'})
+    # return Response(response)
 
+# 당일 환율 정보 로드
 @api_view(['GET'])
 def load_exchagerate(request):
-    currencies = Currency.objects.all()
+    date = datetime.now().strftime('%Y%m%d')
+    if not Currency.objects.filter(date=date).exists():
+        date = (datetime.now() - timedelta(days=1)).strftime('%Y%m%d')
+    print(date)
+    currencies = Currency.objects.filter(date=date)
     serializers = CurrencySerializer(currencies, many=True)
     return Response(serializers.data)
-
 
 # 금융상품정보
     # 페이지 하나만 가져옴 (페이지 1번 밖에 존재 안 함?)
@@ -95,7 +94,6 @@ def save_deposit_products(request):  # 예금 상품
     }
 
     response = requests.get(URL, params=params).json()
-    test_nm = 0
 
     for li in response.get('result').get('baseList'):  # 예금 상품 정보 저장
         dcls_month = li.get('dcls_month')
