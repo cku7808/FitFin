@@ -57,12 +57,13 @@ def social_login(request):
 def signup_products(request):
     user = request.user
     product_id = request.data.get('product_id')
+    option_id = request.data.get('option_id')
 
     if not isinstance(user.registered_ptcd, list):
             user.registered_ptcd = []  # 초기화
 
-    if product_id not in user.registered_ptcd:  # 중복 방지
-        user.registered_ptcd.append(product_id)
+    if (product_id, option_id) not in user.registered_ptcd:  # 중복 방지
+        user.registered_ptcd.append((product_id, option_id))
 
     user.save()  # 변경사항 저장
     return Response({
