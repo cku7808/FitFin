@@ -17,6 +17,17 @@ class Currency(models.Model):
     kftc_deal_bas_r = models.CharField(max_length=100)  # 서울외국환중개 매매 기준율
     kftc_bkpr = models.CharField(max_length=100)        # 서울외국환중개 장부 가격
 
+# 오늘의 환율
+class TodayCurrency(models.Model):
+    cur_con = models.CharField(max_length=100)          # 국가
+    cur_nm = models.CharField(max_length=100)           # 통화명
+    cur_unit = models.CharField(max_length=100)         # 통화코드
+    deal_bas_r = models.CharField(max_length=100, null=True)       # 매매 기준율
+    yesterday_diff = models.CharField(max_length=100, null=True)   # 증감 값
+    yesterday_per = models.CharField(max_length=100, null=True)   # 증감 퍼센트
+    img = models.CharField(max_length=100, null=True)   # 이미지 경로
+     
+
 
 # 금융 상품
 class DepositProducts(models.Model):                            # 예금 상품

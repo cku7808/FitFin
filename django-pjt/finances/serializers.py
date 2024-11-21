@@ -1,10 +1,15 @@
 from rest_framework import serializers
-from .models import Currency, DepositProducts, SavingProducts, DepositOption, SavingOption
+from .models import Currency, TodayCurrency, DepositProducts, SavingProducts, DepositOption, SavingOption
 
 # 환율
 class CurrencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Currency
+        fields = '__all__'
+
+class TodayCurrencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TodayCurrency
         fields = '__all__'
 
 

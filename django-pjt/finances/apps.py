@@ -5,19 +5,19 @@ class FinancesConfig(AppConfig):
     name = "finances"
     
     # 서버 시작 시 실행
-    def ready(self):
-        from .scheduler import start_scheduler, save_exchangerate
-        import atexit
-        # 서버 시작 시 스케줄러 샐행
-        # save_exchangerate()  # 환율 db 먼저 초기화 진행
-        start_scheduler()  # 매일 오전 11시 1분마다 당일 환율로 db 업데이트
+    # def ready(self):
+    #     from .scheduler import start_scheduler, save_exchangerate
+    #     import atexit
+    #     # 서버 시작 시 스케줄러 샐행
+    #     # save_exchangerate()  # 환율 db 먼저 초기화 진행
+    #     start_scheduler()  # 매일 오전 11시 1분마다 당일 환율로 db 업데이트
         
-        # 서버 종료 시 스케줄러 정리
-        atexit.register(self.stop_scheduler)
+    #     # 서버 종료 시 스케줄러 정리
+    #     atexit.register(self.stop_scheduler)
 
-    def stop_scheduler(self):
-        from .scheduler import shutdown_scheduler
-        shutdown_scheduler()
+    # def stop_scheduler(self):
+    #     from .scheduler import shutdown_scheduler
+    #     shutdown_scheduler()
         
 # Django 라이브 리로드 기능 -> 서버 실행 시 같은 프로세스 두 번 실행
 # Django에서는 디버그환경에서 코드를 변경하게 되면 그에따라 즉각적으로 장고 서버에 반영되는데 이렇게 됨
