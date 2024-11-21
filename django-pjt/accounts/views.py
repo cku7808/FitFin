@@ -8,10 +8,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import UserSerializer
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login(request):
     # 요청에서 username과 password 가져오기
     username = request.data.get('username')
@@ -35,6 +36,7 @@ def login(request):
         })
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def social_login(request):
     email = request.data.get('email')
     print(email)
