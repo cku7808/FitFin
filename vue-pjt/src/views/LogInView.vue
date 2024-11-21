@@ -3,19 +3,25 @@
       <div>
         <div class="fs-2 d-flex align-items-center">
           <span class="pe-2 poppins-bold">나에게 Fit한 Finance,</span>
-          <img src="@/assets/images/logo/Logo2.png" width="94" height="31"><br>
+          <img src="/logo/Logo2.png" width="94" height="31"><br>
         </div>
         <p class="fs-6 poppins-regular">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
       </div>
       <div class="col-4">
         <form @submit.prevent="logIn">
-          <input type="text" id="username" v-model.trim="username" placeholder="아이디를 입력해주세요." 
-            class="login-form form-control poppins-regular ps-4 mb-2"/>
-          <input type="password" id="password" v-model.trim="password" placeholder="비밀번호를 입력해주세요."
-            class="login-form form-control poppins-regular ps-4 mb-4"/>
+          <div class="form-floating mb-3">
+            <input type="text" id="username" v-model.trim="username" placeholder="ID"
+              class="login-form form-control poppins-regular ps-4 mb-2"/>
+            <label for="username">ID</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" id="password" v-model.trim="password" placeholder="Password"
+              class="login-form form-control poppins-regular ps-4 mb-4"/>
+            <label for="password">Password</label>
+          </div>
           <button type="submit" class="btn login-box form-control text-light poppins-semibold fs-6 mb-4 border-none">로그인 하기</button>
         </form>
-        <img src="@/assets/images/login/line.png" class="w-100">
+        <img src="/login/line.png" class="w-100">
       </div>
       <br>
       <KakaoLogin @kakaoLogin="handleKakaoLoginSuccess" />

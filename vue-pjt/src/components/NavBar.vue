@@ -5,7 +5,7 @@
                 <!-- 로고와 토글 버튼 -->
                 <div class="d-flex align-items-center">
                     <RouterLink :to="{ name: 'MainView'}">
-                        <img src="@/assets/images/logo/Logo.png" alt="FitFin Logo" width="110" height="49" class="me-2">
+                        <img src="/logo/Logo.png" alt="FitFin Logo" width="110" height="49" class="me-2">
                     </RouterLink>
                     <button
                         class="navbar-toggler"
@@ -25,29 +25,29 @@
                     <ul class="navbar-nav d-flex flex-row" v-if="store.isLogin">
                         <li class="nav-item">
                             <a @click="store.logOut()" style="cursor: pointer;">
-                            <img src="@/assets/images/navbar/Logout.png" alt="Logout" width="80" height="19" class="me-2">
+                            <img src="/navbar/Logout.png" alt="Logout" width="80" height="19" class="me-2">
                             </a>
                         </li>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'MyPageView'}">
-                            <img src="@/assets/images/navbar/Mypage.png" alt="Mypage" width="80" height="19" class="me-2">
+                            <img src="/navbar/Mypage.png" alt="Mypage" width="80" height="19" class="me-2">
                             </RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'CartView'}">
-                            <img src="@/assets/images/navbar/Cart.png" alt="Cart" width="80" height="19">
+                            <img src="/navbar/Cart.png" alt="Cart" width="80" height="19">
                             </RouterLink>
                         </li>
                     </ul>
                     <ul class="navbar-nav d-flex flex-row" v-else>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'SignUpView'}">
-                            <img src="@/assets/images/navbar/Signup.png" alt="Signup" width="80" height="19" class="me-2">
+                            <img src="/navbar/Signup.png" alt="Signup" width="80" height="19" class="me-2">
                             </RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'LogInView'}">
-                            <img src="@/assets/images/navbar/Login.png" alt="Login" width="80" height="19">
+                            <img src="/navbar/Login.png" alt="Login" width="80" height="19">
                             </RouterLink>
                         </li>
                     </ul>

@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import markerImageSrc from '@/assets/images/map/marker3.png';
+import markerImageSrc from '/map/marker3.png';
 
 // Kakao Map API Key
 const VITE_KAKAO_MAP_KEY = import.meta.env['VITE_API_KEY_KAKAO_JS']
@@ -194,7 +194,6 @@ const displayMarker = (markerPositions) => {
 
   if (positions.length > 0) {
     markers.value = positions.map((position, index) => {
-      // const imageSrc = require("@/assets/images/map/marker.png"), // 마커 이미지 URL
       const imageSize = new kakao.maps.Size(40, 40) // 마커 이미지 크기
       const imageOption = { offset: new kakao.maps.Point(20, 40) } // 이미지 기준점
 
