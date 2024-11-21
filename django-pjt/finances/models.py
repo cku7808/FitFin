@@ -34,7 +34,7 @@ class DepositProducts(models.Model):                            # 예금 상품
     dcls_end_day = models.IntegerField(blank=True, null=True)   # 공시 종료일
     
 class DepositOption(models.Model):                                                      # 예금 상품 옵션          
-    deposit_product = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)      # 예금 상품
+    deposit_product = models.ForeignKey(DepositProducts, on_delete=models.CASCADE, related_name="options")      # 예금 상품
     dcls_month = models.CharField(max_length=20)                                        # 공시 제출월
     fin_co_no = models.CharField(max_length=100)                                        # 금융회사 코드
     intr_rate_type = models.CharField(max_length=100)                                   # 저축 금리 유형
@@ -60,7 +60,7 @@ class SavingProducts(models.Model):                             # 적금 상품
     dcls_end_day = models.IntegerField(blank=True, null=True)   # 공시 종료일
 
 class SavingOption(models.Model):                                                       # 적금 상품 옵션
-    saving_product = models.ForeignKey(SavingProducts, on_delete=models.CASCADE)        # 적금 상품
+    saving_product = models.ForeignKey(SavingProducts, on_delete=models.CASCADE, related_name="options")        # 적금 상품
     dcls_month = models.CharField(max_length=20)                                        # 공시 제출월
     fin_co_no = models.CharField(max_length=100)                                        # 금융회사 코드
     intr_rate_type = models.CharField(max_length=100)                                   # 저축 금리 유형

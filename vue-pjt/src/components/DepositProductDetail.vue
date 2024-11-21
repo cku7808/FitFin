@@ -11,10 +11,18 @@
                 <li>가입 대상: {{ data.join_member }}</li>
                 <li>가입 방법: {{ data.join_way }}</li>
                 <hr>
+                <ul v-for="(option, index) in data.options">
+                   <li>{{ index+1 }} 번째 옵션</li>
+                   <li>저축 금리 유형명: {{ option.intr_rate_type_nm }}</li> 
+                   <li>저축 기간: {{ option.save_trm }}</li> 
+                   <li>저축 금리: {{ option.intr_rate }}</li> 
+                   <li>최고 우대 금리: {{ option.intr_rate2 }}</li> 
+                   <button @click="signUpForDepositProduct(option.id)" v-if="store.isLogin">가입하기</button>
+                   <hr>
+                </ul>
                 <RouterLink :to="{ name: 'DepositSavingView', query: { bank: route.query.bank } }">
                     뒤로 가기
                 </RouterLink>
-                <button @click="signUpForDepositProduct" v-if="store.isLogin">가입하기</button>
             </ul>
             
         </div>
@@ -27,6 +35,7 @@ import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useCounterStore } from '@/stores/counter';
+import router from '@/router';
 
 const store = useCounterStore()
 const route = useRoute()
@@ -55,7 +64,7 @@ onMounted(() => {
     loadDepositDetailProduct(route.params.id)
 })
 
-const signUpForDepositProduct = () => {
+const signUpForDepositProduct = (option_id) => {
     axios({
         method: 'post',
         url: `${store.BASE_URL}/api/v1/signup_products/`,
@@ -64,6 +73,7 @@ const signUpForDepositProduct = () => {
         },
         data: {
             product_id: product_id.value,
+            option_id: option_id,
         },
     })
     .then((res) => {

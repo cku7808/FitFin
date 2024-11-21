@@ -24,8 +24,6 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 API_KEY = {
     'financial': env('api_key_financial'),
     'currency': env('api_key_currency'),
-    'kakaomaps': env('api_key_kakaomaps'),
-    'kakaosocial_mainjs': env('api_key_kakaosocial_mainjs'),
     }
 
 
