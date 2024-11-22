@@ -7,7 +7,7 @@
           {{ bank }}
         </option>
       </select><br>
-      <div class="border rounded px-4 py-2 overflow-auto" style="max-height: 650px;">
+      <div class="data-wrapper px-4 py-2 overflow-auto" style="max-height: 600px;">
           <ul v-for="data in filteredDatas" :key="data.id" class="bg-body-tertiary rounded-4 p-3 px-4 d-flex justify-content-between align-items-center mt-3" style="list-style: none;">
             <div class="d-flex align-items-center">
               <img :src="`/banklogo/${data.kor_co_nm}.png`" :alt="selectedBank" width="50" height="50" class="me-3">
@@ -79,5 +79,8 @@ const handleBankChange = () => {
 </script>
 
 <style scoped>
-
+.data-wrapper {
+  border: solid 1px #79F297;
+  border-radius: 10px;
+}
 </style>
