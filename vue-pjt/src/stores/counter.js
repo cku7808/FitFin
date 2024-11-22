@@ -69,6 +69,8 @@ export const useCounterStore = defineStore('counter', () => {
       })
       .catch((err) => {
         console.error(err);
+        alert('가입되지 않은 사용자입니다.')
+        router.push({name: 'SignUpView'})
       });
   };
 

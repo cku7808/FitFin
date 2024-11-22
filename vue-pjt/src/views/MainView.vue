@@ -5,17 +5,17 @@
                 <div class="carousel-inner w-75">
                     <div class="carousel-item active">
                         <RouterLink :to="{ name: 'MyPageView'}">
-                            <img src="@/assets/images/carousel/carousel1.png" class="d-block w-100 rounded" alt="Slide 1">
+                            <img src="/carousel/carousel1.png" class="d-block w-100 rounded" alt="Slide 1">
                         </RouterLink>
                     </div>
                     <div class="carousel-item">
                         <RouterLink :to="{ name: 'MyPageView'}">
-                            <img src="@/assets/images/carousel/carousel2.png" class="d-block w-100 rounded" alt="Slide 2">
+                            <img src="/carousel/carousel2.png" class="d-block w-100 rounded" alt="Slide 2">
                         </RouterLink>
                     </div>
                     <div class="carousel-item">
                         <RouterLink :to="{ name: 'MyPageView'}">
-                            <img src="@/assets/images/carousel/carousel3.png" class="d-block w-100 rounded" alt="Slide 3">
+                            <img src="/carousel/carousel3.png" class="d-block w-100 rounded" alt="Slide 3">
                         </RouterLink>
                     </div>
                 </div>

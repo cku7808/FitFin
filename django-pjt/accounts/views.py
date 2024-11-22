@@ -42,8 +42,11 @@ def social_login(request):
     print(email)
     try:
         user = User.objects.get(email=email)
+        print(user)
     except User.DoesNotExist:
-        user = User.objects.create_user(email=email, username=email)
+        return Response({
+            'message': '가입되지 않은 사용자입니다.'
+        }, status.HTTP_400_BAD_REQUEST)
 
     # JWT 토큰 발급
     refresh = RefreshToken.for_user(user)

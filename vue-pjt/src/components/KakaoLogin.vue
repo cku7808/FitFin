@@ -2,7 +2,7 @@
   <div>
     <a id="custom-login-btn" @click="kakaoLogin()">
       <img
-        src="@/assets/images/login/kakao.png"
+        src="/login/kakao.png"
         width="55"
         alt="카카오 로그인 버튼"
       />
