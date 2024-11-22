@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from django.http import JsonResponse
 from django.conf import settings
@@ -142,9 +142,9 @@ def updatetoday_exchangerate(request):
 
 
         # 변동 값에 따라 기호 설정 (색상 변경 때문에 front에서 하는게 나을 수도)
-        if yesterday_diff > 0:
+        if yesterday_per > 0:
             yesterday_diff = '▲ ' + str(abs(yesterday_diff))
-        elif yesterday_diff < 0:
+        elif yesterday_per < 0:
             yesterday_diff = '▼ ' + str(abs(yesterday_diff))
         else:
             yesterday_diff = '0'
@@ -202,15 +202,17 @@ def updatetoday_exchangerate(request):
 # <<<<<테스트 용 함수>>>>>>>>
 
 
-# 당일 환율 정보 로드 (new)
+# 당일 환율 정보 로드
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def load_today_exchangerate(request):
-    currencies = TodayCurrency.objects.all()
+    currencies = TodayCurrency.objects.exclude(cur_con='한국')
     serializers = TodayCurrencySerializer(currencies, many=True)
     return Response(serializers.data)
 
-# 당일 환율 정보 로드
+# 환율 정보 로드
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def load_exchangerate(request):
     date = datetime.now().strftime('%Y%m%d')
     if not Currency.objects.filter(date=date).exists():

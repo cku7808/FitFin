@@ -1,69 +1,135 @@
 <template>
     <div>
-        <div class="col-12 d-flex justify-content-center flex-column align-items-center py-lg-5">
+        <div class="col-12 d-flex justify-content-center flex-column align-items-center my-5">
         <div class="d-flex justify-content-center">
             <h1 class="fs-2 poppins-bold">환율 계산 페이지</h1>
         </div>
         </div>
 
         <!-- 환율 변환 -->
-        <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="col-12 d-flex align-items-center justify-content-center mb-5">
 
-            <div class="col-4">            
-            <select
-                v-model="leftselectedCountry"
-                @change = 'calculateLeftFromRight'
-                class="form-select fs-6 poppins-regular">
-                <option v-for="country in datas" :key="country.id" :value="country">
-                    {{ country.cur_con }} {{ country.cur_unit }}
-                </option>
-            </select>
+            <div class="col-3">            
+                <select
+                    v-model="leftselectedCountry"
+                    @change = 'calculateLeftFromRight'
+                    class="form-select fs-6 poppins-regular">
+                    <option v-for="country in datas" :key="country.id" :value="country">
+                        {{ country.cur_con }} {{ country.cur_unit }}
+                    </option>
+                </select>
             
-            <div class="login-form">
-            <input
-                v-model.number="leftMoneyInput"
-                @input = 'calculateRightFromLeft'
-                type="number"
-                class="fs-5 text-end no-border poppins-bold">
-            <div class="fs-6 text-end poppins-regular">{{ leftMoneyInput || 0}} {{ leftselectedCountry?.cur_nm || ''}}</div>
-            </div>
+                <div class="login-form py-2 px-3 mt-2">
+                <input
+                    v-model.number="leftMoneyInput"
+                    @input = 'calculateRightFromLeft'
+                    type="number"
+                    class="fs-5 text-end p-1 no-border poppins-semibold">
+                <div class="fs-6 text-end mt-1 poppins-regular">{{ leftMoneyInput || 0}} {{ leftselectedCountry?.cur_nm || ''}}</div>
+                </div>
            </div>
 
-           <img src="@/assets/images/exchangerate/arrows.png" width="50" height="50"><br>
+           <img src="@/assets/images/exchangerate/arrows.png" width="50" height="50" class="mx-3"><br>
 
-            <div class="col-4">
-            <select 
-                v-model="rightselectedCountry"
-                @change = 'calculateRightFromLeft'
-                class="form-select fs-6 poppins-regular">
-                <option v-for="country in datas" :key="country.id" :value="country">
-                    {{ country.cur_con }} {{ country.cur_unit }}
-                </option>
-            </select>
-            <div class="login-form">
-            <input
-                v-model="rightMoneyInput"
-                @input="calculateLeftFromRight"
-                type="number"
-                class="fs-5 text-end no-border poppins-bold">
-            <div class="fs-6 text-end poppins-regular">{{ rightMoneyInput || 0}} {{ rightselectedCountry?.cur_nm || '' }}</div>
-            </div>
+            <div class="col-3">
+                <select 
+                    v-model="rightselectedCountry"
+                    @change = 'calculateRightFromLeft'
+                    class="form-select fs-6 poppins-regular">
+                    <option v-for="country in datas" :key="country.id" :value="country">
+                        {{ country.cur_con }} {{ country.cur_unit }}
+                    </option>
+                </select>
+
+                <div class="login-form py-2 px-3 mt-2">
+                <input
+                    v-model="rightMoneyInput"
+                    @input="calculateLeftFromRight"
+                    type="number"
+                    class="fs-5 text-end p-1 no-border poppins-semibold">
+                <div class="fs-6 text-end mt-1 poppins-regular">{{ rightMoneyInput || 0}} {{ rightselectedCountry?.cur_nm || '' }}</div>
+                </div>
             </div>
 
         </div>
 
-        <!-- 그래프 로드 -->
-        <div class="product-list">
-            <div v-for="todaydata in todaydatas" :key="todaydata.id" class="product-card">
-                <p>{{ todaydata.cur_con }}</p>
-                <p>{{ todaydata.cur_unit }}</p>
-                <p>{{ todaydata.deal_bas_r }}</p>
-                <p>{{ todaydata.yesterday_diff }}</p>
-                <p>{{ todaydata.yesterday_per }}</p>
-                <img :src="BASE_URL+todaydata.img" alt="todaydata.img" class="product-img">
+        <!-- 그래프 로드 (캐러셀)-->
+
+            <div>
+                <div id="carouselExampleRide" class="carousel slide">
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="carousel-inner w-75">
+                            
+                            <div
+                                v-for="group in groupedCards"
+                                :key="group.id"
+                                :class="['carousel-item', { active: group.id === activeSlide }]"
+                            >
+                                <div class="container">
+                                    <div class="row justify-content-center align-items-center g-4">
+                                    <div
+                                        class="col-12 col-sm-6 col-md-4 d-flex justify-content-center align-items-center"
+                                        v-for="todaydata in group.todaydatagroup"
+                                        :key="todaydata?.id || todaydata"
+                                    >
+                                        <div v-if="String(todaydata).includes('null')">
+                                            <div class="empty-box"></div>
+                                        </div>
+                                        <div v-else>
+                                            <ExchangeRateGraph :todaydata="todaydata" />
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+
+
+                    <div class="coustom-carousel-indicators poppins-regular fs-5">                     
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleRide"
+                            data-bs-slide="prev"
+                            @click="setActiveSlide(activeSlide - 1 < 1 ? totalSlides : activeSlide - 1)"
+                        >
+                            <span class="carousel-control-prev-icon" aria-hidden="true"><</span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        
+                        <button
+                            v-for="number in totalSlides"
+                            :key="`indicator-${number}`"
+                            type="button"
+                            data-bs-target="#carouselExampleRide"
+                            :data-bs-slide-to="number-1"
+                            :class="{ active: number === activeSlide }"
+                            @click="setActiveSlide(number)"
+                            :aria-current="number === activeSlide ? 'true' : null"
+                            :aria-label="`Slide ${number}`"                            
+                        >
+                        {{ number }}
+                        </button>
+
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleRide"
+                            data-bs-slide="next"
+                            @click="setActiveSlide(activeSlide + 1 > totalSlides ? 1 : activeSlide + 1)"
+                        >
+                            <span class="carousel-control-next-icon" aria-hidden="true">></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            
-        </div>
+
     </div>
 </template>
 
@@ -72,10 +138,7 @@ import axios from 'axios';
 import { ref, computed } from 'vue';
 import { onMounted } from 'vue';
 
-
-// 환율 관련 상태 변수
-// const leftfirstselected = datas.find((country) => country.cur_con === "미국")
-// const rightirstselected = datas.find((country) => country.cur_con === "한국")
+import ExchangeRateGraph from '@/components/ExchangeRateGraph.vue';
 
 
 const leftMoneyInput = ref('')  // 금액 입력
@@ -174,7 +237,28 @@ onMounted(() => {
     loadTodayEchangeRate()
 });
 
-
+// 데이트 그룹화
+const groupedCards = computed(() => {
+  const groups = [];
+  let id = 1;
+  let null_id = 1;
+  for (let i = 0; i < todaydatas.value.length; i += 6) {
+    const group = todaydatas.value.slice(i, i + 6);
+    while (group.length < 6) {
+      group.push('null_'+toString(null_id++)); // 부족한 항목을 null로 채움
+    }
+    groups.push({id: id++, todaydatagroup: group});
+  }
+  return groups;
+});
+// 총 슬라이드 개수
+const totalSlides = computed(() => groupedCards.value.length);
+// 현재 활성 슬라이드 ID
+const activeSlide = ref(1);
+// 슬라이드 선택 함수
+const setActiveSlide = (id) => {
+  activeSlide.value = id;
+};
 
 </script>
 
@@ -196,58 +280,25 @@ onMounted(() => {
 /* 고운 */
 .login-form {
     box-sizing: border-box;
-    height: 70px;
-
     border: 1px solid #ccc;
     border-radius: 20px;
-  }
-  .poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  .poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .login-box {
-    border-radius: 20px;
-    background-color: #203359;
-    height: 70px;
-  }
-  .poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-  input:focus {
-    border: 1px solid #79F297 !important;
-    box-shadow: none !important;
-  }
-  .btn:focus {
-    border:none !important;
-    box-shadow: none !important;
-    background-color: #203359 !important;
-  }
-
-  input:active {
-    background-color: inherit !important; 
-    border: 1px solid #79F297 !important;
-    box-shadow: none !important;
-  }
-  .btn:active {
-    border:none !important;
-    box-shadow: none !important;
-    background-color: #203359 !important;
-  }
-  .btn:hover {
-    border:none !important;
-    background-color: #203359 !important;
-    outline: none !important;
-    transform: none !important;
-  }
-
+}
+  
+.poppins-bold {
+font-family: "Poppins", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+.poppins-regular {
+font-family: "Poppins", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+.poppins-semibold {
+font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-style: normal;
+}
 
 /* input 화살표 없애기 */
 input::-webkit-outer-spin-button,
@@ -255,14 +306,52 @@ input::-webkit-inner-spin-button {
   -webkit-appearance:none;
   margin: 0;
 }
+
+input:focus {
+    outline: none; /* 기본 브라우저 검은색 테두리 제거 */
+  }
+
 /* 테두리 없애기 */
 .no-border {
   width: 100%;
   border-width: 0;
 }
 
+/* 캐러셀 */
+.coustom-carousel-indicators {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+.coustom-carousel-indicators button {
+    width: 50px;
+    height: 50px;
+    background-color: white; 
+    border: none; 
+    color: #ccc;
+}
+.coustom-carousel-indicators button.active {
+    color: #79F297; 
+}
+.carousel-control-next:active {
+  background-color: #79F297; /* 클릭 시 색상 */
+}
 
 
+.form-select {
+  border-radius: 20px; /* 둥근 모서리 */
+  background-color: #f9f9f9; /* 배경색 */
+  border: 1px solid #ccc; /* 테두리 색상 */
+  padding: 10px 15px; /* 내부 여백 */
+  transition: all 0.3s ease; /* 전환 효과 */
+}
 
-
+/* 선택 시 활성화된 상태 */
+.form-select:focus {
+  border-color: #79F297; /* 선택 시 테두리 색상 */
+  box-shadow: 0 0 5px rgba(121, 242, 151, 0.8); /* 선택 시 그림자 효과 */
+  outline: none; /* 기본 브라우저 아웃라인 제거 */
+}
 </style>
