@@ -187,6 +187,10 @@ def updatetoday_exchangerate(request):
         ax.axis("off")
         # 저장
         plt.savefig(path_graph, bbox_inches='tight')
+        
+        plt.cla()   # clear the current axes
+        plt.clf()   # clear the current figure 
+        plt.close() # closes the current figure
 
     return JsonResponse({'message': '저장 성공!'})
 
