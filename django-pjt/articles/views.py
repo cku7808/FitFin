@@ -13,7 +13,7 @@ from .models import Article, Comment
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
-temp_user = User.objects.get(pk=1)
+# temp_user = User.objects.get(pk=1)
 
 # 게시글 (조회, 생성)
 @api_view(['GET', 'POST'])
