@@ -1,21 +1,31 @@
 <template>
-    <div>
-      <h1>예적금 금리 비교 페이지</h1>
-      <fieldset>
-          <input type="radio" id="deposit" name="productType" value="deposit" v-model="productType" checked />
-          <label for="deposit">예금 상품 보기</label>&nbsp
+    <div class="d-flex align-items-center justify-content-center flex-column col-12">
+      <h2 class="poppins-bold">예적금 금리 비교 페이지</h2><br>
+      <div class="col-8 d-flex justify-content-start">
+        <div class="col-8 folder-tabs">
+          <button
+            class="tab-button"
+            :class="{ active: productType === 'deposit' }"
+            @click="productType = 'deposit'"
+          >
+            예금 상품 보기
+          </button>
+          <button
+            class="tab-button"
+            :class="{ active: productType === 'saving' }"
+            @click="productType = 'saving'"
+          >
+            적금 상품 보기
+          </button>
+        </div>
+      </div>
 
-          <input type="radio" id="saving" name="productType" value="saving" v-model="productType"/>
-          <label for="saving">적금 상품 보기</label>
-      </fieldset>
-      <div v-if="productType === 'deposit'">
-        <h3>예금 상품</h3>
-        <DepositProduct></DepositProduct>
+      <div class="col-8 border rounded-bottom rounded-end p-4">
+        <DepositProduct v-if="productType === 'deposit'"></DepositProduct>
+        <SavingProduct v-else></SavingProduct>
       </div>
-      <div v-else>
-        <h3>적금 상품</h3>
-        <SavingProduct></SavingProduct>
-      </div>
+      <br>
+
     </div>
 </template>
 
@@ -28,5 +38,52 @@ const productType = ref('deposit')
 </script>
 
 <style scoped>
+.selected {
+  color: #79F297; /* 원하는 색상 */
+  font-weight: bold; /* 글씨를 두껍게 설정 */
+}
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .folder-tabs {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.tab-button {
+  background: #f4f4f4; /* 비활성화 상태 배경 */
+  border: 1px solid #ddd;
+  border-bottom: none; /* 하단 경계선 제거 */
+  border-radius: 10px 10px 0 0; /* 상단 모서리 둥글게 */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+  margin-right: 5px;
+  z-index: 1; /* 탭이 콘텐츠 위로 올라오게 */
+  position: relative;
+}
+
+.tab-button:last-child {
+  margin-right: 0; /* 마지막 탭 간격 제거 */
+}
+
+.tab-button.active {
+  background: #ffffff; /* 활성화 상태 배경 */
+  color: #000; /* 활성화 상태 글자색 */
+  font-weight: bold;
+  z-index: 2; /* 활성화된 탭을 가장 위로 */
+}
+
+.folder-content {
+  border: 1px solid #ddd; /* 콘텐츠 경계선 */
+  border-radius: 0 0 10px 10px; /* 하단 모서리 둥글게 */
+  background: #ffffff;
+  padding: 20px;
+  z-index: 0;
+}
 
 </style>
