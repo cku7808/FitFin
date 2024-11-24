@@ -6,12 +6,6 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from django.http import JsonResponse
-<<<<<<< HEAD
-import requests
-from rest_framework.permissions import IsAuthenticated, AllowAny
-
-=======
->>>>>>> master
 from django.conf import settings
 import requests
 from datetime import datetime, timedelta
@@ -31,12 +25,8 @@ from matplotlib.colors import LinearSegmentedColormap
 # 환율 계산
 
 @api_view(['GET'])
-<<<<<<< HEAD
 @permission_classes([AllowAny])
-def exchangerate(request):
-=======
 def save_exchangerate(request):
->>>>>>> master
     api_key = settings.API_KEY['currency']
     url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
     response = requests.get(url, verify=False).json()
@@ -125,6 +115,7 @@ def save_exchangerate(request):
 
 # 오늘 환율 정보 업데이트 (차이, 퍼센트, 그래프용)
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def updatetoday_exchangerate(request):
     # 날짜 설정 (업데이트 전후로 오늘 날짜를 오늘 또는 어제로 설정)
     today = datetime.now()
@@ -233,6 +224,20 @@ def load_exchangerate(request):
     currencies = Currency.objects.filter(date=date)
     serializers = CurrencySerializer(currencies, many=True)
     return Response(serializers.data)
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def load_max_exchangerate(request):
+    max_rate = TodayCurrency.objects.all().order_by('-yesterday_per').first()
+    max_serializer = TodayCurrencySerializer(max_rate)
+    return Response(max_serializer.data)
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def load_min_exchangerate(request):
+    min_rate = TodayCurrency.objects.all().order_by('yesterday_per').first()
+    min_serializer = TodayCurrencySerializer(min_rate)
+    return Response(min_serializer.data)
 
 # 금융상품정보
     # 페이지 하나만 가져옴 (페이지 1번 밖에 존재 안 함?)
