@@ -44,7 +44,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "accounts",
     "finances",
-    "articles",
     # API 통신 및 회원가입, 로그인 권한을 위한 패키지 추가 
     # --------------
     "rest_framework",
