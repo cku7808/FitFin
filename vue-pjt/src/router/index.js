@@ -22,6 +22,11 @@ import DepositProductDetail from '@/components/DepositProductDetail.vue'
 import SavingProduct from '@/components/SavingProduct.vue'
 import SavingProductDetail from '@/components/SavingProductDetail.vue'
 
+import ArticleList from '@/components/ArticleList.vue'
+import ArticleDetail from '@/components/ArticleDetail.vue'
+import ArticleCreate from '@/components/ArticleCreate.vue'
+import ArticleEdit from '@/components/ArticleEdit.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -84,6 +89,12 @@ const router = createRouter({
       path: '/community',
       name: 'CommunityView',
       component: CommunityView,
+      children: [
+        { path: "", name:'ArticleList', component: ArticleList },
+        { path: ":id", name:'ArticleDetail', component: ArticleDetail, props: true },
+        { path: "create", name:'ArticleCreate', component: ArticleCreate },
+        { path: ":id/edit", name:'ArticleEdit', component: ArticleEdit },
+      ],
     },
     {
       path: '/mypage',
