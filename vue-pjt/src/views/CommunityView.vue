@@ -1,12 +1,11 @@
 <template>
     <div>
-        <h1>커뮤니티 페이지</h1>
-        <hr>
-        <router-view />
+        커뮤니티 페이지
     </div>
 </template>
 
 <script setup>
+
 </script>
 
 <style scoped>
