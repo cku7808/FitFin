@@ -66,7 +66,7 @@
                         <RouterLink :to="{ name: 'BankPosView'}" class="text-decoration-none text-black nav-link">내 주변 은행</RouterLink>
                     </li>
                     <li class="nav-item poppins-medium">
-                        <RouterLink :to="{ name: 'CommunityView'}" class="text-decoration-none text-black nav-link">커뮤니티</RouterLink>
+                        <RouterLink :to="{ name: 'ArticleList'}" class="text-decoration-none text-black nav-link">커뮤니티</RouterLink>
                     </li>
                     </ul>
                 </div>
