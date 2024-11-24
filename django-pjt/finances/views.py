@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from django.http import JsonResponse
 import requests
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from django.conf import settings
 
@@ -17,10 +18,12 @@ from .serializers import CurrencySerializer, DepositProductsSerializer, \
 
 
 # 환율 계산
+
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def exchangerate(request):
     api_key = settings.API_KEY['currency']
-    url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&data=AP01'
+    url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
     response = requests.get(url, verify=False).json()
     serializers = CurrencySerializer(data=response, many=True)
     if serializers.is_valid(raise_exception=True):
