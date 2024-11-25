@@ -131,7 +131,7 @@ const income = ref(0)
 const assets = ref(0)
 const married = ref(false)
 const job = ref('')
-const age = ref(0)
+const age = ref(null)
 
 const signUp = function () {
     const payload = {
