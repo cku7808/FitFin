@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="d-flex align-items-center justify-content-center flex-column col-12">
+            <h2 class="score-dream-bold my-4">상품 상세 정보</h2>
             <div class="col-8 border rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center justify-content-between mb-4 score-dream">
+                    <div class="d-flex align-items-center ">
                         <img :src="`/banklogo/${data.kor_co_nm}.png`" :alt="selectedBank" width="50" height="50" class="me-3">
                         <li style="line-height: 20px; font-size: 18px;" class="fw-bold d-flex">{{ data.kor_co_nm }}&nbsp&nbsp
                             <span class="fw-normal text-secondary" style="font-size: 16px;">{{ data.fin_prdt_nm }}</span>
@@ -16,7 +17,7 @@
                     </button>
                 </div>
                 <hr style="background:#6C757D; height:1px; border:0; margin-bottom: 0px;">
-                <div class="p-2">
+                <div class="p-2 score-dream">
                     <ul class="ps-0">
                         <div class="d-flex align-items-center bg-light-subtle m-2 p-2 rounded-3">
                             <img src="/etc/check.png" :alt="selectedBank" width="30" height="30" class="me-3">
@@ -85,18 +86,27 @@
                             <div class="row" :class="`row-cols-${currentColumns}`">
                                 <div class="col d-flex justify-content-center" v-for="(option, index) in chunk" :key="index">
                                     <div class="card">
-                                        <h5 class="card-header text-white text-center" style="background-color: #203359;">Option{{ (chunkIndex * chunkSize) + index + 1 }}</h5>
-                                        <div class="card-body">
+                                        <h5 class="card-header text-white text-center score-dream" style="background-color: #203359;">상품{{ (chunkIndex * chunkSize) + index + 1 }}</h5>
+                                        <div class="card-body score-dream">
                                             <p class="card-text fw-semibold">저축 금리 유형명: <span class="fw-normal">{{ option.intr_rate_type_nm }}</span></p>
-                                            <p class="card-text fw-semibold">저축 기간: <span class="fw-normal">{{ option.save_trm }}</span></p>
-                                            <p class="card-text fw-semibold">저축 금리: <span class="fw-normal">{{ option.intr_rate }}</span></p>
-                                            <p class="card-text fw-semibold">최고 우대 금리: <span class="fw-normal">{{ option.intr_rate2 }}</span></p>
+                                            <p class="card-text fw-semibold">저축 기간: <span class="fw-normal">{{ option.save_trm }}개월</span></p>
+                                            <p class="card-text fw-semibold">저축 금리: <span class="fw-normal">{{ option.intr_rate }}%</span></p>
+                                            <p class="card-text fw-semibold">최고 우대 금리: <span class="fw-normal">{{ option.intr_rate2 }}%</span></p>
                                             <br>
-                                            <button 
-                                                @click="signUpForDepositProduct(option.id)" 
-                                                v-if="store.isLogin"
-                                                class="btn" style="background-color: #C2D2F2;"
-                                                >가입하기</button>
+                                            <div class="d-flex justify-content-center">
+                                                <button 
+                                                    @click="signUpForDepositProduct(option.id)" 
+                                                    v-if="store.isLogin"
+                                                    class="btn me-1" style="background-color: #C2D2F2; font-size: 13px;"
+                                                    >가입하기
+                                                </button>
+                                                <button 
+                                                    @click="" 
+                                                    v-if="store.isLogin"
+                                                    class="btn ms-1" style="background-color: #C2D2F2; font-size: 13px;"
+                                                    >장바구니
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,6 +215,19 @@ const chunkedOptions = computed(() => {
 </script>
 
 <style scoped>
+  @font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+.score-dream {
+    font-family: 'S-CoreDream-3Light';
+}
+.score-dream-bold {
+    font-family: 'S-CoreDream-3Light';
+    font-weight: bold;
+}
 .poppins-bold {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
