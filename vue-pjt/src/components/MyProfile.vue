@@ -1,7 +1,7 @@
 <template>
-    <div class="d-flex align-items-center justify-content-center flex-column">
+    <div class="d-flex align-items-center justify-content-center flex-column score-dream">
         
-        <h2 class="poppins-bold mb-5">
+        <h2 class="mb-5 score-dream-bold">
             <span class="text-highlight">{{ userInfo.username }}</span>
             <span>님의 프로필</span>
         </h2>
@@ -9,7 +9,6 @@
         <div class="d-flex col-8">
             <!-- 좌측: 프로필 사진과 수정하기 버튼 -->
             <div class="profile-left">
-                <!-- <img class="profile-image" :src="profileImageUrl" alt="프로필 사진" /> -->
                 <img class="profile-image" src="/profile/profile.png" alt="프로필 사진">
                 <button class="profile-btn" type="button" @click="editProfile">
                     프로필 수정
@@ -19,17 +18,17 @@
             <!-- 우측: 상단 네모 박스 3개와 하단 테이블 -->
             <div class="profile-right">
                 <!-- 우측 상단: 네모 박스 3개 -->
-                <div class="d-flex justify-content-center mb-4">
+                <div class="d-flex justify-content-center mb-4 align-items-center">
                     <div class="stat-box">
                         <div>{{ daysSinceJoined }}</div>
                         <div>함께한지</div>
                     </div>
                     <div class="stat-box">
-                        <div>{{  }}</div>
+                        <div>{{ postsCount }}</div>
                         <div>게시글</div>
                     </div>
                     <div class="stat-box">
-                        <div>{{  }}</div>
+                        <div>{{ likesCount }}</div>
                         <div>좋아요</div>
                     </div>
                 </div>
@@ -44,27 +43,27 @@
                         </tr>
                         <tr>
                         <td class="font-weight-bold">나이</td>
-                        <td>{{ userInfo.email }}</td>
+                        <td>{{ userInfo.age }}</td>
                         </tr>
                         <tr>
                         <td class="font-weight-bold">직업</td>
-                        <td>{{ userInfo.email }}</td>
+                        <td>{{ userInfo.job }}</td>
                         </tr>
                         <tr>
-                        <td class="font-weight-bold">부양 가족</td>
-                        <td>{{ userInfo.email }}</td>
+                        <td class="font-weight-bold">혼인여부</td>
+                        <td>{{ is_married }}</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                         <td class="font-weight-bold">소비 성향</td>
                         <td>{{ userInfo.email }}</td>
+                        </tr> -->
+                        <tr>
+                        <td class="font-weight-bold">소득수준</td>
+                        <td>{{ userInfo.income }}</td>
                         </tr>
                         <tr>
-                        <td class="font-weight-bold">소득 수준</td>
-                        <td>{{ userInfo.email }}</td>
-                        </tr>
-                        <tr>
-                        <td class="font-weight-bold">자신</td>
-                        <td>{{ userInfo.email }}</td>
+                        <td class="font-weight-bold">자산</td>
+                        <td>{{ userInfo.assets }}</td>
                         </tr>
                     </tbody>
                     </table>
@@ -75,7 +74,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 import { useRouter } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
@@ -88,7 +87,14 @@ const userInfo = computed(() => store.userInfo);
 const editProfile = () => {
   router.push({ name: "MyProfileEdit" });
 };
+const is_married = ref(""); // 초기값 설정
 
+// userInfo.value.is_married 값에 따라 초기화
+if (userInfo.value.is_married === true) {
+    is_married.value = "기혼";
+} else if (userInfo.value.is_married === false) {
+    is_married.value = "미혼";
+}
 // 가입 날짜 계산
 const daysSinceJoined = computed(() => {
   if (!userInfo.value.date_joined) return 0;
@@ -99,14 +105,32 @@ const daysSinceJoined = computed(() => {
   return daysDifference;
 });
 
+// 게시글 및 좋아요 수 (예시로 고정값 사용)
+const postsCount = 10;
+const likesCount = 15;
+
 onMounted(() => {
     // 프로필 바뀌거나, 상품 등록시 인포 바꾸도록 수정 
   store.loadUserInfo(store.accessToken)
 })
 
+
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.score-dream {
+  font-family: 'S-CoreDream-3Light';
+}
+.score-dream-bold {
+  font-family: 'S-CoreDream-3Light';
+  font-weight: bold;
+}
 /* 좌측: 프로필 사진과 수정하기 버튼 */
 .profile-left {
   display: flex;
@@ -131,13 +155,15 @@ onMounted(() => {
 }
 /* 각 박스 요소 */
 .stat-box {
-  width: 25%;  /* 고정된 너비로 설정 */
-  height: 125px; /* 고정된 높이로 설정 */
+  width: 25%;
+  height: 125px;
   border: 1px solid #D7D5D5;
   padding: 15px;
   text-align: center;
   font-weight: bold;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 /* 우측 하단: 테이블 */
@@ -169,8 +195,9 @@ onMounted(() => {
 .profile-btn{
     width: 120px;
     height: 40px;
-    background-color: white;
-    border: 1.5px solid #79F297;
+    background-color: #203359;
+    border: none;
+    color: white;
     border-radius: 20px;
 }
 </style>

@@ -208,9 +208,5 @@ REST_AUTH = {
  'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
 
-
-
-# 인코딩 확인
-import sys
-print(f"Default Encoding: {sys.getdefaultencoding()}")
-print(f"Stdout Encoding: {sys.stdout.encoding}")
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/media/'
