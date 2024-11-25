@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import UserSerializer
+from django.http import JsonResponse
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -76,7 +77,7 @@ def signup_products(request):
     
     
 # 회원 정보
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_info(request):
     user = request.user
@@ -89,5 +90,10 @@ def user_info(request):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(status=status.HTTP_200_OK)
+
+    elif request.method == 'DELETE':
+        if serializer.is_valid(raise_exception=True):
+            user.delete()
+            return JsonResponse({"message": "회원탈퇴가 완료되었습니다."}, status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
