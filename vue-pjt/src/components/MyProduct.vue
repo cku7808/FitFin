@@ -1,12 +1,12 @@
 <template>
     <div class="d-flex align-items-center justify-content-center flex-column">
         
-        <h2 class="poppins-bold mb-5">
+        <h2 class="mb-5 score-dream-bold">
             <span class="text-highlight">{{ userInfo.username }}</span>
             <span>님의 가입상품</span>
         </h2>
         
-        <div class="d-flex col-8 profile-container">
+        <div class="d-flex col-8 profile-container score-dream">
             <div class="profile-block">
                 <div>가입 상품 관리</div>
                 <br>
@@ -45,7 +45,7 @@
             
         </div>
         
-        <div class="d-flex col-8 profile-container">
+        <div class="d-flex col-8 profile-container score-dream">
             <div class="profile-block">
                 <ul class="product-list">
                     <h6>적금 상품</h6>
@@ -240,6 +240,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
+  @font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.score-dream {
+  font-family: 'S-CoreDream-3Light';
+}
+.score-dream-bold {
+  font-family: 'S-CoreDream-3Light';
+  font-weight: bold;
+}
 /* 블록 */
 .profile-container {
   height: 100%; 
