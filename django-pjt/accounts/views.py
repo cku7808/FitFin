@@ -97,3 +97,12 @@ def user_info(request):
             return JsonResponse({"message": "회원탈퇴가 완료되었습니다."}, status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def id_check(request):
+    username = request.data.get('username')
+    print('username', username)
+    if User.objects.filter(username=username).exists():
+        return Response({"message":"이미 존재하는 ID"}, status.HTTP_400_BAD_REQUEST)
+    return Response({"message":"사용 가능한 ID"}, status.HTTP_200_OK)

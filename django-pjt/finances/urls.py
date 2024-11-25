@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path('load-today-exchangerate/', views.load_today_exchangerate),
     path('load-exchangerate/', views.load_exchangerate),
+    path('load-max-exchangerate/', views.load_max_exchangerate),
+    path('load-min-exchangerate/', views.load_min_exchangerate),
     path('save-deposit-products/', views.save_deposit_products),
     path('save-saving-products/', views.save_saving_products),
     path('deposit-products/', views.deposit_products),
