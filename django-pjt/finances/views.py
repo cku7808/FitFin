@@ -13,13 +13,15 @@ from datetime import datetime, timedelta
 from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption
 from .serializers import CurrencySerializer, TodayCurrencySerializer, DepositProductsSerializer, \
     SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer, \
-    DepositProductsDetailSerializer
+    DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer
 
 # 그래프 그리기
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
-
+import os
+import matplotlib
+matplotlib.use('Agg')
 
 # <<<<<테스트 용 함수>>>>>>>>
 # 환율 계산
@@ -29,7 +31,7 @@ from matplotlib.colors import LinearSegmentedColormap
 def save_exchangerate(request):
     api_key = settings.API_KEY['currency']
     url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
-    response = requests.get(url, verify=False).json()
+    response = requests.get(url).json()
 
     today = datetime.now()
     if not response:  # 오늘 환율 아직 업데이트 전이면
@@ -40,10 +42,16 @@ def save_exchangerate(request):
     TodayCurrency.objects.all().delete()  # 초기화
 
     # 일주일 정보 저장
-    for day in reversed(range(7)):
-        date = (today - timedelta(days=day)).strftime('%Y%m%d')
+    date_num = 0
+    date_diff = 0
+    while date_num < 7:
+        date = (today - timedelta(days=date_diff)).strftime('%Y%m%d')
         url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&searchdate={date}&data=AP01'
-        response = requests.get(url, verify=False).json()
+        response = requests.get(url).json()
+
+        if not response:
+            date_diff += 1
+            continue
 
         for li in response:  # 환율 정보 저장
             cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
@@ -87,7 +95,7 @@ def save_exchangerate(request):
                 serializer.save()
 
             # 오늘 환율 정보 backbone 세팅
-            if day == 0:
+            if date_diff == 0:
 
                 if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
                     cur_unit += ' 100'
@@ -108,6 +116,10 @@ def save_exchangerate(request):
                 if serializer.is_valid(raise_exception=True):
                     serializer.save()
 
+        # print(date_num, date_diff)
+        date_num += 1
+        date_diff += 1
+
     print('전체 환율 db 업데이트!!!')
     
     return JsonResponse({'message': '저장 성공!'})
@@ -118,13 +130,9 @@ def save_exchangerate(request):
 @permission_classes([AllowAny])
 def updatetoday_exchangerate(request):
     # 날짜 설정 (업데이트 전후로 오늘 날짜를 오늘 또는 어제로 설정)
-    today = datetime.now()
-    if not Currency.objects.filter(date=today.strftime('%Y%m%d')).exists():
-        today = datetime.now() - timedelta(days=1)
-        print('오늘자 환율 업데이트 전!')
 
-    date_now = today.strftime('%Y%m%d')
-    date_yes = (today - timedelta(days=1)).strftime('%Y%m%d')
+    date_now = Currency.objects.all().order_by('-date')[0].date
+    date_yes = Currency.objects.exclude(date=date_now).order_by('-date')[0].date
 
     # 오늘 환율 정보 db 업데이트
     currenecies = TodayCurrency.objects.all()
@@ -156,8 +164,6 @@ def updatetoday_exchangerate(request):
         currency_today.yesterday_diff = yesterday_diff
         currency_today.yesterday_per = yesterday_per
         
-
-        
         currency_today.save()
 
         # 그래프 그리기 및 저장
@@ -166,7 +172,7 @@ def updatetoday_exchangerate(request):
         currency_dates = [currency_pre.date for currency_pre in currencies_pre]
         currency_rates = [float(currency_pre.deal_bas_r) for currency_pre in currencies_pre]
 
-        path_graph = f'{settings.BASE_DIR}/finances/static/finances/{currency_today.cur_con}.png'  # 경로 설정
+        path_graph = os.path.join(settings.BASE_DIR, f'finances/static/finances/{currency_today.cur_con}.png')  # 경로 설정
         
         # 사용자 정의 그라데이션 컬러맵 생성
         colors = ["#F3FDF6", "#79F297"]  # 밝은 색 -> 어두운 색
@@ -195,10 +201,7 @@ def updatetoday_exchangerate(request):
         ax.axis("off")
         # 저장
         plt.savefig(path_graph, bbox_inches='tight')
-        
-        plt.cla()   # clear the current axes
-        plt.clf()   # clear the current figure 
-        plt.close() # closes the current figure
+        plt.close()
 
     return JsonResponse({'message': '저장 성공!'})
 
@@ -242,6 +245,7 @@ def load_min_exchangerate(request):
 # 금융상품정보
     # 페이지 하나만 가져옴 (페이지 1번 밖에 존재 안 함?)
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def save_deposit_products(request):  # 예금 상품
     BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
     URL = BASE_URL + 'depositProductsSearch.json'
@@ -289,7 +293,7 @@ def save_deposit_products(request):  # 예금 상품
             'dcls_end_day': dcls_end_day,
         }
 
-        serializer = DepositProductsSerializer(data=save_data)
+        serializer = DepositProductsDbSerializer(data=save_data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
@@ -302,6 +306,11 @@ def save_deposit_products(request):  # 예금 상품
         intr_rate = li.get('intr_rate')
         intr_rate2 = li.get('intr_rate2')
         save_trm = li.get('save_trm')
+
+        # none 처리
+        if not intr_rate:
+            intr_rate = 0
+
 
         product = DepositProducts.objects.get(fin_prdt_cd=fin_prdt_cd)
               
@@ -324,9 +333,11 @@ def save_deposit_products(request):  # 예금 상품
             serializer.save(deposit_product=product)
             
     return JsonResponse({'message': '저장 성공!'})
+    # return Response(response)
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def save_saving_products(request):  # 적금 상품
     BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
     URL = BASE_URL + 'savingProductsSearch.json'
@@ -339,6 +350,7 @@ def save_saving_products(request):  # 적금 상품
     response = requests.get(URL, params=params).json()
 
     for li in response.get('result').get('baseList'):  # 적금 상품 정보 저장
+        
         dcls_month = li.get('dcls_month')
         fin_co_no = li.get('fin_co_no')
         kor_co_nm = li.get('kor_co_nm')
@@ -375,7 +387,7 @@ def save_saving_products(request):  # 적금 상품
             'dcls_end_day': dcls_end_day,
         }
 
-        serializer = SavingProductsSerializer(data=save_data)
+        serializer = SavingProductsDbSerializer(data=save_data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
@@ -414,6 +426,7 @@ def save_saving_products(request):  # 적금 상품
             serializer.save(saving_product=product)
 
     return JsonResponse({'message': '저장 성공!'})
+    # return Response(response)
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])

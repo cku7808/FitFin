@@ -1,0 +1,301 @@
+[
+{
+    "model": "finances.todaycurrency",
+    "pk": 139,
+    "fields": {
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "deal_bas_r": "381.3",
+        "yesterday_diff": "▲ 0.66",
+        "yesterday_per": "0.17",
+        "img": "/static/finances/아랍에미리트.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 140,
+    "fields": {
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "deal_bas_r": "916.21",
+        "yesterday_diff": "▲ 6.12",
+        "yesterday_per": "0.67",
+        "img": "/static/finances/호주.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 141,
+    "fields": {
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "deal_bas_r": "3714.95",
+        "yesterday_diff": "▲ 5.77",
+        "yesterday_per": "0.16",
+        "img": "/static/finances/바레인.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 142,
+    "fields": {
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "deal_bas_r": "1042.74",
+        "yesterday_diff": "▲ 4.15",
+        "yesterday_per": "0.4",
+        "img": "/static/finances/브루나이.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 143,
+    "fields": {
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "deal_bas_r": "1004.55",
+        "yesterday_diff": "▲ 4.16",
+        "yesterday_per": "0.42",
+        "img": "/static/finances/캐나다.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 144,
+    "fields": {
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "deal_bas_r": "1571.21",
+        "yesterday_diff": "▼ 5.62",
+        "yesterday_per": "-0.36",
+        "img": "/static/finances/스위스.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 145,
+    "fields": {
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "deal_bas_r": "192.98",
+        "yesterday_diff": "▲ 0.13",
+        "yesterday_per": "0.07",
+        "img": "/static/finances/중국.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 146,
+    "fields": {
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "deal_bas_r": "196.73",
+        "yesterday_diff": "▲ 0.38",
+        "yesterday_per": "0.19",
+        "img": "/static/finances/덴마아크.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 147,
+    "fields": {
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "deal_bas_r": "1467.23",
+        "yesterday_diff": "▲ 2.72",
+        "yesterday_per": "0.19",
+        "img": "/static/finances/유럽연합.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 148,
+    "fields": {
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "deal_bas_r": "1762.6",
+        "yesterday_diff": "▲ 2.74",
+        "yesterday_per": "0.16",
+        "img": "/static/finances/영국.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 149,
+    "fields": {
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "deal_bas_r": "179.93",
+        "yesterday_diff": "▲ 0.3",
+        "yesterday_per": "0.17",
+        "img": "/static/finances/홍콩.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 150,
+    "fields": {
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR 100",
+        "deal_bas_r": "0.0882",
+        "yesterday_diff": "▲ 0.0",
+        "yesterday_per": "0.46",
+        "img": "/static/finances/인도네시아.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 151,
+    "fields": {
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY 100",
+        "deal_bas_r": "907.62",
+        "yesterday_diff": "▲ 1.62",
+        "yesterday_per": "0.18",
+        "img": "/static/finances/일본.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 152,
+    "fields": {
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "deal_bas_r": "1.0",
+        "yesterday_diff": "0",
+        "yesterday_per": "0.0",
+        "img": "/static/finances/한국.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 153,
+    "fields": {
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "deal_bas_r": "4547.37",
+        "yesterday_diff": "▲ 3.36",
+        "yesterday_per": "0.07",
+        "img": "/static/finances/쿠웨이트.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 154,
+    "fields": {
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "deal_bas_r": "313.49",
+        "yesterday_diff": "▲ 0.37",
+        "yesterday_per": "0.12",
+        "img": "/static/finances/말레이지아.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 155,
+    "fields": {
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "deal_bas_r": "127.17",
+        "yesterday_diff": "▲ 0.91",
+        "yesterday_per": "0.72",
+        "img": "/static/finances/노르웨이.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 156,
+    "fields": {
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "deal_bas_r": "820.62",
+        "yesterday_diff": "▲ 1.4",
+        "yesterday_per": "0.17",
+        "img": "/static/finances/뉴질랜드.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 157,
+    "fields": {
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "deal_bas_r": "373.12",
+        "yesterday_diff": "▲ 0.75",
+        "yesterday_per": "0.2",
+        "img": "/static/finances/사우디.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 158,
+    "fields": {
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "deal_bas_r": "127.64",
+        "yesterday_diff": "▲ 1.22",
+        "yesterday_per": "0.97",
+        "img": "/static/finances/스웨덴.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 159,
+    "fields": {
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "deal_bas_r": "1042.74",
+        "yesterday_diff": "▲ 4.15",
+        "yesterday_per": "0.4",
+        "img": "/static/finances/싱가포르.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 160,
+    "fields": {
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "deal_bas_r": "40.64",
+        "yesterday_diff": "▲ 0.38",
+        "yesterday_per": "0.94",
+        "img": "/static/finances/태국.png"
+    }
+},
+{
+    "model": "finances.todaycurrency",
+    "pk": 161,
+    "fields": {
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "deal_bas_r": "1400.5",
+        "yesterday_diff": "▲ 2.4",
+        "yesterday_per": "0.17",
+        "img": "/static/finances/미국.png"
+    }
+}
+]

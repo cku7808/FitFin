@@ -2,60 +2,60 @@
     <div>
         <div class="col-12 d-flex justify-content-center flex-column align-items-center my-5">
         <div class="d-flex justify-content-center">
-            <h1 class="fs-2 poppins-bold">환율 계산 페이지</h1>
+            <h2 class="fs-2 coredream-bold">환율 계산 페이지</h2>
         </div>
         </div>
 
         <!-- 환율 변환 -->
         <div class="col-12 d-flex align-items-center justify-content-center mb-5">
 
-            <div class="col-3">            
+            <div class="col-2">            
                 <select
                     v-model="leftselectedCountry"
                     @change = 'calculateLeftFromRight'
-                    class="form-select fs-6 poppins-regular">
+                    class="form-select fs-6 coredream-regular">
                     <option v-for="country in datas" :key="country.id" :value="country">
                         {{ country.cur_con }} {{ country.cur_unit }}
                     </option>
                 </select>
             
-                <div class="login-form py-2 px-3 mt-2">
+                <div class="login-form py-2 px-4 mt-2">
                 <input
                     v-model.number="leftMoneyInput"
                     @input = 'calculateRightFromLeft'
                     type="number"
-                    class="fs-5 text-end p-1 no-border poppins-semibold">
-                <div class="fs-6 text-end mt-1 poppins-regular">{{ leftMoneyInput || 0}} {{ leftselectedCountry?.cur_nm || ''}}</div>
+                    class="fs-5 text-end p-1 no-border coredream-semibold">
+                <div class="fs-6 text-end mt-1 coredream-regular">{{ leftMoneyInput || 0}} {{ leftselectedCountry?.cur_nm || ''}}</div>
                 </div>
            </div>
 
            <img src="@/assets/images/exchangerate/arrows.png" width="50" height="50" class="mx-3"><br>
 
-            <div class="col-3">
+            <div class="col-2">
                 <select 
                     v-model="rightselectedCountry"
                     @change = 'calculateRightFromLeft'
-                    class="form-select fs-6 poppins-regular">
+                    class="form-select fs-6 coredream-regular">
                     <option v-for="country in datas" :key="country.id" :value="country">
                         {{ country.cur_con }} {{ country.cur_unit }}
                     </option>
                 </select>
 
-                <div class="login-form py-2 px-3 mt-2">
+                <div class="login-form py-2 px-4 mt-2">
                 <input
                     v-model="rightMoneyInput"
                     @input="calculateLeftFromRight"
                     type="number"
-                    class="fs-5 text-end p-1 no-border poppins-semibold">
-                <div class="fs-6 text-end mt-1 poppins-regular">{{ rightMoneyInput || 0}} {{ rightselectedCountry?.cur_nm || '' }}</div>
+                    class="fs-5 text-end p-1 no-border coredream-semibold">
+                <div class="fs-6 text-end mt-1 coredream-regular">{{ rightMoneyInput || 0}} {{ rightselectedCountry?.cur_nm || '' }}</div>
                 </div>
             </div>
 
         </div>
-
+        <br>
         <!-- 그래프 로드 (캐러셀)-->
 
-            <div>
+            <div class="d-flex align-items-center justify-content-center">
                 <div id="carouselExampleRide" class="carousel slide">
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="carousel-inner w-75">
@@ -66,7 +66,7 @@
                                 :class="['carousel-item', { active: group.id === activeSlide }]"
                             >
                                 <div class="container">
-                                    <div class="row justify-content-center align-items-center g-4">
+                                    <div class="row justify-content-center align-items-center g-2">
                                     <div
                                         class="col-12 col-sm-6 col-md-4 d-flex justify-content-center align-items-center"
                                         v-for="todaydata in group.todaydatagroup"
@@ -84,19 +84,23 @@
                                 </div>
                             
                             </div>
+                        
                         </div>
                     </div>
 
+                    <div class="d-flex justify-content-center mb-3">
+                        <div class="col-8 d-flex justify-content-center my-3 coredream-regular">
+                            * 영업일 기준 7일 정보를 제공합니다.
+                        </div>
+                    </div>
                     
 
-
-
-
-                    <div class="coustom-carousel-indicators poppins-regular fs-5">                     
+                    <div class="coustom-carousel-indicators coredream-regular fs-5">                     
                         <button
                             type="button"
                             data-bs-target="#carouselExampleRide"
                             data-bs-slide="prev"
+                            class="coredream-semibold"
                             @click="setActiveSlide(activeSlide - 1 < 1 ? totalSlides : activeSlide - 1)"
                         >
                             <span class="carousel-control-prev-icon" aria-hidden="true"><</span>
@@ -109,6 +113,7 @@
                             type="button"
                             data-bs-target="#carouselExampleRide"
                             :data-bs-slide-to="number-1"
+                            class="coredream-semibold"
                             :class="{ active: number === activeSlide }"
                             @click="setActiveSlide(number)"
                             :aria-current="number === activeSlide ? 'true' : null"
@@ -121,11 +126,13 @@
                             type="button"
                             data-bs-target="#carouselExampleRide"
                             data-bs-slide="next"
+                            class="coredream-semibold"
                             @click="setActiveSlide(activeSlide + 1 > totalSlides ? 1 : activeSlide + 1)"
                         >
                             <span class="carousel-control-next-icon" aria-hidden="true">></span>
                             <span class="visually-hidden">Next</span>
                         </button>
+                        
                     </div>
                 </div>
             </div>
@@ -263,6 +270,33 @@ const setActiveSlide = (id) => {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.coredream-bold {
+font-family: 'S-CoreDream-3Light';
+font-weight: bold;
+font-style: normal;
+}
+
+.coredream-regular {
+font-family: 'S-CoreDream-3Light';
+font-weight: 400;
+font-style: normal;
+}
+
+.coredream-semibold {
+font-family: 'S-CoreDream-3Light';
+font-weight: 600;
+font-style: normal;
+}
+
+
+
+
 .product-list{
     display: flex;
     flex-wrap: wrap;
@@ -282,22 +316,6 @@ const setActiveSlide = (id) => {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 20px;
-}
-  
-.poppins-bold {
-font-family: "Poppins", sans-serif;
-font-weight: 700;
-font-style: normal;
-}
-.poppins-regular {
-font-family: "Poppins", sans-serif;
-font-weight: 400;
-font-style: normal;
-}
-.poppins-semibold {
-font-family: "Poppins", sans-serif;
-font-weight: 600;
-font-style: normal;
 }
 
 /* input 화살표 없애기 */
@@ -323,7 +341,8 @@ input:focus {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 20px;
+    /* margin-top: 10px; */
+    margin-bottom: 40px;
 }
 .coustom-carousel-indicators button {
     width: 50px;
@@ -344,7 +363,7 @@ input:focus {
   border-radius: 20px; /* 둥근 모서리 */
   background-color: #f9f9f9; /* 배경색 */
   border: 1px solid #ccc; /* 테두리 색상 */
-  padding: 10px 15px; /* 내부 여백 */
+  padding: 10px 30px; /* 내부 여백 */
   transition: all 0.3s ease; /* 전환 효과 */
 }
 
@@ -354,4 +373,5 @@ input:focus {
   box-shadow: 0 0 5px rgba(121, 242, 151, 0.8); /* 선택 시 그림자 효과 */
   outline: none; /* 기본 브라우저 아웃라인 제거 */
 }
+
 </style>
