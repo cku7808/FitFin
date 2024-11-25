@@ -207,3 +207,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REST_AUTH = {
  'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
+
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/media/'
