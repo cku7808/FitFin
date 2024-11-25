@@ -116,9 +116,14 @@ export const useCounterStore = defineStore('counter', () => {
     .catch((err) => {
         console.log(err)
     })
-}
+  }
+  const profile_img = ref('profile/profile.png')
+  const changeImg = (img) => {
+    profile_img.value = img
+    console.log(profile_img)
+  }
 
 
-  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo };
+  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo, profile_img, changeImg };
 }, { persist: true });
 
