@@ -132,7 +132,7 @@ onMounted(() => {
 /* 각 박스 요소 */
 .stat-box {
   width: 25%;  /* 고정된 너비로 설정 */
-  height: 100px; /* 고정된 높이로 설정 */
+  height: 125px; /* 고정된 높이로 설정 */
   border: 1px solid #D7D5D5;
   padding: 15px;
   text-align: center;
@@ -142,7 +142,7 @@ onMounted(() => {
 
 /* 우측 하단: 테이블 */
 .table-container {
-  padding: 20px;
+  padding: 10px;
 }
 .profile-table {
   width: 100%;

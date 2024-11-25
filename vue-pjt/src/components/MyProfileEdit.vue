@@ -8,7 +8,7 @@
       <div class="d-flex col-8">
         <!-- 좌측: 프로필 사진과 수정하기 버튼 -->
         <div class="profile-left">
-          <input type="file" @change="onImageChange" class="image-upload m-3" />
+          <input type="file" @change="onImageChange" class="image-upload m-3 form-control" />
           <img class="profile-image" :src="profileImageUrl" alt="프로필 사진" />
           
           <button type="submit" class="profile-btn">저장하기</button>
@@ -72,7 +72,8 @@
           </div>
         </div>
       </div>
-      <div class=""></div><span>회원탈퇴</span></div>
+      <div class="col-8 d-flex justify-content-end"><button type="submit" class="withdrawal-btn" @click="deleteAccount">회원탈퇴</button></div>
+    </div>
       <br>
   </template>
   
@@ -134,6 +135,24 @@
         console.log(err)
     })
 }
+
+// 회원탈퇴
+const deleteAccount = () => {
+  if (confirm("정말로 회원탈퇴 하시겠습니까?")){
+    axios({
+        method: 'delete',
+        url: `${store.BASE_URL}/api/v1/userinfo/`,
+        headers: {
+            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
+        },
+    })
+    .then((res) => {
+        store.logOut()
+    })
+    .catch((err) => {
+        console.log(err)
+    })}
+  }
   </script>
   
   <style scoped>
@@ -153,11 +172,7 @@
     margin-bottom: 20px;
   }
   
-  /* 이미지 업로드 */
-  .image-upload {
-  width: 70%;
-  text-align: center;
-  }
+
   
   /* 우측 상단: 네모 박스 3개 */
   .profile-right {
@@ -168,7 +183,7 @@
   
   .stat-box {
     width: 25%;
-    height: 100px;
+    height: 125px;
     border: 1px solid #D7D5D5;
     padding: 15px;
     text-align: center;
@@ -180,7 +195,7 @@
   
   /* 우측 하단: 입력 폼 */
   .form-container {
-    padding: 20px;
+    padding: 10px;
   }
   
   .form-group {
@@ -193,7 +208,11 @@
     border: 1px solid #D7D5D5;
     border-radius: 5px;
   }
-  
+    /* 이미지 업로드 */
+  .image-upload {
+    width: 50%;
+    text-align: center;
+  }
   /* 글씨 */
   .poppins-bold {
     font-family: "Poppins", sans-serif;
@@ -206,13 +225,23 @@
   }
   
   /* 프로필 수정 버튼 */
-  .profile-btn{
-    width: 120px;
-    height: 40px;
-    background-color: white;
-    border: 1.5px solid #79F297;
-    border-radius: 20px;
+.profile-btn{
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  border: 1.5px solid #79F297;
+  border-radius: 20px;
 }
+/* 회원 탈퇴 버튼 */
+.withdrawal-btn{
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
 
 /* 우측 하단: 테이블 */
 .table-container {
