@@ -35,7 +35,10 @@ class Migration(migrations.Migration):
                 ('is_married', models.BooleanField(default=False)),
                 ('job', models.CharField(max_length=200)),
                 ('age', models.IntegerField(default=0)),
+<<<<<<< HEAD
+=======
                 ('profile_img', models.ImageField(blank=True, default='accounts/profile.png', null=True, upload_to='profile_images/')),
+>>>>>>> master
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.permission', verbose_name='user permissions')),
             ],

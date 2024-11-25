@@ -12,6 +12,17 @@ class TodayCurrencySerializer(serializers.ModelSerializer):
         model = TodayCurrency
         fields = '__all__'
 
+# 금융 상품 저장
+class DepositProductsDbSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DepositProducts
+        fields = '__all__'
+
+class SavingProductsDbSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SavingProducts
+        fields = '__all__'
+
 
 # 금융 상품
 class DepositProductsSerializer(serializers.ModelSerializer):
