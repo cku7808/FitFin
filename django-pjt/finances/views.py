@@ -6,12 +6,6 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from django.http import JsonResponse
-<<<<<<< HEAD
-import requests
-from rest_framework.permissions import IsAuthenticated, AllowAny
-
-=======
->>>>>>> master
 from django.conf import settings
 import requests
 from datetime import datetime, timedelta
@@ -31,12 +25,7 @@ from matplotlib.colors import LinearSegmentedColormap
 # 환율 계산
 
 @api_view(['GET'])
-<<<<<<< HEAD
-@permission_classes([AllowAny])
-def exchangerate(request):
-=======
 def save_exchangerate(request):
->>>>>>> master
     api_key = settings.API_KEY['currency']
     url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
     response = requests.get(url, verify=False).json()

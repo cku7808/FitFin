@@ -73,3 +73,21 @@ def signup_products(request):
         "message": "상품 가입이 완료되었습니다.",
         "registered_ptcd": user.registered_ptcd
     }, status=status.HTTP_200_OK)
+    
+    
+# 회원 정보
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def user_info(request):
+    user = request.user
+    if request.method == 'GET':
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+        
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

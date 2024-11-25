@@ -46,6 +46,7 @@ export const useCounterStore = defineStore('counter', () => {
         console.log(res.data)
         accessToken.value = res.data.access;
         refreshToken.value = res.data.refresh;
+        loadUserInfo(res.data.access)
         router.push({ name: 'MainView' });
       })
       .catch((err) => {
@@ -65,6 +66,7 @@ export const useCounterStore = defineStore('counter', () => {
         console.log('소셜 로그인 완료');
         accessToken.value = res.data.access;
         refreshToken.value = res.data.refresh;
+        loadUserInfo(res.data.access)
         router.push({ name: 'MainView' });
       })
       .catch((err) => {
@@ -83,6 +85,7 @@ export const useCounterStore = defineStore('counter', () => {
         console.log(res.data)
         accessToken.value = null
         refreshToken.value = null
+        userInfo.value = null
         router.push({ name: 'MainView' })
         alert('로그아웃되었습니다.')
       })
@@ -91,6 +94,26 @@ export const useCounterStore = defineStore('counter', () => {
       })
   };
 
-  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut };
+  // 사용자 정보
+  const userInfo = ref(null)
+  const loadUserInfo = (token) => {
+    axios({
+        method: 'get',
+        url: `${BASE_URL}/api/v1/userinfo/`,
+        headers: {
+            Authorization: `Bearer ${token}`, // JWT Access Token 포함
+        },
+    })
+    .then((res) => {
+        console.log(res.data)
+        userInfo.value = res.data
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+
+  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo };
 }, { persist: true });
 

@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <RouterLink :to="{ name: 'MyPageView'}">
+                            <RouterLink :to="{ name: 'MyProfile'}">
                             <img src="/navbar/Mypage.png" alt="Mypage" width="80" height="19" class="me-2">
                             </RouterLink>
                         </li>
