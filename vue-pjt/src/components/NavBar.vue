@@ -54,18 +54,18 @@
                 </div>
 
                 <!-- 메뉴 -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'S-CoreDream-3Light';">
                     <ul class="navbar-nav me-auto">
-                    <li class="nav-item poppins-medium">
+                    <li class="nav-item">
                         <RouterLink :to="{ name: 'DepositSavingView'}" class="text-decoration-none text-black nav-link">예적금 상품 비교</RouterLink>
                     </li>
-                    <li class="nav-item poppins-medium">
+                    <li class="nav-item">
                         <RouterLink :to="{ name: 'ExchangeRateView'}" class="text-decoration-none text-black nav-link">환율 계산</RouterLink>
                     </li>
-                    <li class="nav-item poppins-medium">
+                    <li class="nav-item">
                         <RouterLink :to="{ name: 'BankPosView'}" class="text-decoration-none text-black nav-link">내 주변 은행</RouterLink>
                     </li>
-                    <li class="nav-item poppins-medium">
+                    <li class="nav-item">
                         <RouterLink :to="{ name: 'ArticleList'}" class="text-decoration-none text-black nav-link">커뮤니티</RouterLink>
                     </li>
                     </ul>
@@ -85,6 +85,12 @@ const store = useCounterStore()
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .poppins-medium {
   font-family: "Poppins", sans-serif;
   font-weight: 500;

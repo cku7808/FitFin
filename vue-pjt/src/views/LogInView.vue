@@ -1,11 +1,11 @@
 <template>
-    <div class="col-12 d-flex justify-content-center flex-column align-items-center pt-lg-5">
+    <div class="col-12 d-flex justify-content-center flex-column align-items-center pt-lg-5" style="font-family: 'S-CoreDream-3Light';">
       <div>
         <div class="fs-2 d-flex align-items-center">
-          <span class="pe-2 poppins-bold">나에게 Fit한 Finance,</span>
+          <span class="pe-2 poppins-bold mb-1">나에게 Fit한 Finance,</span>
           <img src="/logo/Logo2.png" width="94" height="31"><br>
         </div>
-        <p class="fs-6 poppins-regular">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
+        <p class="fs-6 text-center mb-4">손 쉬운 금융 생활을 위해 로그인을 해주세요</p>
       </div>
       <div class="col-4">
         <form @submit.prevent="logIn">
@@ -19,7 +19,7 @@
               class="login-form form-control poppins-regular ps-4 mb-4"/>
             <label for="password">Password</label>
           </div>
-          <button type="submit" class="btn login-box form-control text-light poppins-semibold fs-6 mb-4 border-none">로그인 하기</button>
+          <button type="submit" class="btn login-box form-control text-light fs-6 mb-4 border-none">로그인 하기</button>
         </form>
         <img src="/login/line.png" class="w-100">
       </div>
@@ -58,7 +58,12 @@
   </script>
   
   <style scoped>
-  
+  @font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
   .login-form {
     box-sizing: border-box;
     height: 70px;
@@ -89,6 +94,7 @@
   input:focus {
     border: 1px solid #79F297 !important;
     box-shadow: none !important;
+    background-color: transparent !important;
   }
   .btn:focus {
     border:none !important;
