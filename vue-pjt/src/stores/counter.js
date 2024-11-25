@@ -37,6 +37,18 @@ export const useCounterStore = defineStore('counter', () => {
       alert('회원가입 실패')
     })
   }
+
+  const loginType = computed(() => {
+    return refreshToken.value === null ? 'general' : 'social'
+  })
+  console.log(loginType.value)
+  const header = computed(() => {
+    if (loginType.value === 'general') {
+      return {Authorization: `Token ${accessToken.value}`}
+    } else {
+      return {Authorization: `Bearer ${accessToken.value}`}
+    }
+  })
   
   const logIn = (payload) => {
     const { username, password } = payload;
@@ -49,9 +61,9 @@ export const useCounterStore = defineStore('counter', () => {
       .then((res) => {
         console.log('로그인 완료');
         console.log(res.data)
-        accessToken.value = res.data.access;
-        refreshToken.value = res.data.refresh;
-        loadUserInfo(res.data.access)
+        accessToken.value = res.data.key;
+
+        loadUserInfo(header.value)
         router.push({ name: 'MainView' });
       })
       .catch((err) => {
@@ -71,7 +83,7 @@ export const useCounterStore = defineStore('counter', () => {
         console.log('소셜 로그인 완료');
         accessToken.value = res.data.access;
         refreshToken.value = res.data.refresh;
-        loadUserInfo(res.data.access)
+        loadUserInfo(header.value)
         router.push({ name: 'MainView' });
       })
       .catch((err) => {
@@ -85,6 +97,7 @@ export const useCounterStore = defineStore('counter', () => {
     axios({
       method: 'post',
       url: `${BASE_URL}/accounts/logout/`,
+      
     })
       .then((res) => {
         console.log(res.data)
@@ -99,15 +112,16 @@ export const useCounterStore = defineStore('counter', () => {
       })
   };
 
+
+  console.log(header.value)
+
   // 사용자 정보
   const userInfo = ref(null)
-  const loadUserInfo = (token) => {
+  const loadUserInfo = (header) => {
     axios({
-        method: 'get',
-        url: `${BASE_URL}/api/v1/userinfo/`,
-        headers: {
-            Authorization: `Bearer ${token}`, // JWT Access Token 포함
-        },
+          method: 'get',
+          url: `${BASE_URL}/api/v1/userinfo/`,
+          headers: header
     })
     .then((res) => {
         console.log(res.data)
@@ -117,13 +131,7 @@ export const useCounterStore = defineStore('counter', () => {
         console.log(err)
     })
   }
-  const profile_img = ref('profile/profile.png')
-  const changeImg = (img) => {
-    profile_img.value = img
-    console.log(profile_img)
-  }
 
-
-  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo, profile_img, changeImg };
+  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo, };
 }, { persist: true });
 

@@ -87,14 +87,7 @@ const userInfo = computed(() => store.userInfo);
 const editProfile = () => {
   router.push({ name: "MyProfileEdit" });
 };
-const is_married = ref(""); // 초기값 설정
 
-// userInfo.value.is_married 값에 따라 초기화
-if (userInfo.value.is_married === true) {
-    is_married.value = "기혼";
-} else if (userInfo.value.is_married === false) {
-    is_married.value = "미혼";
-}
 // 가입 날짜 계산
 const daysSinceJoined = computed(() => {
   if (!userInfo.value.date_joined) return 0;
@@ -113,7 +106,14 @@ onMounted(() => {
     // 프로필 바뀌거나, 상품 등록시 인포 바꾸도록 수정 
   store.loadUserInfo(store.accessToken)
 })
-
+const is_married = ref(userInfo.value.is_married); // 초기값 설정
+console.log(userInfo.value)
+// userInfo.value.is_married 값에 따라 초기화
+if (userInfo.value.is_married === 'true') {
+    is_married.value = "기혼";
+} else if (userInfo.value.is_married === 'false') {
+    is_married.value = "미혼";
+}
 
 </script>
 

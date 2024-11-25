@@ -9,6 +9,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.http import JsonResponse
 
@@ -22,20 +23,20 @@ def login(request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
-        # JWT 토큰 생성
-        refresh = RefreshToken.for_user(user)
-        access_token = str(refresh.access_token)
-        refresh_token = str(refresh)
+        token, created = Token.objects.get_or_create(user=user)
         return Response({
-            'access': access_token,
-            'refresh': refresh_token,
+            'token': token.key,
             'user': {
                 "id": user.id,
                 "username": user.username,
                 "email": user.email,
             },
         })
-
+    else:
+        return Response({
+            'message': '유효하지 않은 사용자 정보입니다.'
+        }, status=status.HTTP_401_UNAUTHORIZED)
+    
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def social_login(request):
