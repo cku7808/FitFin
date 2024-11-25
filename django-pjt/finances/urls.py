@@ -14,6 +14,7 @@ urlpatterns = [
     path('deposit-products/<str:product_id>/', views.deposit_products_detail),
     path('saving-products/', views.saving_products),
     path('saving-products/<str:product_id>/', views.saving_products_detail),
+    path('load-my-products/', views.load_my_products),
     
     # 테스트용 url
     path('save-exchangerate/', views.save_exchangerate),

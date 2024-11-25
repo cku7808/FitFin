@@ -65,11 +65,11 @@ def like_article(request, article_pk):
     # else:    
     #     article.like_users.add(request.user)
     # return Response(status=status.HTTP_201_CREATED)
-    if temp_user in article.like_users.all():
-        article.like_users.remove(temp_user)
-    else:    
-        article.like_users.add(temp_user)
-    return Response(status=status.HTTP_201_CREATED)
+    # if temp_user in article.like_users.all():
+    #     article.like_users.remove(temp_user)
+    # else:    
+    #     article.like_users.add(temp_user)
+    # return Response(status=status.HTTP_201_CREATED)
 
 # 댓글 (생성, 조회)
 @api_view(['GET', 'POST'])
@@ -85,7 +85,7 @@ def comment(request, article_pk):
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             # comment = serializer.save(user=request.user, article=article)
-            comment = serializer.save(user=temp_user, article=article)
+            # comment = serializer.save(user=temp_user, article=article)
             return Response({'commentid': comment.id}, status=status.HTTP_201_CREATED)
 
         

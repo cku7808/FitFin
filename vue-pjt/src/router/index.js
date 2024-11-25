@@ -27,6 +27,11 @@ import ArticleDetail from '@/components/ArticleDetail.vue'
 import ArticleCreate from '@/components/ArticleCreate.vue'
 import ArticleEdit from '@/components/ArticleEdit.vue'
 
+import MyProfile from '@/components/MyProfile.vue'
+import MyProfileEdit from '@/components/MyProfileEdit.vue'
+import MyProduct from '@/components/MyProduct.vue'
+import MyRecommend from '@/components/MyRecommend.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -100,6 +105,12 @@ const router = createRouter({
       path: '/mypage',
       name: 'MyPageView',
       component: MyPageView,
+      children: [
+        { path: "", name:'MyProfile', component: MyProfile },
+        { path: "editprofile", name:'MyProfileEdit', component: MyProfileEdit },
+        { path: "product", name:'MyProduct', component: MyProduct },
+        { path: "recommend", name:'MyRecommend', component: MyRecommend },
+      ],
     },
     {
       path: '/cart',

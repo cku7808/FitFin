@@ -299,7 +299,7 @@ def save_deposit_products(request):  # 예금 상품
         fin_prdt_cd = li.get('fin_prdt_cd')  # 예금 상품명
         intr_rate_type = li.get('intr_rate_type')  # 유형 or 유형명 중에 하나만 저장해도 될듯?
         intr_rate_type_nm = li.get('intr_rate_type_nm')
-        intr_rate = li.get('intr_rate2')
+        intr_rate = li.get('intr_rate')
         intr_rate2 = li.get('intr_rate2')
         save_trm = li.get('save_trm')
 
@@ -385,7 +385,7 @@ def save_saving_products(request):  # 적금 상품
         fin_prdt_cd = li.get('fin_prdt_cd')  # 예금 상품명
         intr_rate_type = li.get('intr_rate_type')  # 유형 or 유형명 중에 하나만 저장해도 될듯?
         intr_rate_type_nm = li.get('intr_rate_type_nm')
-        intr_rate = li.get('intr_rate2')
+        intr_rate = li.get('intr_rate')
         intr_rate2 = li.get('intr_rate2')
         rsrv_type = li.get('rsrv_type')
         rsrv_type_nm = li.get('rsrv_type_nm')  # 유형 or 유형명 중에 하나만 저장해도 될듯?
@@ -439,6 +439,43 @@ def saving_products(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def saving_products_detail(request, product_id):
+    product = get_object_or_404(SavingProducts, pk=product_id)
+    serializer = DepositProductsDetailSerializer(product)
+    return Response(serializer.data, status.HTTP_200_OK)
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def load_my_products(request):
+    user = request.user
+    product_list = request.user.registered_ptcd
+    my_product_detail = []
+    for product_id, option_id in product_list:
+        if DepositProducts.objects.filter(fin_prdt_cd=product_id).exists():
+            product = DepositProducts.objects.get(fin_prdt_cd=product_id)
+            option = DepositOption.objects.get(pk=option_id)
+            type = '예금'
+        else:  # 예금 상품이 아니면
+            product = SavingProducts.objects.get(fin_prdt_cd=product_id)
+            option = SavingOption.objects.get(pk=option_id)
+            type = '적금'
+        detail = {
+            'type': type,
+            'product_bank': product.kor_co_nm,
+            'product_name': product.fin_prdt_nm,
+            'option_id': option.id,
+            'option_rate': option.intr_rate,
+            'option_maxrate': option.intr_rate2,
+        }
+        my_product_detail.append(detail)
+
+    return Response({"my_product_detail": my_product_detail}, status=status.HTTP_200_OK)
+
+        
+
+
+
+
+    
     product = get_object_or_404(SavingProducts, pk=product_id)
     serializer = DepositProductsDetailSerializer(product)
     return Response(serializer.data, status.HTTP_200_OK)
