@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex align-items-center justify-content-center flex-column col-12">
-      <h2 class="poppins-bold">예적금 금리 비교 페이지</h2><br>
-      <div class="col-8 d-flex justify-content-start">
+      <h2 class="score-dream-bold">예적금 금리 비교 페이지</h2><br>
+      <div class="col-8 d-flex justify-content-start score-dream">
         <div class="col-8 folder-tabs">
           <button
             class="tab-button"
@@ -38,6 +38,19 @@ const productType = ref('deposit')
 </script>
 
 <style scoped>
+  @font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+.score-dream {
+    font-family: 'S-CoreDream-3Light';
+}
+.score-dream-bold {
+    font-family: 'S-CoreDream-3Light';
+    font-weight: bold;
+}
 .selected {
   color: #79F297; /* 원하는 색상 */
   font-weight: bold; /* 글씨를 두껍게 설정 */

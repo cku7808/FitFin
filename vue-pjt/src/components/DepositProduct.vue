@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="score-dream">
       <select name="selectBank" id="selectBank" v-model="selectedBank" @change="handleBankChange" class="form-select" aria-label="Default select example">
         <option value="" disabled selected>은행 선택</option>
         <option value="all">전체</option>
@@ -79,6 +79,19 @@ const handleBankChange = () => {
 </script>
 
 <style scoped>
+  @font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+.score-dream {
+    font-family: 'S-CoreDream-3Light';
+}
+.score-dream-bold {
+    font-family: 'S-CoreDream-3Light';
+    font-weight: bold;
+}
 .data-wrapper {
   border: solid 1px #79F297;
   border-radius: 10px;
