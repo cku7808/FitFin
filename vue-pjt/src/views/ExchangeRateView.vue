@@ -2,7 +2,10 @@
     <div>
         <div class="col-12 d-flex justify-content-center flex-column align-items-center my-5">
         <div class="d-flex justify-content-center">
-            <h2 class="fs-2 coredream-bold">환율 계산 페이지</h2>
+            <h2 class="fs-2 coredream-bold">
+                <span class="text-highlight">환율</span>
+                계산하기
+            </h2>
         </div>
         </div>
 
@@ -373,5 +376,7 @@ input:focus {
   box-shadow: 0 0 5px rgba(121, 242, 151, 0.8); /* 선택 시 그림자 효과 */
   outline: none; /* 기본 브라우저 아웃라인 제거 */
 }
-
+.text-highlight{
+    color: #79F297;
+}
 </style>

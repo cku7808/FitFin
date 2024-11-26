@@ -15,12 +15,15 @@
               <span class="fw-normal text-secondary" style="font-size: 14px;">{{ data.fin_prdt_nm }}</span>
             </li>
           </div>
-          <button class="btn" style="background-color: #203359;">
-            <RouterLink 
-                :to="{ name: 'SavingProductDetail', params: { id: data.id }, query: { bank: selectedBank } }" style="text-decoration: none; color: white; font-size: 14px;">
-                상세 정보
-            </RouterLink>
-          </button>
+          <div class="d-flex flex-row align-items-center">
+              <li style="font-size: 14px;" class="me-3 interest p-2">최고 우대 금리 : {{ data.options[0].intr_rate2 }}%</li>
+              <button class="btn" style="background-color: #203359;">
+                <RouterLink 
+                    :to="{ name: 'SavingProductDetail', params: { id: data.id }, query: { bank: selectedBank } }" style="text-decoration: none; color: white; font-size: 14px; border-radius: 10px;">
+                    상세 정보
+                </RouterLink>
+              </button>
+          </div>
         </ul>
       </div>
     </div>
@@ -45,9 +48,7 @@ const loadDepositProduct = function () {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/saving-products/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header
     })
     .then((res) => {
         datas.value = res.data
@@ -95,5 +96,11 @@ const handleBankChange = () => {
 .data-wrapper {
   border: solid 1px #79F297;
   border-radius: 10px;
+}
+.interest {
+  background-color: white;
+  border-radius: 10px;
+  height: 30px;
+  line-height: 14px;
 }
 </style>

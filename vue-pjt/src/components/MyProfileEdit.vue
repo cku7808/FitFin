@@ -48,7 +48,15 @@
                       </tr>
                       <tr>
                       <td class="font-weight-bold"><label for="job">직업</label></td>
-                      <td><input type="text" id="job" v-model="job" class="form-control" /></td>
+                      <td class="form-group">
+                        <select name="selectJob" id="selectJob" class="form-select form-control login-form w-50 me-2" aria-label="Default select example" v-model.trim="job">
+                          <option value="무직">무직</option>
+                          <option value="직장인">직장인</option>
+                          <option value="공무원">공무원</option>
+                          <option value="자영업자">자영업자</option>
+                          <option value="주부">주부</option>
+                      </select>
+                      </td>
                       </tr>
                       <tr>
                       <td class="font-weight-bold"><label for="married">혼인여부</label></td>
@@ -131,9 +139,7 @@
     axios({
         method: 'put',
         url: `${store.BASE_URL}/api/v1/userinfo/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header,
         data: {
             email: email.value,
             age: age.value,
@@ -146,7 +152,7 @@
     })
     .then((res) => {
         console.log(res.data)
-        store.loadUserInfo(store.accessToken)
+        store.loadUserInfo(store.header)
         router.push({name: 'MyProfile'})
     })
     .catch((err) => {

@@ -28,7 +28,7 @@ class SavingProductsDbSerializer(serializers.ModelSerializer):
 class DepositProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = DepositProducts
-        fields = ('id', 'fin_prdt_cd', 'kor_co_nm', 'fin_prdt_nm')
+        fields = ('id', 'fin_prdt_cd', 'kor_co_nm', 'fin_prdt_nm', 'mtrt_int')
 
 class DepositOptionSerializer(serializers.ModelSerializer):
     class Meta:

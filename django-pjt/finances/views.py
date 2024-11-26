@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption
 from .serializers import CurrencySerializer, TodayCurrencySerializer, DepositProductsSerializer, \
     SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer, \
-    DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer
+    DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer, SavingProductsDetailSerializer
 
 # 그래프 그리기
 import matplotlib.pyplot as plt
@@ -432,7 +432,7 @@ def save_saving_products(request):  # 적금 상품
 @permission_classes([IsAuthenticated])
 def deposit_products(request):
     products = DepositProducts.objects.all()
-    serializer = DepositProductsSerializer(products, many=True)
+    serializer = DepositProductsDetailSerializer(products, many=True)
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])
@@ -446,14 +446,14 @@ def deposit_products_detail(request, product_id):
 @permission_classes([IsAuthenticated])
 def saving_products(request):
     products = SavingProducts.objects.all()
-    serializer = SavingProductsSerializer(products, many=True)
+    serializer = SavingProductsDetailSerializer(products, many=True)
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def saving_products_detail(request, product_id):
     product = get_object_or_404(SavingProducts, pk=product_id)
-    serializer = DepositProductsDetailSerializer(product)
+    serializer = SavingProductsDetailSerializer(product)
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])

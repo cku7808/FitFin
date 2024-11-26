@@ -142,9 +142,7 @@ const loadDepositDetailProduct = function (id) {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/deposit-products/${id}/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header
     })
     .then((res) => {
         data.value = res.data
