@@ -109,9 +109,9 @@ onMounted(() => {
 const is_married = ref(userInfo.value.is_married); // 초기값 설정
 console.log(userInfo.value)
 // userInfo.value.is_married 값에 따라 초기화
-if (userInfo.value.is_married === 'true') {
+if (userInfo.value.is_married === true) {
     is_married.value = "기혼";
-} else if (userInfo.value.is_married === 'false') {
+} else if (userInfo.value.is_married === false) {
     is_married.value = "미혼";
 }
 

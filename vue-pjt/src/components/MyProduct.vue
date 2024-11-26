@@ -14,16 +14,20 @@
                 <ul class="product-list">
                     <h6>예금 상품</h6>
                     <!-- :key="index"  -->
-                    <li v-for="myproduct in deposits" class="product-item">
-                        <span class="product-name">[{{ myproduct.product_bank }}] {{ myproduct.product_name }}</span>
-                        <div class="product-actions">
-                        <button class="action-btn" @click="viewDetails(product)">
-                            <i class="icon-search">🔍</i>
+                    <li v-for="myproduct in deposits" class="product-item" :key="'myproduct.product_id'+'&'+'myproduct.option_id'">
+                    <span
+                        class="product-name"
+                        :title="'[' + myproduct.product_bank + '] ' + myproduct.product_name + ' (' + myproduct.option_trm + '개월)'">
+                        [{{ myproduct.product_bank }}] {{ myproduct.product_name }} ({{ myproduct.option_trm }}개월)
+                    </span>
+                    <div class="product-actions">
+                        <button class="action-btn" @click="viewDetails(myproduct.product_id)">
+                        <i class="icon-search">🔍</i>
                         </button>
-                        <button class="action-btn" @click="removeProduct(product)">
-                            <i class="icon-delete">❌</i>
+                        <button class="action-btn" @click="removeProduct(myproduct.product_id, myproduct.option_id)">
+                        <i class="icon-delete">❌</i>
                         </button>
-                        </div>
+                    </div>
                     </li>
                 </ul>
 
@@ -50,19 +54,26 @@
                 <ul class="product-list">
                     <h6>적금 상품</h6>
                     <!-- :key="index"  -->
-                    <li v-for="myproduct in savings" class="product-item">
-                        <span class="product-name">[{{ myproduct.product_bank }}] {{ myproduct.product_name }}</span>
-                        <div class="product-actions">
-                        <button class="action-btn" @click="viewDetails(product)">
-                            <i class="icon-search">🔍</i>
+                    <li v-for="myproduct in savings" class="product-item" :key="'myproduct.product_id'+'&'+'myproduct.option_id'">
+                    <span
+                        class="product-name"
+                        :title="'[' + myproduct.product_bank + '] ' + myproduct.product_name + ' (' + myproduct.option_trm + '개월)'">
+                        [{{ myproduct.product_bank }}] {{ myproduct.product_name }} ({{ myproduct.option_trm }}개월)
+                    </span>
+                    <div class="product-actions">
+                        <button class="action-btn" @click="viewDetails(myproduct)">
+                        <i class="icon-search">🔍</i>
                         </button>
-                        <button class="action-btn" @click="removeProduct(product)">
-                            <i class="icon-delete">❌</i>
+                        <button class="action-btn" @click="removeProduct(myproduct)">
+                        <i class="icon-delete">❌</i>
                         </button>
-                        </div>
+                    </div>
                     </li>
                 </ul>                
             </div>
+
+            <div class="vertical-divider"></div>
+
             <div class="profile-block">
                 <!-- 오른쪽 금리 비교 그래프 -->
                 <div class="chart-section mt-4">
@@ -90,9 +101,25 @@ const myproducts = ref()
 const deposits = ref()
 const savings = ref()
 
-const viewDetails = () => {
+const viewDetails = (id) => {
+    router.push({ name: "DepositProductDetail", params: {id: id}});
   };
-const removeProduct = () => {
+const removeProduct = (product_id, option_id) => {
+    axios({
+        method: 'post',
+        url: `${store.BASE_URL}/api/v1/delete_products/`,
+        headers: store.header,
+        data: {
+            product_id: product_id,
+            option_id: option_id,
+        },
+    })
+    .then((res) => {
+        console.log(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
   };
 
 // 나의 상품 정보
@@ -132,7 +159,7 @@ const renderdepositChart = () => {
         labels: labels,
         datasets: [
         {
-            label: "기본 금리",
+            label: "나의 금리",
             data: baseRates,
             backgroundColor: "rgba(194, 210, 242, 1)",
             borderColor: "rgba(194, 210, 242, 1)",
@@ -188,7 +215,7 @@ const rendersavingChart = () => {
         labels: labels,
         datasets: [
         {
-            label: "기본 금리",
+            label: "나의 금리",
             data: baseRates,
             backgroundColor: "rgba(194, 210, 242, 1)",
             borderColor: "rgba(194, 210, 242, 1)",
@@ -301,7 +328,8 @@ onMounted(() => {
   border: 1px solid #ddd;
   border-radius: 30px;
   background-color: #fff;
-  overflow: hidden; /* 텍스트가 넘치지 않도록 설정 */
+  overflow: hidden;
+  position: relative; /* 툴팁 위치 조정을 위해 추가 */
 }
 
 .product-name {
@@ -311,6 +339,33 @@ onMounted(() => {
   overflow: hidden; /* 텍스트가 넘치면 숨김 처리 */
   text-overflow: ellipsis; /* 넘친 텍스트는 ...으로 표시 */
   max-width: 70%; /* 최대 너비 설정 */
+  position: relative; /* 툴팁을 위한 상대 위치 설정 */
+  font-family: 'S-CoreDream-3Light';
+}
+
+.product-name:hover::after {
+  content: attr(title); /* span의 title 속성 값을 툴팁으로 표시 */
+  position: absolute;
+  bottom: 100%; /* 상단에 표시 */
+  left: 0;
+  background: rgba(0, 0, 0, 0.8); /* 툴팁 배경색 */
+  color: #fff; /* 툴팁 글자색 */
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-family: 'S-CoreDream-3Light';
+  white-space: nowrap; /* 툴팁 텍스트 한 줄 유지 */
+  z-index: 10;
+  transform: translateY(-5px); /* 살짝 띄움 */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.product-name:hover::after {
+  opacity: 1;
+  visibility: visible;
+  font-family: 'S-CoreDream-3Light';
 }
 
 .product-actions {
@@ -323,6 +378,7 @@ onMounted(() => {
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
+  font-style: normal;
 }
 
 .action-btn:hover {
@@ -331,11 +387,13 @@ onMounted(() => {
 
 .icon-search {
   font-size: 1.2rem;
+  font-style: normal;
 }
 
 .icon-delete {
   font-size: 1.2rem;
   color: #ff4d4f;
+  font-style: normal;
 }
 
 .icon-delete:hover {
