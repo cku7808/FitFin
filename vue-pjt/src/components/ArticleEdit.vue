@@ -1,9 +1,8 @@
 <template>
-  <div>
     <h1>게시글 수정</h1>
     <div v-if="article">
       <form @submit.prevent="updateArticle">
-        <div class="mb-3">
+
           <label for="title" class="form-label">제목</label>
           <input
             type="text"
@@ -11,8 +10,8 @@
             v-model="article.title"
             class="form-control"
           />
-        </div>
-        <div class="mb-3">
+
+
           <label for="content" class="form-label">내용</label>
           <textarea
             id="content"
@@ -20,52 +19,62 @@
             class="form-control"
             rows="5"
           ></textarea>
-        </div>
+
         <button type="submit" class="btn btn-primary">수정하기</button>
         <button type="button" class="btn btn-secondary" @click="cancelEdit">
           취소
         </button>
       </form>
     </div>
-  </div>
 </template>
 
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useCounterStore } from '@/stores/counter';
 
-const BASE_URL = "http://127.0.0.1:8000";
+const store = useCounterStore();
 const route = useRoute();
 const router = useRouter();
 const article = ref(null);
 
 // 게시글 상세 정보 로드 함수
-const loadArticleDetail = async () => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/api/v3/articles/${route.params.id}/`
-    );
-    article.value = response.data;
-  } catch (error) {
-    console.error("게시글 상세 로드 중 오류 발생:", error);
-  }
-};
+const loadArticleDetail = function () {
+  axios({
+    method: 'get',
+    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
+    headers: store.header,
+  })
+    .then((res) => {
+      article.value = res.data
+      console.log('게시글 작성 성공!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 // 게시글 수정 함수
-const updateArticle = async () => {
-  try {
-    await axios.put(`${BASE_URL}/api/v3/articles/${route.params.id}/`, {
-      title: article.value.title,
-      content: article.value.content,
-    });
-    console.log("게시글 수정 성공!");
-    router.push({ name: "ArticleDetail", params: { id: route.params.id } });
-  } catch (error) {
-    console.error("게시글 수정 중 오류 발생:", error);
-    alert("게시글 수정에 실패했습니다. 다시 시도해주세요.");
-  }
-};
+const updateArticle = function () {
+  axios({
+    method: 'put',
+    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
+    headers: store.header,
+    data: {
+      title: title.value,
+      content: content.value
+    },
+  })
+    .then((res) => {
+      console.log("게시글 수정 성공!");
+      router.push({ name: "ArticleDetail", params: { id: route.params.id } });
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 
 // 취소 버튼 클릭 시 상세 페이지로 돌아가는 함수
 const cancelEdit = () => {
@@ -78,6 +87,112 @@ onMounted(() => {
 });
 </script>
 
-<style>
-/* 필요에 따라 스타일링 추가 */
+<style scoped>
+/* 전체 컨테이너 */
+div {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+/* 제목 스타일 */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #203359; /* 네이비 */
+  margin-bottom: 30px;
+}
+
+/* 폼 요소 */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+textarea {
+  resize: none; /* 크기 조정 방지 */
+}
+
+/* 버튼 컨테이너 */
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.btn-primary {
+  background-color: #203359; /* 네이비 */
+  color: #fff;
+  border: none;
+}
+
+button.btn-primary:hover {
+  background-color: #0d1a2e; /* 더 짙은 네이비 */
+}
+
+button.btn-secondary {
+  background-color: #6c757d; /* 회색 */
+  color: #fff;
+  border: none;
+  margin-top: 10px;
+}
+
+button.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* 버튼 정렬 */
+form > button {
+  width: 100%; /* 버튼을 전체 너비로 설정 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  div {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
 </style>
+

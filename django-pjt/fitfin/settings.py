@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "articles",
     # API 통신 및 회원가입, 로그인 권한을 위한 패키지 추가 
     # --------------
+    'drf_yasg',
     "rest_framework",
     'rest_framework.authtoken',
     'dj_rest_auth',

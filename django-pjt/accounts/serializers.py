@@ -3,6 +3,10 @@ from .models import User
 from dj_rest_auth.registration.serializers import RegisterSerializer
 
 class UserSerializer(serializers.ModelSerializer):
+
+    my_article_counts = serializers.IntegerField(source='article_set.count', read_only=True)
+    like_article_counts = serializers.IntegerField(source='like_article.count', read_only=True)    
+    
     class Meta:
         model = User
         fields = '__all__'

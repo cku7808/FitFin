@@ -204,28 +204,28 @@ const calculateLeftFromRight = () => {
 
 
 // 데이터 로드
-const BASE_URL = 'http://127.0.0.1:8000'
 const datas = ref([])
 const loadEchangeRate = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v2/load-exchangerate/`,
+        url: `${store.BASE_URL}/api/v2/load-exchangerate/`,
+        headers: store.header,
     })
     .then((res) => {
-        // console.log(res.data)
+        console.log(res.data)
         datas.value = res.data
         setDefaultCountries()
-        // console.log(datas.value)
     })
     .catch((err) => {
-        // console.log(err)
+        console.log(err)
     })
 }
 const todaydatas = ref([])
 const loadTodayEchangeRate = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v2/load-today-exchangerate/`,
+        url: `${store.BASE_URL}/api/v2/load-today-exchangerate/`,
+        headers: store.header,
     })
     .then((res) => {
         // console.log(res.data)
