@@ -83,3 +83,35 @@ class SavingOption(models.Model):                                               
     save_trm = models.IntegerField()                                                    # 저축 기간
     intr_rate = models.FloatField(default=-1)                                           # 저축 금리
     intr_rate2 = models.FloatField(default=-1)                                          # 최고 우대 금리
+
+# 대출 상품
+class LoanProducts(models.Model):                             # 대출 상품
+    dcls_month = models.CharField(max_length=20)                # 공시 제출월
+    fin_co_no = models.CharField(max_length=100)                # 금융회사 코드
+    kor_co_nm = models.CharField(max_length=100)                # 금융회사 명
+    fin_prdt_cd = models.CharField(max_length=100)              # 금융상품 코드 
+    fin_prdt_nm = models.CharField(max_length=100)              # 금융상품 명
+    join_way = models.CharField(max_length=100)                 # 가입 방법   
+    crdt_prdt_type = models.CharField(max_length=100, blank=True, null=True)          # 대출 종류 코드
+    crdt_prdt_type_nm = models.CharField(max_length=100)                 # 대출 종류명   
+    cb_name = models.CharField(max_length=100)                 # CB 회사명   
+    dcls_strt_day = models.IntegerField(blank=True, null=True)  # 공시 시작일
+    dcls_end_day = models.IntegerField(blank=True, null=True)   # 공시 종료일
+    fin_co_subm_day = models.IntegerField(blank=True, null=True)   # 금융회사 제출 월일
+
+class LoanOption(models.Model):                                                       # 대출 상품 옵션
+    fin_co_no = models.CharField(max_length=100)                # 금융 회사 코드 (**)
+    fin_prdt_cd = models.CharField(max_length=100)                # 금융 상품 코드 (**)
+    dcls_month = models.CharField(max_length=20)                # 공시 제출월 (**)
+    crdt_lend_rate_type = models.CharField(max_length=20)                       # 금리 구분 코드
+    crdt_lend_rate_type_nm = models.CharField(max_length=20)                       # 금리 구분
+    crdt_grad_1 = models.FloatField(blank=True, null=True)                                    # 900점 초과 (신용 등급)
+    crdt_grad_4 = models.FloatField(blank=True, null=True)                                       # 801~900
+    crdt_grad_5 = models.FloatField(blank=True, null=True)                                       # 701~800
+    crdt_grad_6 = models.FloatField(blank=True, null=True)                                       # 601~700
+    crdt_grad_10 = models.FloatField(blank=True, null=True)                                      # 501~600
+    crdt_grad_11 = models.FloatField(blank=True, null=True)                                      # 401~500
+    crdt_grad_12 = models.FloatField(blank=True, null=True)                                      # 301~400
+    crdt_grad_13 = models.FloatField(blank=True, null=True)                                      # 300 이하
+    crdt_grad_avg = models.FloatField(default=-1)                                     # 평균 금리
+    

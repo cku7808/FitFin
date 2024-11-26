@@ -10,10 +10,11 @@ from django.conf import settings
 import requests
 from datetime import datetime, timedelta
 
-from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption
+from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption, LoanProducts, LoanOption
 from .serializers import CurrencySerializer, TodayCurrencySerializer, DepositProductsSerializer, \
     SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer, \
-    DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer
+    DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer, \
+    LoanProductsDbSerializer, LoanOptionSerializer
 
 # 그래프 그리기
 import matplotlib.pyplot as plt
@@ -482,13 +483,95 @@ def load_my_products(request):
         my_product_detail.append(detail)
 
     return Response({"my_product_detail": my_product_detail}, status=status.HTTP_200_OK)
+       
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def save_loan_products(request):  # 대출 상품
+    BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
+    URL = BASE_URL + 'creditLoanProductsSearch.json'
+    params = {
+        'auth': settings.API_KEY['financial'],
+        'topFinGrpNo': '020000',
+        'pageNo': 1,
+    }
+
+    response = requests.get(URL, params=params).json() 
+
+    for li in response.get('result').get('baseList'):  # 예금 상품 정보 저장
+        dcls_month = li.get('dcls_month')
+        fin_co_no = li.get('fin_co_no')
+        kor_co_nm = li.get('kor_co_nm')
+        fin_prdt_cd = li.get('fin_prdt_cd')
+        fin_prdt_nm = li.get('fin_prdt_nm')
+        join_way = li.get('join_way')
+        crdt_prdt_type = li.get('crdt_prdt_type')
+        crdt_prdt_type_nm = li.get('crdt_prdt_type_nm')
+        cb_name = li.get('cb_name')
+        dcls_strt_day = li.get('dcls_strt_day')
+        dcls_end_day = li.get('dcls_end_day')
+        fin_co_subm_day = li.get('fin_co_subm_day')
         
+        if LoanProducts.objects.filter(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month).exists():
+            continue
 
+        save_data = {
+            'dcls_month': dcls_month,
+            'fin_co_no': fin_co_no,
+            'fin_prdt_cd': fin_prdt_cd,
+            'kor_co_nm': kor_co_nm,
+            'fin_prdt_nm': fin_prdt_nm,
+            'join_way': join_way,
+            'crdt_prdt_type': crdt_prdt_type,
+            'crdt_prdt_type_nm': crdt_prdt_type_nm,
+            'cb_name': cb_name,
+            'dcls_strt_day': dcls_strt_day,
+            'dcls_end_day': dcls_end_day,
+            'fin_co_subm_day': fin_co_subm_day,
+        }
 
+        serializer = LoanProductsDbSerializer(data=save_data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
 
+    for li in response.get('result').get('optionList'):  # 예금 옵션 정보 저장
+        fin_co_no = li.get('fin_co_no')
+        fin_prdt_cd = li.get('fin_prdt_cd')  # 예금 상품명
+        dcls_month = li.get('dcls_month')
+        crdt_lend_rate_type = li.get('crdt_lend_rate_type')  # 유형 or 유형명 중에 하나만 저장해도 될듯?
+        crdt_lend_rate_type_nm = li.get('crdt_lend_rate_type_nm')
+        crdt_grad_1 = li.get('crdt_grad_1')
+        crdt_grad_4 = li.get('crdt_grad_4')
+        crdt_grad_5 = li.get('crdt_grad_5')
+        crdt_grad_6 = li.get('crdt_grad_6')
+        crdt_grad_10 = li.get('crdt_grad_10')
+        crdt_grad_11 = li.get('crdt_grad_11')
+        crdt_grad_12 = li.get('crdt_grad_12')
+        crdt_grad_13 = li.get('crdt_grad_13')
+        crdt_grad_avg = li.get('crdt_grad_avg')
 
-    
-    product = get_object_or_404(SavingProducts, pk=product_id)
-    serializer = DepositProductsDetailSerializer(product)
-    return Response(serializer.data, status.HTTP_200_OK)
+        if LoanOption.objects.filter(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month).exists():
+            continue
+
+        save_data = {
+            'fin_co_no': fin_co_no,
+            'fin_prdt_cd': fin_prdt_cd,
+            'dcls_month': dcls_month,
+            'crdt_lend_rate_type': crdt_lend_rate_type,
+            'crdt_lend_rate_type_nm': crdt_lend_rate_type_nm,
+            'crdt_grad_1': crdt_grad_1,
+            'crdt_grad_4': crdt_grad_4,
+            'crdt_grad_5': crdt_grad_5,
+            'crdt_grad_6': crdt_grad_6,
+            'crdt_grad_10': crdt_grad_10,
+            'crdt_grad_11': crdt_grad_11,
+            'crdt_grad_12': crdt_grad_12,
+            'crdt_grad_13': crdt_grad_13,
+            'crdt_grad_avg': crdt_grad_avg,
+        }
+
+        serializer = LoanOptionSerializer(data=save_data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            
+    return JsonResponse({'message': '저장 성공!'})
