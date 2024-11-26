@@ -57,6 +57,7 @@ def social_login(request):
         'refresh': str(refresh),
     })
 
+# 상품 가입
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def signup_products(request):
@@ -75,8 +76,26 @@ def signup_products(request):
         "message": "상품 가입이 완료되었습니다.",
         "registered_ptcd": user.registered_ptcd
     }, status=status.HTTP_200_OK)
-    
-    
+
+# 상품 해지    
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def delete_products(request):
+    user = request.user
+    product_id = request.data.get('product_id')
+    option_id = request.data.get('option_id')
+
+    if (product_id, option_id) in user.registered_ptcd:  # 중복 방지
+        user.registered_ptcd.remove((product_id, option_id))
+
+    user.save()  # 변경사항 저장
+    return Response({
+        "message": "상품 해지가 완료되었습니다.",
+        "registered_ptcd": user.registered_ptcd
+    }, status=status.HTTP_200_OK)
+
+
+
 # 회원 정보
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])

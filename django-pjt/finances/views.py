@@ -474,9 +474,12 @@ def load_my_products(request):
             type = '적금'
         detail = {
             'type': type,
+            'product_id': product.id,
             'product_bank': product.kor_co_nm,
             'product_name': product.fin_prdt_nm,
+            'product_code': product.fin_prdt_cd,
             'option_id': option.id,
+            'option_trm': option.save_trm,
             'option_rate': option.intr_rate,
             'option_maxrate': option.intr_rate2,
         }
