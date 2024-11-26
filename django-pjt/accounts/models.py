@@ -21,6 +21,7 @@ class User(AbstractUser):
     is_married = models.BooleanField(default=False)
     job = models.CharField(max_length=200)
     age = models.IntegerField(default=0)
+    registered_loan = models.JSONField(default=list)
     # profile_img = models.ImageField(blank=True, null=True, 
     #                                 default='accounts/profile.png',
     #                                 upload_to='profile_images/')

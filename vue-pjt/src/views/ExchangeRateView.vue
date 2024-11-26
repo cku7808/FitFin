@@ -93,7 +93,7 @@
 
                     <div class="d-flex justify-content-center mb-3">
                         <div class="col-8 d-flex justify-content-center my-3 coredream-regular">
-                            * 영업일 기준 7일 정보를 제공합니다.
+                            * 영업일 기준 7일 정보를 제공합니다. (영업일 11시 이후 업데이트)
                         </div>
                     </div>
                     

@@ -8,12 +8,15 @@
         
         <div class="d-flex col-8 profile-container score-dream">
             <div class="profile-block">
-                <div>가입 상품 관리</div>
+                <h6 class="score-dream-bold">가입 상품 관리</h6>
                 <br>
                 
                 <ul class="product-list">
                     <h6>예금 상품</h6>
                     <!-- :key="index"  -->
+
+                    <li v-if="deposits && deposits.length === 0" class="no-product-message"> 가입된 상품이 없습니다. </li>
+
                     <li v-for="myproduct in deposits" class="product-item" :key="'myproduct.product_id'+'&'+'myproduct.option_id'">
                     <span
                         class="product-name"
@@ -24,7 +27,7 @@
                         <button class="action-btn" @click="viewDetails(myproduct.product_id)">
                         <i class="icon-search">🔍</i>
                         </button>
-                        <button class="action-btn" @click="removeProduct(myproduct.product_id, myproduct.option_id)">
+                        <button class="action-btn" @click="removeProduct(myproduct.product_code, myproduct.option_id)">
                         <i class="icon-delete">❌</i>
                         </button>
                     </div>
@@ -36,7 +39,7 @@
             <div class="vertical-divider"></div>
             
             <div class="profile-block">
-                <div>금리 비교</div>
+                <h6 class="score-dream-bold">금리 비교</h6>
                 <br>
 
                 <!-- 오른쪽 금리 비교 그래프 -->
@@ -54,6 +57,8 @@
                 <ul class="product-list">
                     <h6>적금 상품</h6>
                     <!-- :key="index"  -->
+                    <li v-if="savings && savings.length === 0" class="no-product-message"> 가입된 상품이 없습니다. </li>
+
                     <li v-for="myproduct in savings" class="product-item" :key="'myproduct.product_id'+'&'+'myproduct.option_id'">
                     <span
                         class="product-name"
@@ -116,6 +121,7 @@ const removeProduct = (product_id, option_id) => {
     })
     .then((res) => {
         console.log(res.data)
+        loadMyProduct()
     })
     .catch((err) => {
         console.log(err)
@@ -127,9 +133,7 @@ const loadMyProduct = function () {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/load-my-products/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header,
     })
     .then((res) => {
         console.log(res.data)
@@ -409,5 +413,16 @@ onMounted(() => {
 }
 .chart-section canvas {
   width: 80%;
+}
+
+.no-product-message {
+  display: flex; /* Flexbox를 사용 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  height: 100px; /* 적절한 높이 설정 */
+  font-size: 1rem;
+  color: black;
+  text-align: center; /* 텍스트 가운데 정렬 */
+  font-style: italic;
 }
 </style>

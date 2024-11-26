@@ -20,15 +20,15 @@
                 <!-- 우측 상단: 네모 박스 3개 -->
                 <div class="d-flex justify-content-center mb-4 align-items-center">
                     <div class="stat-box">
-                        <div>{{ daysSinceJoined }}</div>
+                        <div class="fs-3">{{ daysSinceJoined }}</div>
                         <div>함께한지</div>
                     </div>
                     <div class="stat-box">
-                        <div>{{ postsCount }}</div>
+                        <div class="fs-3">{{ postsCount }}</div>
                         <div>게시글</div>
                     </div>
                     <div class="stat-box">
-                        <div>{{ likesCount }}</div>
+                        <div class="fs-3">{{ likesCount }}</div>
                         <div>좋아요</div>
                     </div>
                 </div>

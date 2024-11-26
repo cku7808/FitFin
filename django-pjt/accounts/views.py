@@ -85,13 +85,17 @@ def delete_products(request):
     product_id = request.data.get('product_id')
     option_id = request.data.get('option_id')
 
-    if (product_id, option_id) in user.registered_ptcd:  # 중복 방지
-        user.registered_ptcd.remove((product_id, option_id))
+    if [product_id, option_id] in user.registered_ptcd:  # 중복 방지
+        test = '있음'
+        user.registered_ptcd.remove([product_id, option_id])
+    else:
+        test = [product_id, option_id]
 
     user.save()  # 변경사항 저장
     return Response({
         "message": "상품 해지가 완료되었습니다.",
-        "registered_ptcd": user.registered_ptcd
+        "registered_ptcd": user.registered_ptcd,
+        "test": test,
     }, status=status.HTTP_200_OK)
 
 
