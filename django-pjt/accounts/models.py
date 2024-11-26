@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import os
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # 소득 수준
 # 소비 성향
@@ -21,19 +21,6 @@ class User(AbstractUser):
     is_married = models.BooleanField(default=False)
     job = models.CharField(max_length=200)
     age = models.IntegerField(default=0)
-    # profile_img = models.ImageField(blank=True, null=True, 
-    #                                 default='accounts/profile.png',
-    #                                 upload_to='profile_images/')
-    
-    # def save(self, *args, **kwargs):
-    #     # If the instance already exists in the database
-    #     if self.pk:
-    #         old_user = User.objects.filter(pk=self.pk).first()
-    #         if old_user and old_user.profile_img != self.profile_img:
-    #             # If the old image is not the default image, delete it
-    #             if old_user.profile_img and old_user.profile_img.name != 'accounts/profile.png':
-    #                 if os.path.isfile(old_user.profile_img.path):
-    #                     old_user.profile_img.delete(save=False)
-        
-    #     super().save(*args, **kwargs)
+    credit = models.IntegerField(validators=[MinValueValidator(0),
+                                       MaxValueValidator(1000)], default=0)
 

@@ -16,7 +16,7 @@ export const useCounterStore = defineStore('counter', () => {
   const signUp = function (payload) {
     const { 
       username, email, password1, password2,
-      income, assets, is_married, job, age
+      income, assets, is_married, job, age, credit
 
      } = payload 
 
@@ -25,7 +25,7 @@ export const useCounterStore = defineStore('counter', () => {
       url: `${BASE_URL}/accounts/signup/`,
       data: {
         username, email, password1, password2,
-        income, assets, is_married, job, age
+        income, assets, is_married, job, age, credit
       }
     })
     .then(res => {

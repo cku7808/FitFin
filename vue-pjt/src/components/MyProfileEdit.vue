@@ -48,8 +48,8 @@
                       </tr>
                       <tr>
                       <td class="font-weight-bold"><label for="job">직업</label></td>
-                      <td class="form-group">
-                        <select name="selectJob" id="selectJob" class="form-select form-control login-form w-50 me-2" aria-label="Default select example" v-model.trim="job">
+                      <td class="font-weight-bold form-group">
+                        <select name="selectJob" id="selectJob" class="form-select form-control me-2" aria-label="Default select example" v-model.trim="job">
                           <option value="무직">무직</option>
                           <option value="직장인">직장인</option>
                           <option value="공무원">공무원</option>
@@ -59,7 +59,7 @@
                       </td>
                       </tr>
                       <tr>
-                      <td class="font-weight-bold"><label for="married">혼인여부</label></td>
+                      <td class="font-weight-bold"><label for="married">혼인 여부</label></td>
                         <td>
                           <input type="radio" name="married" id="married" value="true" v-model="is_married">
                           <label for="married"><span></span>기혼</label>&nbsp&nbsp
@@ -72,12 +72,19 @@
                       <td><input type="text" id="spending" v-model="userInfo.spending" class="form-control" /></td>
                       </tr> -->
                       <tr>
-                      <td class="font-weight-bold"><label for="income">소득수준</label></td>
-                      <td><input type="number" id="income" v-model="income" class="form-control" /></td>
+                        <td class="font-weight-bold"><label for="income">소득 수준</label></td>
+                        <td><input type="number" id="income" v-model="income" class="form-control" /></td>
+                        <td class="font-weight-bold p-0"><label for="income">만원</label></td>
+                      </tr>
+                      <tr class="">
+                        <td class="font-weight-bold"><label for="asset">자산</label></td>
+                        <td><input type="number" id="asset" v-model="assets" class="form-control" /></td>
+                        <td class="font-weight-bold p-0"><label for="income">만원</label></td>
                       </tr>
                       <tr>
-                      <td class="font-weight-bold"><label for="asset">자산</label></td>
-                      <td><input type="number" id="asset" v-model="assets" class="form-control" /></td>
+                        <td class="font-weight-bold"><label for="credit">신용 점수</label></td>
+                        <td><input type="number" id="credit" v-model="credit" class="form-control" /></td>
+                        <td class="font-weight-bold p-0"><label for="income">점</label></td>
                       </tr>
                   </tbody>
               </table>
@@ -132,7 +139,7 @@
   const is_married = ref(userInfo.value.is_married)
   const job = ref(userInfo.value.job)
   const age = ref(userInfo.value.age)
-  const profile_img = ref(userInfo.value.profile_img)
+  const credit = ref(userInfo.value.credit)
 
   // 프로필 저장 핸들러
   const editProfile = () => {
@@ -147,7 +154,7 @@
             is_married: is_married.value,
             income: income.value,
             assets: assets.value,
-            profile_img: profile_img.value
+            credit: credit.value
         },
     })
     .then((res) => {
@@ -166,9 +173,7 @@ const deleteAccount = () => {
     axios({
         method: 'delete',
         url: `${store.BASE_URL}/api/v1/userinfo/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header
     })
     .then((res) => {
         store.logOut()
@@ -301,9 +306,12 @@ input:focus {
 .profile-table th,
 .profile-table td {
   padding: 12px;
-  border-bottom: 1px solid #D7D5D5;
+  
   text-align: left;
 }
-
+.profile-table tr {
+  width: 80%;
+  border-bottom: 1px solid #D7D5D5;
+}
   </style>
   
