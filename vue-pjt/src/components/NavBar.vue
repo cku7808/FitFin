@@ -25,12 +25,12 @@
                     <ul class="navbar-nav d-flex flex-row" v-if="store.isLogin">
                         <li class="nav-item">
                             <a @click="store.logOut()" style="cursor: pointer;">
-                            <img src="/navbar/Logout.png" alt="Logout" width="100" height="24" class="me-2">
+                            <img src="/navbar/Logout.png" alt="Logout" width="90" height="21" class="me-2">
                             </a>
                         </li>
                         <li class="nav-item me-3">
                             <RouterLink :to="{ name: 'MyProfile'}">
-                            <img src="/navbar/Mypage.png" alt="Mypage" width="100" height="24" class="me-2">
+                            <img src="/navbar/Mypage.png" alt="Mypage" width="90" height="21" class="me-2">
                             </RouterLink>
                         </li>
                         <!-- <li class="nav-item">
@@ -42,12 +42,12 @@
                     <ul class="navbar-nav d-flex flex-row" v-else>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'SignUpView'}">
-                            <img src="/navbar/Signup.png" alt="Signup" width="80" height="19" class="me-2">
+                            <img src="/navbar/Signup.png" alt="Signup" width="90" height="21" class="me-2">
                             </RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'LogInView'}">
-                            <img src="/navbar/Login.png" alt="Login" width="80" height="19">
+                            <img src="/navbar/Login.png" alt="Login" width="90" height="21">
                             </RouterLink>
                         </li>
                     </ul>
