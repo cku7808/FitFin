@@ -10,11 +10,11 @@ from django.conf import settings
 import requests
 from datetime import datetime, timedelta
 
-from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption, LoanProducts, LoanOption
+from .models import Currency, TodayCurrency, DepositProducts, DepositOption, SavingProducts, SavingOption, LoanProducts, LoanOption, LoanTotal
 from .serializers import CurrencySerializer, TodayCurrencySerializer, DepositProductsSerializer, \
     SavingProductsSerializer, DepositOptionSerializer, SavingOptionSerializer, \
     DepositProductsDetailSerializer, DepositProductsDbSerializer, SavingProductsDbSerializer, SavingProductsDetailSerializer, \
-    LoanProductsDbSerializer, LoanOptionSerializer
+    LoanProductsDbSerializer, LoanOptionSerializer, LoanTotalSerializer
 
 # 그래프 그리기
 import matplotlib.pyplot as plt
@@ -578,3 +578,172 @@ def save_loan_products(request):  # 대출 상품
             serializer.save()
             
     return JsonResponse({'message': '저장 성공!'})
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def save_loan_total(request):  # 대출 상품
+    BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
+    URL = BASE_URL + 'creditLoanProductsSearch.json'
+    params = {
+        'auth': settings.API_KEY['financial'],
+        'topFinGrpNo': '020000',
+        'pageNo': 1,
+    }
+
+    response = requests.get(URL, params=params).json() 
+
+    for li in response.get('result').get('baseList'):  # 예금 상품 정보 저장
+        dcls_month = li.get('dcls_month')
+        fin_co_no = li.get('fin_co_no')
+        fin_prdt_cd = li.get('fin_prdt_cd')
+        
+        if (LoanProducts.objects.filter(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month).exists()) \
+            & (LoanOption.objects.filter(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month).exists()):
+
+            product = LoanProducts.objects.get(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month)
+            option = LoanOption.objects.get(fin_prdt_cd=fin_prdt_cd, fin_co_no=fin_co_no, dcls_month=dcls_month)
+        
+
+            save_data = {
+                'dcls_month': product.dcls_month,
+                'fin_co_no': product.fin_co_no,
+                'fin_prdt_cd': product.fin_prdt_cd,
+                'kor_co_nm': product.kor_co_nm,
+                'fin_prdt_nm': product.fin_prdt_nm,
+                'join_way': product.join_way,
+                'crdt_prdt_type': product.crdt_prdt_type,
+                'crdt_prdt_type_nm': product.crdt_prdt_type_nm,
+                'cb_name': product.cb_name,
+                'dcls_strt_day': product.dcls_strt_day,
+                'dcls_end_day': product.dcls_end_day,
+                'fin_co_subm_day': product.fin_co_subm_day,
+                'crdt_lend_rate_type': option.crdt_lend_rate_type,
+                'crdt_lend_rate_type_nm': option.crdt_lend_rate_type_nm,
+                'crdt_grad_1': option.crdt_grad_1,
+                'crdt_grad_4': option.crdt_grad_4,
+                'crdt_grad_5': option.crdt_grad_5,
+                'crdt_grad_6': option.crdt_grad_6,
+                'crdt_grad_10': option.crdt_grad_10,
+                'crdt_grad_11': option.crdt_grad_11,
+                'crdt_grad_12': option.crdt_grad_12,
+                'crdt_grad_13': option.crdt_grad_13,
+                'crdt_grad_avg': option.crdt_grad_avg,
+            }
+
+            serializer = LoanTotalSerializer(data=save_data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+            
+    return JsonResponse({'message': '저장 성공!'})
+
+
+
+
+# 대출 상품 추천
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+import random
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+# 신용 점수와 신용 등급 매핑
+credit_mapping = {
+    range(901, 1000): 1,
+    range(801, 900): 4,
+    range(701, 800): 5,
+    range(601, 700): 6,
+    range(501, 600): 10,
+    range(401, 500): 11,
+    range(301, 400): 12,
+    range(0, 300): 13
+}
+# 신용 등급에 따른 데이터 컬럼 매핑
+credit_column_mapping = {
+    1: "fields.crdt_grad_1",
+    4: "fields.crdt_grad_4",
+    5: "fields.crdt_grad_5",
+    6: "fields.crdt_grad_6",
+    10: "fields.crdt_grad_10",
+    11: "fields.crdt_grad_11",
+    12: "fields.crdt_grad_12",
+    13: "fields.crdt_grad_13"
+}
+# 라벨 인코딩 값
+job_mapping = {
+    "무직": 0,
+    "주부": 1,
+    "자영업자": 2,
+    "직장인": 3,
+    "공무원": 4,
+}
+
+# 신용 점수를 기반으로 신용 등급 계산
+def get_credit_level(credit_score):
+    for score_range, level in credit_mapping.items():
+        if credit_score in score_range:
+            return level
+    return None
+
+# 가입할 수 있는 상품 생성
+def create_user_loans(credit_level, loan_df):
+    column_name = credit_column_mapping[credit_level]
+    eligible_loans = loan_df[loan_df[column_name].notnull()]["pk"].tolist()
+    return eligible_loans
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def recommend_loans(request):
+    """
+    상품 추천을 반환하는 뷰
+    """
+    # 사용자 데이터 로드
+    my_username = request.user.username
+
+    # 모든 사용자 데이터 로드
+    users = User.objects.all().values()
+    user_df = pd.DataFrame(list(users))
+
+    # 모든 대출 상품 데이터 로드
+    loans = LoanTotal.objects.all().values()
+    loan_df = pd.DataFrame(list(loans))  
+
+    # 사용자 데이터 준비
+    user_df["job_encoded"] = user_df["job"].map(job_mapping)
+    user_features = user_df[
+        ["income", "assets", "is_married", "job_encoded", "age", "credit"]
+    ]
+
+    #################
+    my_df = user_df[user_df['username']==my_username]
+    my_idx = user_df[user_df['username']==my_username].index
+
+    # 코사인 유사도 계산
+    cosine_sim = cosine_similarity(user_features, user_features)
+
+    # 가장 유사한 사용자 인덱스 추출
+    similar_user_indices = cosine_sim[my_idx].argsort()[-4:][::-1]  # 유사도 높은 3명의 사용자
+
+    # 유사한 사용자가 가입한 대출 상품 추출
+    similar_loans = []
+    for idx in similar_user_indices:    
+        similar_loans.extend(user_df.iloc[idx]["registered_loan"])
+
+    # 신용 점수 기반으로 가입 가능한 상품 필터링
+    available_loans = create_user_loans(get_credit_level(my_df["credit"]), loan_df)
+
+    # 최종 추천 상품
+    recommended_loans = [loan[0] for loan in similar_loans if loan[0] in available_loans]
+
+    # 중복 제거 및 최대 3개 상품 추천
+    final_recommendations = random.sample(recommended_loans, min(3, len(recommended_loans)))
+
+    # df to json
+    # final_recommendations = user_df.to_dict(orient="records")    # df to json
+    final_recommendations = user_df.to_dict(orient="records")
+
+    return JsonResponse({
+        "recommended_loans": final_recommendations,
+    })
