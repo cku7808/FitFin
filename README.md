@@ -1,5 +1,5 @@
 ### 나에게 Fit한 금융, Fitfin
-# <img src='./README_IMG/logo.PNG' alt='logo' width=30> FinFit
+# <img src='./readme_img/logo.PNG' alt='logo' width=30> FinFit
 
 ### 목차
 1. [ 팀원 정보 및 업무 분담 내역](#팀원-정보-및-업무-분담-내역)
@@ -13,12 +13,21 @@
 ## 팀원 정보 및 업무 분담 내역
 - 프로젝트 기간 : 2023/11/18 ~ 2023/11/26 (약 9일)
 
-|이름|역할 및 구현 기능|
-|---|---|
-|선예지|Front End - figma, 회원가입, 로그인, 마이페이지, 홈, 금융 상품 비교, 환율 계산기, 주변 은행 검색, 게시판 CRUD, 상품 관리, 상품 추천<br>Back End- 유저 프로필 수정 기능, 금융 상품 정보 저장 |
-|최고운|Back End - ERD, 회원 커스터마이징, 환율 정보 저장 및 업데이트, 금융 상품 정렬 및 필터링, 금융 상품 회원 저장, 게시판 CRUD, 추천 알고리즘 1, 2 |
+- 예지
+  - 예적금금리비교(금융상품통합공시API), 환율(한국수출입은행 환율정보 API), 지도 API 호출 알고리즘 작성
+  - DB에 API 호출한 결과 데이터 저장 
+  - 환율 계산 페이지
+  - 마이페이지
+  - 상품 관리 페이지
+  - 상품 추천 페이지
+- 고운
+  - 로그인, 회원가입 기능
+  - 카카오 소셜 로그인 기능
+  - 예적금 상품 비교 및 상세 조회, 상품 가입 기능
+  - 주변 은행 찾기 카카오맵 API 구현, 현재 위치 및 위치 입력 받아 주변 은행 15개 출력
+  - 마이페이지  
 
-!!!!! ## 설계 내용 및 실제 구현 정도
+## 설계 내용 및 실제 구현 정도
 ### 기술 스택
 **front**
 - language
@@ -41,7 +50,7 @@
 ###  Figma
 [**Figma Link**](https://www.figma.com/design/sqCNSRfUtqsE1T4MI5CO8R/SSAFY_PJT1?m=auto&t=YPfu3Hl2ZoxnVhYQ-1)
 
-<img src="./README_IMG/figma.PNG" alt='Figma'/>
+<img src="./readme_img/figma.PNG" alt='Figma'/>
 
 ### 설계 내용 및 구현
 - 설계 내용 : 예적금 상품 비교, 환율 계산, 은행 검색, 게시판, 회원, 상품 관리, 상품 추천, 회원가입, 로그인(소셜로그인-카카오)
@@ -65,10 +74,10 @@
 ## 데이터베이스 모델링(ERD)
 [!!!! **ERD drawio Link**](https://drive.google.com/file/d/1DKVab0B_zfNrMHybdNuF31o8LawDn5PA/view?usp=sharing)
 
-<img src="./README_IMG/ERD.PNG" alt='Figma'/>
+<img src="./readme_img/ERD.PNG" alt='Figma'/>
 
 ### API 명세서
-!!!! <img src='./README_IMG/API_명세서.PNG' alt='API 명세서' /> -->
+!!!! <img src='./readme_img/API_명세서.PNG' alt='API 명세서' /> -->
 
 
 ## 금융 상품 추천 알고리즘 (대출)
@@ -79,7 +88,7 @@
 
 ### 추천 알고리즘
 - 회원 가입 시 나이, 직업, 혼인여부, 자산, 소득, 신용 점수 기입
-- !!! 사용자와 유사한 회원을 계산할 조건을 선택받음
+<!-- - !!! 사용자와 유사한 회원을 계산할 조건을 선택받음 -->
 - 선택한 조건으로 코사인 유사도를 계산하여 유사한 회원 추출
 - 가장 유사한 회원 5명이 가입한 상품 중 가입 가능한 상품 3개 추출
 - 가입 가능 조건은 사용자의 신용 점수에 따라 신용 등급을 부여하여 확인
@@ -94,15 +103,15 @@
 - 로그인 바: 로그인 상태에 따라 회원가입 & 로그인 또는 로그아웃 & 마이페이지
 
 ### 2. 메인 페이지
-<img src='./README_IMG/main.PNG' alt='메인페이지'/>
+<img src='./readme_img/main.PNG' alt='메인페이지'/>
 
 - Carousel: 금융 기능 이미지 및 링크 (마이 페이지, 금융 상품, 환율 계산)
 - 환율 최고 증감율: 가장 환율 변동이 큰 환율 정보 그래프 2개
 - 예적금 Best: 금리가 가장 큰 예적금 상품 각각 1개
 
 ### 3. 로그인, 회원가입 페이지
-<img src='./README_IMG/login.PNG' alt='로그인페이지'/>
-<img src='./README_IMG/singup.PNG' alt='회원가입페이지'/>
+<img src='./readme_img/login.PNG' alt='로그인페이지'/>
+<img src='./readme_img/singup.PNG' alt='회원가입페이지'/>
 - 회원가입
     - 아이디 중복 확인
     - 비밀번호 일치 여부 확인
@@ -111,9 +120,9 @@
 
 
 ### 4. 마이페이지
-<img src='./README_IMG/mypage.PNG' alt='마이페이지'/>
-<img src='./README_IMG/myproduct.PNG' alt='가입상품관리페이지'/>
-<img src='./README_IMG/recommend.PNG' alt='상품추천페이지1'/>
+<img src='./readme_img/mypage.PNG' alt='마이페이지'/>
+<img src='./readme_img/myproduct.PNG' alt='가입상품관리페이지'/>
+<img src='./readme_img/recommend.PNG' alt='상품추천페이지1'/>
 - 회원 정보
     - 사용자 활동 정보: 가입 기간(일), 작성 게시글(수), 좋아요한 게시글(수)
     - 사용자 개인 정보: 이메일, 나이, 직업, 혼인여부, 소득 수준, 자산, 신용 점수 입력
@@ -130,9 +139,9 @@
     - 유사한 회원이 가입한 대출 상품 추천
 
 ### 5. 금융 상품 비교 페이지
-<img src='./README_IMG/deposit.PNG' alt='예적금페이지'/>
-<img src='./README_IMG/depositdetail.PNG' alt='예적금상세페이지'/>
-<img src='./README_IMG/depositoption.PNG' alt='예적금옵션페이지'/>
+<img src='./readme_img/deposit.PNG' alt='예적금페이지'/>
+<img src='./readme_img/depositdetail.PNG' alt='예적금상세페이지'/>
+<img src='./readme_img/depositoption.PNG' alt='예적금옵션페이지'/>
 
 - 금융 상품 비교 페이지
     - 예금 페이지와 적금 페이지를 탭으로 분리
@@ -145,28 +154,28 @@
     - 상품의 옵션을 선택하여 상품 가입
 
 ### 6. 환율 계산 페이지
-!!!!! <img src='./README_IMG/currency.PNG' alt='환율계산페이지'/>
+<img src='./readme_img/currency.PNG' alt='환율계산페이지'/>
 
 - 나라 2개를 선택하여 환율 계산
 - 22개국 영업일 기준 7일 환율 정보 및 그래프 제공
 - 영업일 기준 매일 오전 11시이후 자동으로 데이터베이스를 업데이트하여 환율 정보 제공
 
 ### 7. 주변 은행 검색 페이지
-<img src='./README_IMG/bank.PNG' alt='주변은행검색페이지'/>
+<img src='./readme_img/bank.PNG' alt='주변은행검색페이지'/>
 
 - 초기 설정은 현재 위치에서 은행 검색
 - 행정 구역 별 또는 도로명 주소를 입력 받아 은행 검색
 - 아이콘 클릭 시 은행 이름 및 주소 제공
 
-### 8. 금융 상품 자유 게시판
-!!!!! <img src='./README_IMG/게시판목록페이지.PNG' alt='게시판목록페이지'/>
-!!!!! <img src='./README_IMG/게시판글쓰기페이지.PNG' alt='게시판글쓰기페이지'/>
-!!!!! <img src='./README_IMG/게시판상세페이지.PNG' alt='게시판상세페이지'/>
-!!!!! <img src='./README_IMG/게시판댓글수정페이지.PNG' alt='게시판수정페이지'/>
-!!!!! <img src='./README_IMG/게시판수정페이지.PNG' alt='게시판댓글수정페이지'/>
+<!-- ### 8. 금융 상품 자유 게시판
+!!!!! <img src='./readme_img/게시판목록페이지.PNG' alt='게시판목록페이지'/>
+!!!!! <img src='./readme_img/게시판글쓰기페이지.PNG' alt='게시판글쓰기페이지'/>
+!!!!! <img src='./readme_img/게시판상세페이지.PNG' alt='게시판상세페이지'/>
+!!!!! <img src='./readme_img/게시판댓글수정페이지.PNG' alt='게시판수정페이지'/>
+!!!!! <img src='./readme_img/게시판수정페이지.PNG' alt='게시판댓글수정페이지'/>
 
 - 게시물 CRUD와 댓글 CRUD를 제공
-- !!! 좋아요 기능
+- !!! 좋아요 기능 -->
 
 ## 프로젝트 후기
 
