@@ -16,7 +16,7 @@
             <div class="form-group mb-3">
                 <div class="input-group">
                     <input type="email" id="email" class="form-control login-form rounded-4 poppins-regular col-10" v-model.trim="email" placeholder="이메일을 입력해주세요">
-                    <button type="button" class="rounded-4 bt col-2 ms-3">이메일 인증</button>
+                    <!-- <button type="button" class="rounded-4 bt col-2 ms-3">이메일 인증</button> -->
                 </div>
             </div>
             <div class="form-group mb-3 d-flex gap-3 align-items-center">

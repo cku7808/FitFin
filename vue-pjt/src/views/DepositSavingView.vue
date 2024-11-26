@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex align-items-center justify-content-center flex-column col-12">
+    <div class="d-flex align-items-center justify-content-center flex-column col-12" v-if="store.isLogin">
       <h2 class="score-dream-bold">
         예적금 
         <span class="text-highlight">금리</span>
@@ -37,8 +37,16 @@
 import DepositProduct from '@/components/DepositProduct.vue';
 import SavingProduct from '@/components/SavingProduct.vue';
 import { ref } from 'vue';
+import { useCounterStore } from '@/stores/counter';
+import router from '@/router';
 
+const store = useCounterStore()
 const productType = ref('deposit')
+
+if(store.isLogin === false) {
+  alert("로그인을 먼저 해주세요")
+  router.push({name: "LogInView"})
+}
 </script>
 
 <style scoped>

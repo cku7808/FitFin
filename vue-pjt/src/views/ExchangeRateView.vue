@@ -147,6 +147,14 @@
 import axios from 'axios';
 import { ref, computed } from 'vue';
 import { onMounted } from 'vue';
+import router from "@/router";
+import { useCounterStore } from "@/stores/counter";
+
+const store = useCounterStore();
+if(store.isLogin === false) {
+  alert("로그인을 먼저 해주세요")
+  router.push({name: "LogInView"})
+}
 
 import ExchangeRateGraph from '@/components/ExchangeRateGraph.vue';
 

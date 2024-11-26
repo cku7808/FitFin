@@ -39,6 +39,15 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import markerImageSrc from '/map/marker3.png';
+import router from "@/router";
+import { useCounterStore } from "@/stores/counter";
+
+const store = useCounterStore();
+if(store.isLogin === false) {
+  alert("로그인을 먼저 해주세요")
+  router.push({name: "LogInView"})
+}
+
 
 // Kakao Map API Key
 const VITE_KAKAO_MAP_KEY = import.meta.env['VITE_API_KEY_KAKAO_JS']
