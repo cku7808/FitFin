@@ -166,21 +166,24 @@ onMounted(() => {
 })
 
 const signUpForDepositProduct = (option_id) => {
-    axios({
-        method: 'post',
-        url: `${store.BASE_URL}/api/v1/signup_products/`,
-        headers: store.header,
-        data: {
-            product_id: product_id.value,
-            option_id: option_id,
-        },
-    })
-    .then((res) => {
-        console.log(res.data)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+    if (confirm('해당 상품을 가입하시겠습니까?')){
+
+        axios({
+            method: 'post',
+            url: `${store.BASE_URL}/api/v1/signup_products/`,
+            headers: store.header,
+            data: {
+                product_id: product_id.value,
+                option_id: option_id,
+            },
+        })
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 }
 
 const windowWidth = ref(window.innerWidth); // 현재 창 너비 저장

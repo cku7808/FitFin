@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h1>게시글 작성</h1>
+  <div class="coredream-regular">
+    <h5 class="coredream-bold">게시글 작성</h5>
     <form @submit.prevent="createArticle">
-      <div>
+      <div class="coredream-regular">
         <label for="title">제목 : </label>
         <input type="text" id="title" v-model.trim="title">
       </div>
-      <div>
+      <div class="coredream-regular">
         <label for="content">내용 : </label>
         <textarea id="content" v-model.trim="content"></textarea>
       </div>
@@ -51,6 +51,31 @@ const createArticle = function () {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.coredream-bold {
+font-family: 'S-CoreDream-3Light';
+font-weight: bold;
+font-style: normal;
+}
+
+.coredream-regular {
+font-family: 'S-CoreDream-3Light';
+font-weight: 400;
+font-style: normal;
+}
+
+.coredream-semibold {
+font-family: 'S-CoreDream-3Light';
+font-weight: 600;
+font-style: normal;
+}
+
+
 /* 전체 레이아웃 */
 div {
   font-family: 'Arial', sans-serif;

@@ -1,23 +1,35 @@
 <template>
-  <div>
-    <h1>Detail</h1>
+  <div class="coredream-regular">
+    <h5 class="coredream-bold">게시글 상세보기</h5>
     <div v-if="article">
-      <p>게시글 번호 : {{ article.id }}</p>
+      <!-- <p>게시글 번호 : {{ article.id }}</p> -->
       <p>제목 : {{ article.title }}</p>
       <p>내용 : {{ article.content }}</p>
-      <p>작성일 : {{ article.created_at }}</p>
-      <p>수정일 : {{ article.updated_at }}</p>
+      <p>작성일 : {{ article.created_at.slice(0,10) }}</p>
+      <p>수정일 : {{ article.updated_at.slice(0,10) }}</p>
+      <!-- <p>작성자 : {{ article.user }}</p> -->
 
           <!-- 좋아요 버튼 -->
     <button @click="toggleLike" class="btn btn-outline-danger">
       <span v-if="liked">❤️</span>
       <span v-else>🤍</span>
-      좋아요 ({{ likeCount }})
+      좋아요
+      <!-- ({{ likeCount }}) -->
     </button>
 
 
       <!-- 삭제 버튼을 클릭하면 모달을 띄우도록 설정 -->
+
       <button
+        id="openModalButton"
+        type="button"
+        class="btn btn-danger"
+        @click="deleteArticle"
+      >
+        삭제
+      </button>
+
+      <!-- <button
         id="openModalButton"
         type="button"
         class="btn btn-danger"
@@ -25,7 +37,7 @@
         data-bs-target="#deleteModal"
       >
         삭제
-      </button>
+      </button> -->
 
 
       <button type="button" class="btn" @click="editArticle">
@@ -33,7 +45,7 @@
       </button>
 
       <!-- 삭제 모달 -->
-      <div
+      <!-- <div
         class="modal fade"
         id="deleteModal"
         data-bs-backdrop="static"
@@ -65,14 +77,14 @@
               >
                 취소
               </button>
-              <!-- 모달 내 삭제 버튼 -->
-              <button @click="handleDeleteAndRemoveFocus" type="button" class="btn btn-danger">
+              모달 내 삭제 버튼 -->
+              <!-- <button @click="handleDeleteAndRemoveFocus" type="button" class="btn btn-danger">
                 삭제
               </button>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <CommentCreate
@@ -102,42 +114,46 @@ const handleDeleteAndRemoveFocus = async () => {
 };
 
 // 삭제 버튼 클릭 시 호출되는 함수
-const handleDelete = async () => {
-  try {
-    // 모달 닫기
-    const modalElement = document.getElementById("deleteModal");
-    const modalInstance = Modal.getInstance(modalElement);
-    if (modalInstance) {
-      modalInstance.hide();
-    }
+// const handleDelete = async () => {
+//   try {
+//     // 모달 닫기
+//     const modalElement = document.getElementById("deleteModal");
+//     const modalInstance = Modal.getInstance(modalElement);
+//     if (modalInstance) {
+//       modalInstance.hide();
+//     }
 
-    // 약간의 지연 시간 추가
-    await new Promise((resolve) => setTimeout(resolve, 300));
+//     // 약간의 지연 시간 추가
+//     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    // 게시글 삭제 요청
-    await deleteArticle();
+//     // 게시글 삭제 요청
+//     await deleteArticle();
 
-    // 게시글 목록 페이지로 이동
-    router.push({ name: "ArticleList" });
-  } catch (error) {
-    console.error("삭제 처리 중 오류:", error);
-    alert("삭제에 실패했습니다. 다시 시도해주세요.");
-  }
-};
+//     // 게시글 목록 페이지로 이동
+//     router.push({ name: "ArticleList" });
+//   } catch (error) {
+//     console.error("삭제 처리 중 오류:", error);
+//     alert("삭제에 실패했습니다. 다시 시도해주세요.");
+//   }
+// };
 
 // 게시글 삭제 함수
 const deleteArticle = function () {
-  axios({
-    method: 'delete',
-    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
-    headers: store.header,
-  })
-    .then((res) => {
-      console.log('게시글 작성 성공!')
+  if (confirm('게시글을 삭제하시겠습니까?')){
+
+    axios({
+      method: 'delete',
+      url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
+      headers: store.header,
     })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        console.log('게시글 삭제 성공!')
+        router.push({ name: "ArticleList" });
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 }
 
 // 게시글 상세 정보 로드 함수
@@ -157,17 +173,17 @@ const loadArticleDetail = function () {
 }
 
 // 포커스를 모달을 트리거했던 버튼으로 이동시키는 함수
-const focusTriggerButton = () => {
-  const openModalButton = document.getElementById("openModalButton");
-  if (openModalButton) {
-    openModalButton.focus();
-  }
-};
+// const focusTriggerButton = () => {
+//   const openModalButton = document.getElementById("openModalButton");
+//   if (openModalButton) {
+//     openModalButton.focus();
+//   }
+// };
 
 // 포커스를 제거하는 함수
-const removeFocus = () => {
-  document.activeElement.blur();
-};
+// const removeFocus = () => {
+//   document.activeElement.blur();
+// };
 
 // 컴포넌트가 마운트되면 게시글 상세 정보 로드
 onMounted(() => {
@@ -200,6 +216,32 @@ const toggleLike = function () {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.coredream-bold {
+font-family: 'S-CoreDream-3Light';
+font-weight: bold;
+font-style: normal;
+}
+
+.coredream-regular {
+font-family: 'S-CoreDream-3Light';
+font-weight: 400;
+font-style: normal;
+}
+
+.coredream-semibold {
+font-family: 'S-CoreDream-3Light';
+font-weight: 600;
+font-style: normal;
+}
+
+
+
 /* 전체 컨테이너 */
 div {
   font-family: 'Arial', sans-serif;

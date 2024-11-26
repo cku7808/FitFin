@@ -66,10 +66,10 @@
                         [{{ myproduct.product_bank }}] {{ myproduct.product_name }} ({{ myproduct.option_trm }}개월)
                     </span>
                     <div class="product-actions">
-                        <button class="action-btn" @click="viewDetails(myproduct)">
+                        <button class="action-btn" @click="viewDetails(myproduct.product_id)">
                         <i class="icon-search">🔍</i>
                         </button>
-                        <button class="action-btn" @click="removeProduct(myproduct)">
+                        <button class="action-btn" @click="removeProduct(myproduct.product_code, myproduct.option_id)">
                         <i class="icon-delete">❌</i>
                         </button>
                     </div>
@@ -110,22 +110,25 @@ const viewDetails = (id) => {
     router.push({ name: "DepositProductDetail", params: {id: id}});
   };
 const removeProduct = (product_id, option_id) => {
-    axios({
-        method: 'post',
-        url: `${store.BASE_URL}/api/v1/delete_products/`,
-        headers: store.header,
-        data: {
-            product_id: product_id,
-            option_id: option_id,
-        },
-    })
-    .then((res) => {
-        console.log(res.data)
-        loadMyProduct()
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+    if (confirm('상품을 해지하시겠습니까?')){
+
+        axios({
+            method: 'post',
+            url: `${store.BASE_URL}/api/v1/delete_products/`,
+            headers: store.header,
+            data: {
+                product_id: product_id,
+                option_id: option_id,
+            },
+        })
+        .then((res) => {
+            console.log(res.data)
+            loadMyProduct()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
   };
 
 // 나의 상품 정보

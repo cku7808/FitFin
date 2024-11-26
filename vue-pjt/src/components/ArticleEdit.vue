@@ -1,6 +1,7 @@
 <template>
-    <h1>게시글 수정</h1>
-    <div v-if="article">
+  <div class='coredream-regular'>
+    <h5 class='coredream-bold'>게시글 수정</h5>
+    <div v-if="article" class='coredream-regular'>
       <form @submit.prevent="updateArticle">
 
           <label for="title" class="form-label">제목</label>
@@ -26,6 +27,7 @@
         </button>
       </form>
     </div>
+  </div>
 </template>
 
 <script setup>
@@ -88,6 +90,31 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.coredream-bold {
+font-family: 'S-CoreDream-3Light';
+font-weight: bold;
+font-style: normal;
+}
+
+.coredream-regular {
+font-family: 'S-CoreDream-3Light';
+font-weight: 400;
+font-style: normal;
+}
+
+.coredream-semibold {
+font-family: 'S-CoreDream-3Light';
+font-weight: 600;
+font-style: normal;
+}
+
+
 /* 전체 컨테이너 */
 div {
   font-family: 'Arial', sans-serif;

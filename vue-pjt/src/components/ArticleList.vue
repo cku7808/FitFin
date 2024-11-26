@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <h3>Article List</h3>
+    <div class="coredream-regular">
         <button type="button" class="btn btn-primary" @click="createarticle">작성하기</button>
         <hr>
         <ArticleListItem
         v-for="article in articlelist"
         :key="article.id"
-        :article="article"/>
+        :article="article"
+        class="coredream-regular"/>
     </div>
 </template>
 
@@ -48,6 +48,31 @@ const createarticle = () => {
 </script>
 
 <style scoped>
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.coredream-bold {
+font-family: 'S-CoreDream-3Light';
+font-weight: bold;
+font-style: normal;
+}
+
+.coredream-regular {
+font-family: 'S-CoreDream-3Light';
+font-weight: 400;
+font-style: normal;
+}
+
+.coredream-semibold {
+font-family: 'S-CoreDream-3Light';
+font-weight: 600;
+font-style: normal;
+}
+
 /* 전체 컨테이너 */
 div {
   font-family: 'Arial', sans-serif;
@@ -71,7 +96,7 @@ h3 {
 /* 작성하기 버튼 */
 button.btn-primary {
   display: block;
-  margin: 0 auto 20px auto; /* 버튼을 중앙 정렬 */
+  /*margin: 0 auto 20px auto;  버튼을 중앙 정렬 */
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
