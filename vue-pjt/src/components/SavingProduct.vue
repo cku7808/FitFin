@@ -44,7 +44,7 @@ const router = useRouter();
 const selectedBank = ref(route.query.bank || "");
 const uniqueBanks = ref([]);
 
-const loadDepositProduct = function () {
+const loadSavingProduct = function () {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/saving-products/`,
@@ -62,7 +62,7 @@ const loadDepositProduct = function () {
     })
 }
 onMounted(() => {
-    loadDepositProduct()    
+  loadSavingProduct()    
 })
 
 const filteredDatas = computed(() => {

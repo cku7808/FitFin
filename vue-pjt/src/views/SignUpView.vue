@@ -21,11 +21,13 @@
             </div>
             <div class="form-group mb-3 d-flex gap-3 align-items-center">
                 <div class="w-50">
-                    <input type="password" id="password1" class="form-control login-form poppins-regular rounded-4" v-model.trim="password1" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" id="password1" class="form-control login-form poppins-regular rounded-4" v-model.trim="password1" placeholder="비밀번호를 입력해주세요"
+                    @input="checkPasswords">
                 </div>
         
                 <div class="w-50">
-                    <input type="password" id="password2" class="form-control login-form poppins-regular rounded-4" v-model.trim="password2" placeholder="비밀번호를 다시 입력해주세요">
+                    <input type="password" id="password2" class="form-control login-form poppins-regular rounded-4" v-model.trim="password2" placeholder="비밀번호를 다시 입력해주세요"
+                    @input="checkPasswords">
                 </div>
                 <div id="password-feedback" class="feedback" aria-live="polite"></div>
             </div>
@@ -101,9 +103,12 @@
                     <option value="주부">주부</option>
                 </select>
 
-        
-                <div class="w-50 ms-2">
+                <div class="w-50 me-2">
                     <input type="number" id="age" class="form-control login-form poppins-regular" v-model="age" placeholder="나이를 입력해주세요">
+                </div>
+                
+                <div class="w-50">
+                    <input type="number" id="credit" class="form-control login-form poppins-regular" v-model="credit" placeholder="신용 점수를 입력해주세요">
                 </div>
             </div>
     
@@ -132,6 +137,7 @@ const assets = ref(0)
 const married = ref(false)
 const job = ref('')
 const age = ref(null)
+const credit = ref(null)
 
 const signUp = function () {
     const payload = {
@@ -144,6 +150,7 @@ const signUp = function () {
         is_married: married.value,
         job: job.value,
         age: age.value,
+        credit: credit.value
     }
     console.log(payload)
     store.signUp(payload)
@@ -208,41 +215,34 @@ const updateThumbPosition = (type, event) => {
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    const password1 = document.getElementById("password1");
-    const password2 = document.getElementById("password2");
+const checkPasswords = () => {
     const feedback = document.getElementById("password-feedback");
+    // 초기 상태: 입력값이 없으면 feedback 숨기기
+    if (password1.value === "" && password2.value === "") {
+        feedback.innerHTML = "";
+        feedback.classList.remove("visible");
+        return;
+    }
 
-    const checkPasswords = () => {
-        // 초기 상태: 입력값이 없으면 feedback 숨기기
-        if (password1.value === "" && password2.value === "") {
-            feedback.innerHTML = "";
-            feedback.classList.remove("visible");
-            return;
-        }
+    // 입력값이 있을 때 feedback 표시
+    feedback.classList.add("visible");
 
-        // 입력값이 있을 때 feedback 표시
-        feedback.classList.add("visible");
+    // 비밀번호 일치 여부 확인
+    if (password1.value === password2.value) {
+        feedback.innerHTML = `
+            <span><img src="/etc/check.png" width="30" height="30"> 비밀번호가 일치합니다</span>
+        `;
+        feedback.classList.remove("error");
+        feedback.classList.add("success");
+    } else {
+        feedback.innerHTML = `
+            <span><img src="/etc/red_check.png" width="30" height="30"> 비밀번호가 일치하지 않습니다</span>
+        `;
+        feedback.classList.remove("success");
+        feedback.classList.add("error");
+    }
+};
 
-        // 비밀번호 일치 여부 확인
-        if (password1.value === password2.value) {
-            feedback.innerHTML = `
-                <span><img src="/etc/check.png" width="30" height="30"> 비밀번호가 일치합니다</span>
-            `;
-            feedback.classList.remove("error");
-            feedback.classList.add("success");
-        } else {
-            feedback.innerHTML = `
-                <span><img src="/etc/red_check.png" width="30" height="30"> 비밀번호가 일치하지 않습니다</span>
-            `;
-            feedback.classList.remove("success");
-            feedback.classList.add("error");
-        }
-    };
-
-    password1.addEventListener("input", checkPasswords);
-    password2.addEventListener("input", checkPasswords);
-});
 
 </script>
 
