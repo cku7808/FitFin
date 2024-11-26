@@ -50,7 +50,7 @@
                         <td>{{ userInfo.job }}</td>
                         </tr>
                         <tr>
-                        <td class="font-weight-bold">혼인여부</td>
+                        <td class="font-weight-bold">혼인 여부</td>
                         <td>{{ is_married }}</td>
                         </tr>
                         <!-- <tr>
@@ -58,12 +58,16 @@
                         <td>{{ userInfo.email }}</td>
                         </tr> -->
                         <tr>
-                        <td class="font-weight-bold">소득수준</td>
-                        <td>{{ userInfo.income }}</td>
+                        <td class="font-weight-bold">소득 수준</td>
+                        <td>{{ userInfo.income }} 만원 ({{ convertToKorean(userInfo.income*10000) }})</td>
                         </tr>
                         <tr>
                         <td class="font-weight-bold">자산</td>
-                        <td>{{ userInfo.assets }}</td>
+                        <td>{{ userInfo.assets }} 만원 ({{ convertToKorean(userInfo.assets*10000) }})</td>
+                        </tr>
+                        <tr>
+                        <td class="font-weight-bold">신용 점수</td>
+                        <td>{{ userInfo.credit }} 점</td>
                         </tr>
                     </tbody>
                     </table>
@@ -114,7 +118,24 @@ if (userInfo.value.is_married === true) {
 } else if (userInfo.value.is_married === false) {
     is_married.value = "미혼";
 }
+const convertToKorean = (num) => {
+  if (num === 0) return "0원";
 
+  const units = ["", "만", "억", "조", "경"];
+  let unitIndex = 0;
+  let koreanNumber = "";
+
+  while (num > 0) {
+      const chunk = num % 10000; // 4자리씩 끊어서 처리
+      if (chunk > 0) {
+          koreanNumber = `${chunk}${units[unitIndex]} ${koreanNumber}`;
+      }
+      num = Math.floor(num / 10000);
+      unitIndex++;
+  }
+
+  return koreanNumber.trim(); // 마지막 공백 제거
+};
 </script>
 
 <style scoped>

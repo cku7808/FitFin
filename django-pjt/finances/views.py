@@ -430,7 +430,7 @@ def save_saving_products(request):  # 적금 상품
     # return Response(response)
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def deposit_products(request):
     products = DepositProducts.objects.all()
     serializer = DepositProductsDetailSerializer(products, many=True)
@@ -444,7 +444,7 @@ def deposit_products_detail(request, product_id):
     return Response(serializer.data, status.HTTP_200_OK)
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def saving_products(request):
     products = SavingProducts.objects.all()
     serializer = SavingProductsDetailSerializer(products, many=True)

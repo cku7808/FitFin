@@ -100,12 +100,12 @@
                                                     class="btn me-1" style="background-color: #C2D2F2; font-size: 13px;"
                                                     >가입하기
                                                 </button>
-                                                <button 
+                                                <!-- <button 
                                                     @click="" 
                                                     v-if="store.isLogin"
                                                     class="btn ms-1" style="background-color: #C2D2F2; font-size: 13px;"
                                                     >장바구니
-                                                </button>
+                                                </button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -142,9 +142,7 @@ const loadSavingtDetailProduct = function (id) {
     axios({
         method: 'get',
         url: `${store.BASE_URL}/api/v2/saving-products/${id}/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header
     })
     .then((res) => {
         data.value = res.data
@@ -169,9 +167,7 @@ const signUpForSavingProduct = (option_id) => {
     axios({
         method: 'post',
         url: `${store.BASE_URL}/api/v1/signup_products/`,
-        headers: {
-            Authorization: `Bearer ${store.accessToken}`, // JWT Access Token 포함
-        },
+        headers: store.header,
         data: {
             product_id: product_id.value,
             option_id: option_id

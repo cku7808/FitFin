@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import os
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # 소득 수준
 # 소비 성향
@@ -37,4 +37,6 @@ class User(AbstractUser):
     #                     old_user.profile_img.delete(save=False)
         
     #     super().save(*args, **kwargs)
+    credit = models.IntegerField(validators=[MinValueValidator(0),
+                                       MaxValueValidator(1000)], default=0)
 

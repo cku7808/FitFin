@@ -116,9 +116,8 @@ def user_info(request):
             return Response(status=status.HTTP_200_OK)
 
     elif request.method == 'DELETE':
-        if serializer.is_valid(raise_exception=True):
-            user.delete()
-            return JsonResponse({"message": "회원탈퇴가 완료되었습니다."}, status.HTTP_200_OK)
+        user.delete()
+        return Response({"message": "회원탈퇴가 완료되었습니다."}, status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
