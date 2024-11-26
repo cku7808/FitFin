@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Currency, TodayCurrency, DepositProducts, \
 SavingProducts, DepositOption, SavingOption, \
-LoanProducts, LoanOption
+LoanProducts, LoanOption, LoanTotal
 
 # 환율
 class CurrencySerializer(serializers.ModelSerializer):
@@ -33,6 +33,12 @@ class LoanProductsDbSerializer(serializers.ModelSerializer):
 class LoanOptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = LoanOption
+        fields = '__all__'
+        # read_only_fields = ('deposit_product',)
+
+class LoanTotalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LoanTotal
         fields = '__all__'
         # read_only_fields = ('deposit_product',)
 
