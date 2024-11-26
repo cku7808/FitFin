@@ -24,6 +24,13 @@ import os
 import matplotlib
 matplotlib.use('Agg')
 
+# 대출 상품 추천
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+import random
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 # <<<<<테스트 용 함수>>>>>>>>
 # 환율 계산
 
@@ -640,36 +647,28 @@ def save_loan_total(request):  # 대출 상품
 
 
 
-# 대출 상품 추천
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
-from sklearn.metrics.pairwise import cosine_similarity
-import pandas as pd
-import random
-from django.contrib.auth import get_user_model
-User = get_user_model()
-
+### 대출 상품 추천 ###
 # 신용 점수와 신용 등급 매핑
 credit_mapping = {
     range(901, 1000): 1,
-    range(801, 900): 4,
-    range(701, 800): 5,
-    range(601, 700): 6,
-    range(501, 600): 10,
-    range(401, 500): 11,
-    range(301, 400): 12,
-    range(0, 300): 13
+    range(801, 901): 4,
+    range(701, 801): 5,
+    range(601, 701): 6,
+    range(501, 601): 10,
+    range(401, 501): 11,
+    range(301, 401): 12,
+    range(0, 301): 13
 }
 # 신용 등급에 따른 데이터 컬럼 매핑
 credit_column_mapping = {
-    1: "fields.crdt_grad_1",
-    4: "fields.crdt_grad_4",
-    5: "fields.crdt_grad_5",
-    6: "fields.crdt_grad_6",
-    10: "fields.crdt_grad_10",
-    11: "fields.crdt_grad_11",
-    12: "fields.crdt_grad_12",
-    13: "fields.crdt_grad_13"
+    1: "crdt_grad_1",
+    4: "crdt_grad_4",
+    5: "crdt_grad_5",
+    6: "crdt_grad_6",
+    10: "crdt_grad_10",
+    11: "crdt_grad_11",
+    12: "crdt_grad_12",
+    13: "crdt_grad_13"
 }
 # 라벨 인코딩 값
 job_mapping = {
@@ -690,7 +689,7 @@ def get_credit_level(credit_score):
 # 가입할 수 있는 상품 생성
 def create_user_loans(credit_level, loan_df):
     column_name = credit_column_mapping[credit_level]
-    eligible_loans = loan_df[loan_df[column_name].notnull()]["pk"].tolist()
+    eligible_loans = loan_df[loan_df[column_name].notnull()]["id"].tolist()
     return eligible_loans
 
 @api_view(['GET'])
@@ -700,50 +699,70 @@ def recommend_loans(request):
     상품 추천을 반환하는 뷰
     """
     # 사용자 데이터 로드
+    # my_username = 'lsexton'  # 테스트용
     my_username = request.user.username
-
+    print(my_username)
+    
     # 모든 사용자 데이터 로드
     users = User.objects.all().values()
     user_df = pd.DataFrame(list(users))
-
     # 모든 대출 상품 데이터 로드
     loans = LoanTotal.objects.all().values()
     loan_df = pd.DataFrame(list(loans))  
-
     # 사용자 데이터 준비
     user_df["job_encoded"] = user_df["job"].map(job_mapping)
     user_features = user_df[
         ["income", "assets", "is_married", "job_encoded", "age", "credit"]
     ]
-
-    #################
+    # 유저 데이터 준비  
     my_df = user_df[user_df['username']==my_username]
-    my_idx = user_df[user_df['username']==my_username].index
+    my_idx = user_df[user_df['username']==my_username].index       
+    my_credit_level = get_credit_level(my_df["credit"].item())
+    
+    # print(type(my_df["credit"].item()))
+    # print(my_credit_level)
 
     # 코사인 유사도 계산
     cosine_sim = cosine_similarity(user_features, user_features)
-
+    
+    # print('!!!!!!!!!1[0]', cosine_sim[my_idx][0])
     # 가장 유사한 사용자 인덱스 추출
-    similar_user_indices = cosine_sim[my_idx].argsort()[-4:][::-1]  # 유사도 높은 3명의 사용자
-
+    similar_user_indices = cosine_sim[my_idx][0].argsort()[-6:][::-1][1:]  # 유사도 높은 5명의 사용자
+    
+    
     # 유사한 사용자가 가입한 대출 상품 추출
     similar_loans = []
-    for idx in similar_user_indices:    
-        similar_loans.extend(user_df.iloc[idx]["registered_loan"])
-
+    for idx in similar_user_indices:
+        if user_df.iloc[idx]["registered_loan"]:
+            # print('!!!!!!!!', user_df.iloc[idx]['username'], user_df.iloc[idx]["registered_loan"])
+            similar_loans.extend(user_df.iloc[idx]["registered_loan"])
     # 신용 점수 기반으로 가입 가능한 상품 필터링
-    available_loans = create_user_loans(get_credit_level(my_df["credit"]), loan_df)
-
+    available_loans = create_user_loans(my_credit_level, loan_df)
     # 최종 추천 상품
     recommended_loans = [loan[0] for loan in similar_loans if loan[0] in available_loans]
-
     # 중복 제거 및 최대 3개 상품 추천
-    final_recommendations = random.sample(recommended_loans, min(3, len(recommended_loans)))
-
+    final_recommendations = random.sample(recommended_loans, min(3, len(recommended_loans)))  # 가입 가능한 상품의 pk 리스트
     # df to json
-    # final_recommendations = user_df.to_dict(orient="records")    # df to json
-    final_recommendations = user_df.to_dict(orient="records")
-
-    return JsonResponse({
-        "recommended_loans": final_recommendations,
+    # final_recommendations = user_df.to_dict(orient="records")
+    
+    my_recommend_detail = []
+    my_grd = credit_column_mapping[my_credit_level]
+    
+    for loan_pk in final_recommendations:
+        loan = LoanTotal.objects.get(pk=loan_pk)
+        detail = {
+            'product_id': loan.id,
+            'product_bank': loan.kor_co_nm,
+            'product_name': loan.fin_prdt_nm,
+            'product_code': loan.fin_prdt_cd,
+            'crdt_avg': loan.crdt_grad_avg,
+            'crdt_my': getattr(loan, my_grd),
+        }
+        
+        my_recommend_detail.append(detail)
+    
+    # 데이터 보내기
+    return Response({
+        "my_credit_level": my_credit_level,
+        "my_recommend_detail": my_recommend_detail,
     })
