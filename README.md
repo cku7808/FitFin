@@ -1,5 +1,5 @@
 ### 나에게 Fit한 금융, Fitfin
-# <img src='./README_IMG/logo.png' alt='logo' width=30> FinFit
+# <img src='./README_IMG/logo.PNG' alt='logo' width=30> FinFit
 
 ### 목차
 1. [ 팀원 정보 및 업무 분담 내역](#팀원-정보-및-업무-분담-내역)
@@ -19,8 +19,8 @@
 |최고운|Back End - ERD, 회원 커스터마이징, 환율 정보 저장 및 업데이트, 금융 상품 정렬 및 필터링, 금융 상품 회원 저장, 게시판 CRUD, 추천 알고리즘 1, 2 |
 
 !!!!! ## 설계 내용 및 실제 구현 정도
-### 🖥 기술 스택
-**🌕 front**
+### 기술 스택
+**front**
 - language
     - javascript
 - framework
@@ -30,7 +30,7 @@
     - axios
     - chart.js
 
-**🌑 back**
+**back**
 - language
     - python
 - framework
@@ -38,10 +38,10 @@
     - django-rest-framework
     - dj-rest-auth
 
-### 🎨 Figma
-[**🔗 Figma Link**](https://www.figma.com/design/sqCNSRfUtqsE1T4MI5CO8R/SSAFY_PJT1?m=auto&t=YPfu3Hl2ZoxnVhYQ-1)
+###  Figma
+[**Figma Link**](https://www.figma.com/design/sqCNSRfUtqsE1T4MI5CO8R/SSAFY_PJT1?m=auto&t=YPfu3Hl2ZoxnVhYQ-1)
 
-<img src="./README_IMG/figma.png" alt='Figma'/>
+<img src="./README_IMG/figma.PNG" alt='Figma'/>
 
 ### 설계 내용 및 구현
 - 설계 내용 : 예적금 상품 비교, 환율 계산, 은행 검색, 게시판, 회원, 상품 관리, 상품 추천, 회원가입, 로그인(소셜로그인-카카오)
@@ -63,12 +63,12 @@
 - 페이지 별 요구사항 명세
 <!-- 
 ## 데이터베이스 모델링(ERD)
-[!!!! **🔗 ERD drawio Link**](https://drive.google.com/file/d/1DKVab0B_zfNrMHybdNuF31o8LawDn5PA/view?usp=sharing)
+[!!!! **ERD drawio Link**](https://drive.google.com/file/d/1DKVab0B_zfNrMHybdNuF31o8LawDn5PA/view?usp=sharing)
 
-<img src="./README_IMG/ERD.png" alt='Figma'/>
+<img src="./README_IMG/ERD.PNG" alt='Figma'/>
 
-### 🗂️ API 명세서
-!!!! <img src='./README_IMG/API_명세서.png' alt='API 명세서' /> -->
+### API 명세서
+!!!! <img src='./README_IMG/API_명세서.PNG' alt='API 명세서' /> -->
 
 
 ## 금융 상품 추천 알고리즘 (대출)
@@ -94,15 +94,15 @@
 - 로그인 바: 로그인 상태에 따라 회원가입 & 로그인 또는 로그아웃 & 마이페이지
 
 ### 2. 메인 페이지
-<img src='./README_IMG/main.png' alt='메인페이지'/>
+<img src='./README_IMG/main.PNG' alt='메인페이지'/>
 
 - Carousel: 금융 기능 이미지 및 링크 (마이 페이지, 금융 상품, 환율 계산)
 - 환율 최고 증감율: 가장 환율 변동이 큰 환율 정보 그래프 2개
 - 예적금 Best: 금리가 가장 큰 예적금 상품 각각 1개
 
 ### 3. 로그인, 회원가입 페이지
-<img src='./README_IMG/login.png' alt='로그인페이지'/>
-<img src='./README_IMG/singup.png' alt='회원가입페이지'/>
+<img src='./README_IMG/login.PNG' alt='로그인페이지'/>
+<img src='./README_IMG/singup.PNG' alt='회원가입페이지'/>
 - 회원가입
     - 아이디 중복 확인
     - 비밀번호 일치 여부 확인
@@ -111,9 +111,9 @@
 
 
 ### 4. 마이페이지
-<img src='./README_IMG/mypage.png' alt='마이페이지'/>
-<img src='./README_IMG/myproduct.png' alt='가입상품관리페이지'/>
-<img src='./README_IMG/recommend.png' alt='상품추천페이지1'/>
+<img src='./README_IMG/mypage.PNG' alt='마이페이지'/>
+<img src='./README_IMG/myproduct.PNG' alt='가입상품관리페이지'/>
+<img src='./README_IMG/recommend.PNG' alt='상품추천페이지1'/>
 - 회원 정보
     - 사용자 활동 정보: 가입 기간(일), 작성 게시글(수), 좋아요한 게시글(수)
     - 사용자 개인 정보: 이메일, 나이, 직업, 혼인여부, 소득 수준, 자산, 신용 점수 입력
@@ -130,9 +130,9 @@
     - 유사한 회원이 가입한 대출 상품 추천
 
 ### 5. 금융 상품 비교 페이지
-<img src='./README_IMG/deposit.png' alt='예적금페이지'/>
-<img src='./README_IMG/depositdetail.png' alt='예적금상세페이지'/>
-<img src='./README_IMG/depositoption.png' alt='예적금옵션페이지'/>
+<img src='./README_IMG/deposit.PNG' alt='예적금페이지'/>
+<img src='./README_IMG/depositdetail.PNG' alt='예적금상세페이지'/>
+<img src='./README_IMG/depositoption.PNG' alt='예적금옵션페이지'/>
 
 - 금융 상품 비교 페이지
     - 예금 페이지와 적금 페이지를 탭으로 분리
@@ -145,25 +145,25 @@
     - 상품의 옵션을 선택하여 상품 가입
 
 ### 6. 환율 계산 페이지
-!!!!! <img src='./README_IMG/currency.png' alt='환율계산페이지'/>
+!!!!! <img src='./README_IMG/currency.PNG' alt='환율계산페이지'/>
 
 - 나라 2개를 선택하여 환율 계산
 - 22개국 영업일 기준 7일 환율 정보 및 그래프 제공
 - 영업일 기준 매일 오전 11시이후 자동으로 데이터베이스를 업데이트하여 환율 정보 제공
 
 ### 7. 주변 은행 검색 페이지
-<img src='./README_IMG/bank.png' alt='주변은행검색페이지'/>
+<img src='./README_IMG/bank.PNG' alt='주변은행검색페이지'/>
 
 - 초기 설정은 현재 위치에서 은행 검색
 - 행정 구역 별 또는 도로명 주소를 입력 받아 은행 검색
 - 아이콘 클릭 시 은행 이름 및 주소 제공
 
 ### 8. 금융 상품 자유 게시판
-!!!!! <img src='./README_IMG/게시판목록페이지.png' alt='게시판목록페이지'/>
-!!!!! <img src='./README_IMG/게시판글쓰기페이지.png' alt='게시판글쓰기페이지'/>
-!!!!! <img src='./README_IMG/게시판상세페이지.png' alt='게시판상세페이지'/>
-!!!!! <img src='./README_IMG/게시판댓글수정페이지.png' alt='게시판수정페이지'/>
-!!!!! <img src='./README_IMG/게시판수정페이지.png' alt='게시판댓글수정페이지'/>
+!!!!! <img src='./README_IMG/게시판목록페이지.PNG' alt='게시판목록페이지'/>
+!!!!! <img src='./README_IMG/게시판글쓰기페이지.PNG' alt='게시판글쓰기페이지'/>
+!!!!! <img src='./README_IMG/게시판상세페이지.PNG' alt='게시판상세페이지'/>
+!!!!! <img src='./README_IMG/게시판댓글수정페이지.PNG' alt='게시판수정페이지'/>
+!!!!! <img src='./README_IMG/게시판수정페이지.PNG' alt='게시판댓글수정페이지'/>
 
 - 게시물 CRUD와 댓글 CRUD를 제공
 - !!! 좋아요 기능
