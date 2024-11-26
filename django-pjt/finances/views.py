@@ -228,11 +228,8 @@ def load_today_exchangerate(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def load_exchangerate(request):
-    date = datetime.now().strftime('%Y%m%d')
-    if not Currency.objects.filter(date=date).exists():
-        date = (datetime.now() - timedelta(days=1)).strftime('%Y%m%d')
-    print(date)
-    currencies = Currency.objects.filter(date=date)
+    date_now = Currency.objects.all().order_by('-date')[0].date
+    currencies = Currency.objects.filter(date=date_now)
     serializers = CurrencySerializer(currencies, many=True)
     return Response(serializers.data)
 

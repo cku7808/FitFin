@@ -60,11 +60,11 @@ def article_detail(request, article_pk):
 @permission_classes([AllowAny])
 def like_article(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
-    # if request.user in article.like_users.all():
-    #     article.like_users.remove(request.user)
-    # else:    
-    #     article.like_users.add(request.user)
-    # return Response(status=status.HTTP_201_CREATED)
+    if request.user in article.like_users.all():
+        article.like_users.remove(request.user)
+    else:    
+        article.like_users.add(request.user)
+    return Response(status=status.HTTP_201_CREATED)
     # if temp_user in article.like_users.all():
     #     article.like_users.remove(temp_user)
     # else:    
@@ -84,7 +84,7 @@ def comment(request, article_pk):
         article = get_object_or_404(Article, pk=article_pk)
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            # comment = serializer.save(user=request.user, article=article)
+            comment = serializer.save(user=request.user, article=article)
             # comment = serializer.save(user=temp_user, article=article)
             return Response({'commentid': comment.id}, status=status.HTTP_201_CREATED)
 

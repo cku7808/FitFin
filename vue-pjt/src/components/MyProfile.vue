@@ -24,11 +24,11 @@
                         <div>함께한지</div>
                     </div>
                     <div class="stat-box">
-                        <div class="fs-3">{{ postsCount }}</div>
+                        <div class="fs-3">{{ userInfo.my_article_counts }}</div>
                         <div>게시글</div>
                     </div>
                     <div class="stat-box">
-                        <div class="fs-3">{{ likesCount }}</div>
+                        <div class="fs-3">{{ userInfo.like_article_counts }}</div>
                         <div>좋아요</div>
                     </div>
                 </div>

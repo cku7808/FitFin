@@ -87,11 +87,13 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { Modal } from "bootstrap"; // 부트스트랩 모달 사용을 위해 임포트
 import CommentCreate from "@/components/CommentCreate.vue";
+import { useCounterStore } from '@/stores/counter'
 
-const BASE_URL = "http://127.0.0.1:8000";
+const store = useCounterStore()
 const route = useRoute();
 const router = useRouter();
 const article = ref(null);
+const liked = ref()
 
 // 삭제와 포커스 제거를 함께 처리하는 함수
 const handleDeleteAndRemoveFocus = async () => {
@@ -124,27 +126,35 @@ const handleDelete = async () => {
 };
 
 // 게시글 삭제 함수
-const deleteArticle = async () => {
-  try {
-    await axios.delete(`${BASE_URL}/api/v3/articles/${route.params.id}/`);
-    console.log("게시글 삭제 성공!");
-  } catch (error) {
-    console.error("게시글 삭제 중 오류 발생:", error);
-    throw error; // 에러 발생 시 이후 동작 중단
-  }
-};
+const deleteArticle = function () {
+  axios({
+    method: 'delete',
+    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
+    headers: store.header,
+  })
+    .then((res) => {
+      console.log('게시글 작성 성공!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 // 게시글 상세 정보 로드 함수
-const loadArticleDetail = async () => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/api/v3/articles/${route.params.id}/`
-    );
-    article.value = response.data;
-  } catch (error) {
-    console.error("게시글 상세 로드 중 오류 발생:", error);
-  }
-};
+const loadArticleDetail = function () {
+  axios({
+    method: 'get',
+    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/`,
+    headers: store.header,
+  })
+    .then((res) => {
+      article.value = res.data
+      console.log('게시글 작성 성공!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 // 포커스를 모달을 트리거했던 버튼으로 이동시키는 함수
 const focusTriggerButton = () => {
@@ -170,20 +180,169 @@ const editArticle = () => {
 };
 
 
-// 좋아요 상태 변경
-const toggleLike = async () => {
-  try {
-    // 서버로 POST 요청을 보내 좋아요 상태를 변경
-    await axios.post(`${BASE_URL}/articles/${props.article.id}/like/`);
-    liked.value = !liked.value; // 좋아요 상태 반전
-    likeCount.value += liked.value ? 1 : -1; // 좋아요 개수 반영
-  } catch (error) {
-    console.error('좋아요 상태 변경 중 오류 발생:', error);
-    alert('좋아요 변경에 실패했습니다. 다시 시도해주세요.');
-  }
-};
+// 좋아요 상태 변경 (상태 변경 수정!!!!)
+const toggleLike = function () {
+  axios({
+    method: 'post',
+    url: `${store.BASE_URL}/api/v3/articles/${route.params.id}/like/`,
+    headers: store.header,
+  })
+    .then((res) => {
+      liked.value = !liked.value; // 좋아요 상태 반전
+      likeCount.value += liked.value ? 1 : -1; // 좋아요 개수 반영
+      console.log('좋아요 성공!')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 </script>
 
-<style>
-/* 필요에 따라 추가 스타일링 */
+<style scoped>
+/* 전체 컨테이너 */
+div {
+  font-family: 'Arial', sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* 제목 */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #203359; /* 네이비 색상 */
+  margin-bottom: 20px;
+}
+
+/* 게시글 정보 */
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* 좋아요 버튼 */
+.btn-outline-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border: 2px solid #dc3545;
+  background-color: transparent;
+  color: #dc3545;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* 삭제 버튼 */
+.btn-danger {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* 수정 버튼 */
+.btn {
+  padding: 10px 15px;
+  background-color: #203359;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn:hover {
+  background-color: #0d1a2e;
+}
+
+/* 모달 스타일 */
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #203359;
+  color: #fff;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #555;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.modal-footer .btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  div {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .btn,
+  .btn-danger,
+  .btn-outline-danger {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
 </style>
