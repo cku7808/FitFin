@@ -1,0 +1,1596 @@
+[
+{
+    "model": "finances.loanproducts",
+    "pk": 1,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010001",
+        "kor_co_nm": "우리은행",
+        "fin_prdt_cd": "CR0001A",
+        "fin_prdt_nm": "개인신용대출 우대고객",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191812
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 2,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010001",
+        "kor_co_nm": "우리은행",
+        "fin_prdt_cd": "CR0001C",
+        "fin_prdt_nm": "개인신용대출 퍼펙트",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191812
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 3,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010002",
+        "kor_co_nm": "한국스탠다드차타드은행",
+        "fin_prdt_cd": "SC001217",
+        "fin_prdt_nm": "개인신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241119,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191057
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 4,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010002",
+        "kor_co_nm": "한국스탠다드차타드은행",
+        "fin_prdt_cd": "SC001217_1",
+        "fin_prdt_nm": "개인신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241119,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191057
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 5,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010006",
+        "kor_co_nm": "한국씨티은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "인터넷,스마트폰,전화(텔레뱅킹),기타",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411121214
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 6,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010016",
+        "kor_co_nm": "아이엠뱅크",
+        "fin_prdt_cd": "WR0001F",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20241231,
+        "fin_co_subm_day": 202411180937
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 7,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010016",
+        "kor_co_nm": "아이엠뱅크",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20241231,
+        "fin_co_subm_day": 202411180937
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 8,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010017",
+        "kor_co_nm": "부산은행",
+        "fin_prdt_cd": "1300",
+        "fin_prdt_nm": "ONE신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241111,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411111646
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 9,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010017",
+        "kor_co_nm": "부산은행",
+        "fin_prdt_cd": "1301",
+        "fin_prdt_nm": "ONE신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241111,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411111646
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 10,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010017",
+        "kor_co_nm": "부산은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411131000
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 11,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010019",
+        "kor_co_nm": "광주은행",
+        "fin_prdt_cd": "1",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181112
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 12,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010019",
+        "kor_co_nm": "광주은행",
+        "fin_prdt_cd": "2",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181112
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 13,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010019",
+        "kor_co_nm": "광주은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411131028
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 14,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010020",
+        "kor_co_nm": "제주은행",
+        "fin_prdt_cd": "WR0001F",
+        "fin_prdt_nm": "개인신용대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191356
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 15,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010020",
+        "kor_co_nm": "제주은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "개인신용대출2",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191356
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 16,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010022",
+        "kor_co_nm": "전북은행",
+        "fin_prdt_cd": "CR0001A",
+        "fin_prdt_nm": "가계일반자금대출",
+        "join_way": "영업점",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "kcb",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20241219,
+        "fin_co_subm_day": 202411201107
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 17,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010022",
+        "kor_co_nm": "전북은행",
+        "fin_prdt_cd": "CR0001C",
+        "fin_prdt_nm": "평생종합통장",
+        "join_way": "영업점",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "kcb",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20241219,
+        "fin_co_subm_day": 202411201107
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 18,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010022",
+        "kor_co_nm": "전북은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "영업점,인터넷,스마트폰,기타",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411130953
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 19,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010024",
+        "kor_co_nm": "경남은행",
+        "fin_prdt_cd": "CR0001A",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411071557
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 20,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010024",
+        "kor_co_nm": "경남은행",
+        "fin_prdt_cd": "CR0001B",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411071557
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 21,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010024",
+        "kor_co_nm": "경남은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "영업점,인터넷,스마트폰,전화(텔레뱅킹),기타",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411141802
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 22,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010026",
+        "kor_co_nm": "중소기업은행",
+        "fin_prdt_cd": "21",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,스마트폰,모집인",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20251117,
+        "fin_co_subm_day": 202411201154
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 23,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010026",
+        "kor_co_nm": "중소기업은행",
+        "fin_prdt_cd": "31",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,스마트폰,모집인",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "NICE",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": 20251117,
+        "fin_co_subm_day": 202411201154
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 24,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010026",
+        "kor_co_nm": "중소기업은행",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "영업점,인터넷,스마트폰,전화(텔레뱅킹),기타",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411141331
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 25,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010030",
+        "kor_co_nm": "한국산업은행",
+        "fin_prdt_cd": "1",
+        "fin_prdt_nm": "개인신용대출(신규대출취급중단)",
+        "join_way": "영업점",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241119,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191007
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 26,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010030",
+        "kor_co_nm": "한국산업은행",
+        "fin_prdt_cd": "2",
+        "fin_prdt_nm": "개인신용대출",
+        "join_way": "영업점",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241119,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191007
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 27,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010927",
+        "kor_co_nm": "국민은행",
+        "fin_prdt_cd": "KB200200000001",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181726
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 28,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0010927",
+        "kor_co_nm": "국민은행",
+        "fin_prdt_cd": "KB200200000002",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181726
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 29,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0011625",
+        "kor_co_nm": "신한은행",
+        "fin_prdt_cd": "CR0001A",
+        "fin_prdt_nm": "개인신용대출(일반신용대출)",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181148
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 30,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0011625",
+        "kor_co_nm": "신한은행",
+        "fin_prdt_cd": "CR0001C",
+        "fin_prdt_nm": "개인신용대출(마이너스한도대출)",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181148
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 31,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0013175",
+        "kor_co_nm": "농협은행주식회사",
+        "fin_prdt_cd": "CR0001A",
+        "fin_prdt_nm": "가계신용대출(일반)",
+        "join_way": "영업점",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411180911
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 32,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0013175",
+        "kor_co_nm": "농협은행주식회사",
+        "fin_prdt_cd": "CR0001B",
+        "fin_prdt_nm": "가계신용대출(마이너스대출)",
+        "join_way": "영업점",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411180911
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 33,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0013175",
+        "kor_co_nm": "농협은행주식회사",
+        "fin_prdt_cd": "WR0002F",
+        "fin_prdt_nm": "장기카드대출",
+        "join_way": "인터넷,스마트폰,전화(텔레뱅킹)",
+        "crdt_prdt_type": "3",
+        "crdt_prdt_type_nm": "장기카드대출(카드론)",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241121,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411141451
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 34,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0013909",
+        "kor_co_nm": "하나은행",
+        "fin_prdt_cd": "1",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191034
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 35,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0013909",
+        "kor_co_nm": "하나은행",
+        "fin_prdt_cd": "3",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241120,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411191034
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 36,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0014674",
+        "kor_co_nm": "주식회사 케이뱅크",
+        "fin_prdt_cd": "010200010000000001",
+        "fin_prdt_nm": "신용대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": 20241218,
+        "fin_co_subm_day": 202411121850
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 37,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0014674",
+        "kor_co_nm": "주식회사 케이뱅크",
+        "fin_prdt_cd": "010200040000000001",
+        "fin_prdt_nm": "마이너스 통장 대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": 20241218,
+        "fin_co_subm_day": 202411121850
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 38,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0014807",
+        "kor_co_nm": "수협은행",
+        "fin_prdt_cd": "601",
+        "fin_prdt_nm": "개인신용대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181041
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 39,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0014807",
+        "kor_co_nm": "수협은행",
+        "fin_prdt_cd": "804",
+        "fin_prdt_nm": "개인신용마이너스한도대출",
+        "join_way": "영업점,인터넷,스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181041
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 40,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0015130",
+        "kor_co_nm": "주식회사 카카오뱅크",
+        "fin_prdt_cd": "030020001",
+        "fin_prdt_nm": "일반신용대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181611
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 41,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0015130",
+        "kor_co_nm": "주식회사 카카오뱅크",
+        "fin_prdt_cd": "030020003",
+        "fin_prdt_nm": "마이너스한도대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181611
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 42,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0017801",
+        "kor_co_nm": "토스뱅크 주식회사",
+        "fin_prdt_cd": "20-01-03-021-0001",
+        "fin_prdt_nm": "토스뱅크 마이너스 통장대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "2",
+        "crdt_prdt_type_nm": "마이너스한도대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181725
+    }
+},
+{
+    "model": "finances.loanproducts",
+    "pk": 43,
+    "fields": {
+        "dcls_month": "202411",
+        "fin_co_no": "0017801",
+        "kor_co_nm": "토스뱅크 주식회사",
+        "fin_prdt_cd": "20-01-03-311-0001",
+        "fin_prdt_nm": "토스뱅크 신용대출",
+        "join_way": "스마트폰",
+        "crdt_prdt_type": "1",
+        "crdt_prdt_type_nm": "일반신용대출",
+        "cb_name": "KCB",
+        "dcls_strt_day": 20241118,
+        "dcls_end_day": null,
+        "fin_co_subm_day": 202411181725
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 1,
+    "fields": {
+        "fin_co_no": "0010001",
+        "fin_prdt_cd": "CR0001A",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 4.81,
+        "crdt_grad_4": 5.76,
+        "crdt_grad_5": 7.02,
+        "crdt_grad_6": 7.87,
+        "crdt_grad_10": 9.58,
+        "crdt_grad_11": 10.07,
+        "crdt_grad_12": 9.49,
+        "crdt_grad_13": 8.96,
+        "crdt_grad_avg": 5.18
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 2,
+    "fields": {
+        "fin_co_no": "0010001",
+        "fin_prdt_cd": "CR0001C",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.13,
+        "crdt_grad_4": 5.62,
+        "crdt_grad_5": 5.87,
+        "crdt_grad_6": 6.1,
+        "crdt_grad_10": 10.24,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.17
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 3,
+    "fields": {
+        "fin_co_no": "0010002",
+        "fin_prdt_cd": "SC001217",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.28,
+        "crdt_grad_4": 6.89,
+        "crdt_grad_5": 8.43,
+        "crdt_grad_6": 8.69,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.91
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 4,
+    "fields": {
+        "fin_co_no": "0010002",
+        "fin_prdt_cd": "SC001217_1",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.46,
+        "crdt_grad_4": 0.24,
+        "crdt_grad_5": 0.28,
+        "crdt_grad_6": 0.4,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.39
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 5,
+    "fields": {
+        "fin_co_no": "0010006",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 8.89,
+        "crdt_grad_4": 11.48,
+        "crdt_grad_5": 12.45,
+        "crdt_grad_6": 14.34,
+        "crdt_grad_10": 16.9,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 12.09
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 6,
+    "fields": {
+        "fin_co_no": "0010016",
+        "fin_prdt_cd": "WR0001F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.41,
+        "crdt_grad_4": 6.45,
+        "crdt_grad_5": 7.32,
+        "crdt_grad_6": 6.47,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.85
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 7,
+    "fields": {
+        "fin_co_no": "0010016",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 1.14,
+        "crdt_grad_4": 1.03,
+        "crdt_grad_5": 1.05,
+        "crdt_grad_6": 0.53,
+        "crdt_grad_10": 0.6,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 1.11
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 8,
+    "fields": {
+        "fin_co_no": "0010017",
+        "fin_prdt_cd": "1300",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 3.78,
+        "crdt_grad_4": 4.93,
+        "crdt_grad_5": 5.75,
+        "crdt_grad_6": 6.99,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 4.16
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 9,
+    "fields": {
+        "fin_co_no": "0010017",
+        "fin_prdt_cd": "1301",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.17,
+        "crdt_grad_4": 0.01,
+        "crdt_grad_5": null,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.14
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 10,
+    "fields": {
+        "fin_co_no": "0010017",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 11.04,
+        "crdt_grad_4": 12.11,
+        "crdt_grad_5": 14.01,
+        "crdt_grad_6": 15.59,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 12.33
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 11,
+    "fields": {
+        "fin_co_no": "0010019",
+        "fin_prdt_cd": "1",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 6.08,
+        "crdt_grad_4": 7.49,
+        "crdt_grad_5": 8.82,
+        "crdt_grad_6": 10.47,
+        "crdt_grad_10": 11.74,
+        "crdt_grad_11": 12.5,
+        "crdt_grad_12": null,
+        "crdt_grad_13": 12.5,
+        "crdt_grad_avg": 6.87
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 12,
+    "fields": {
+        "fin_co_no": "0010019",
+        "fin_prdt_cd": "2",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.25,
+        "crdt_grad_4": -0.01,
+        "crdt_grad_5": 0.86,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.21
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 13,
+    "fields": {
+        "fin_co_no": "0010019",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 12.59,
+        "crdt_grad_4": 14.04,
+        "crdt_grad_5": 15.6,
+        "crdt_grad_6": 16.92,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 14.94
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 14,
+    "fields": {
+        "fin_co_no": "0010020",
+        "fin_prdt_cd": "WR0001F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.86,
+        "crdt_grad_4": 5.48,
+        "crdt_grad_5": 7.14,
+        "crdt_grad_6": 7.44,
+        "crdt_grad_10": 13.5,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": 10.45,
+        "crdt_grad_avg": 7.66
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 15,
+    "fields": {
+        "fin_co_no": "0010020",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.63,
+        "crdt_grad_4": 0.69,
+        "crdt_grad_5": 0.49,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.66
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 16,
+    "fields": {
+        "fin_co_no": "0010022",
+        "fin_prdt_cd": "CR0001A",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 8.25,
+        "crdt_grad_4": 9.79,
+        "crdt_grad_5": 11.92,
+        "crdt_grad_6": 12.4,
+        "crdt_grad_10": 11.69,
+        "crdt_grad_11": 11.57,
+        "crdt_grad_12": 9.75,
+        "crdt_grad_13": 16.35,
+        "crdt_grad_avg": 10.89
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 17,
+    "fields": {
+        "fin_co_no": "0010022",
+        "fin_prdt_cd": "CR0001C",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 1.38,
+        "crdt_grad_4": 1.78,
+        "crdt_grad_5": 0.96,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 1.4
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 18,
+    "fields": {
+        "fin_co_no": "0010022",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": null,
+        "crdt_grad_4": null,
+        "crdt_grad_5": 14.54,
+        "crdt_grad_6": 17.77,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 14.64
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 19,
+    "fields": {
+        "fin_co_no": "0010024",
+        "fin_prdt_cd": "CR0001A",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 6.08,
+        "crdt_grad_4": 6.76,
+        "crdt_grad_5": 7.43,
+        "crdt_grad_6": 8.46,
+        "crdt_grad_10": 11.38,
+        "crdt_grad_11": 12.84,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 6.53
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 20,
+    "fields": {
+        "fin_co_no": "0010024",
+        "fin_prdt_cd": "CR0001B",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.43,
+        "crdt_grad_4": 0.23,
+        "crdt_grad_5": 0.41,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.41
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 21,
+    "fields": {
+        "fin_co_no": "0010024",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 8.08,
+        "crdt_grad_4": 12.2,
+        "crdt_grad_5": 15.2,
+        "crdt_grad_6": 17.46,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 12.2
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 22,
+    "fields": {
+        "fin_co_no": "0010026",
+        "fin_prdt_cd": "21",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 4.87,
+        "crdt_grad_4": 5.28,
+        "crdt_grad_5": 5.63,
+        "crdt_grad_6": 5.85,
+        "crdt_grad_10": 7.14,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.01
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 23,
+    "fields": {
+        "fin_co_no": "0010026",
+        "fin_prdt_cd": "31",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.01,
+        "crdt_grad_4": 0.26,
+        "crdt_grad_5": 0.58,
+        "crdt_grad_6": 0.66,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.1
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 24,
+    "fields": {
+        "fin_co_no": "0010026",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 8.86,
+        "crdt_grad_4": 12.53,
+        "crdt_grad_5": 15.94,
+        "crdt_grad_6": 17.14,
+        "crdt_grad_10": 17.89,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 14.54
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 25,
+    "fields": {
+        "fin_co_no": "0010927",
+        "fin_prdt_cd": "KB200200000001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 4.95,
+        "crdt_grad_4": 5.37,
+        "crdt_grad_5": 5.79,
+        "crdt_grad_6": 6.2,
+        "crdt_grad_10": 7.58,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.1
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 26,
+    "fields": {
+        "fin_co_no": "0010927",
+        "fin_prdt_cd": "KB200200000002",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.95,
+        "crdt_grad_4": 0.9,
+        "crdt_grad_5": 0.84,
+        "crdt_grad_6": 1.17,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.94
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 27,
+    "fields": {
+        "fin_co_no": "0011625",
+        "fin_prdt_cd": "CR0001A",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.3,
+        "crdt_grad_4": 6.45,
+        "crdt_grad_5": 7.64,
+        "crdt_grad_6": 8.95,
+        "crdt_grad_10": 8.97,
+        "crdt_grad_11": 9.24,
+        "crdt_grad_12": 9.86,
+        "crdt_grad_13": 10.46,
+        "crdt_grad_avg": 5.93
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 28,
+    "fields": {
+        "fin_co_no": "0011625",
+        "fin_prdt_cd": "CR0001C",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.44,
+        "crdt_grad_4": 5.93,
+        "crdt_grad_5": 7.02,
+        "crdt_grad_6": 8.95,
+        "crdt_grad_10": 10.24,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": 5.66,
+        "crdt_grad_avg": 5.64
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 29,
+    "fields": {
+        "fin_co_no": "0013175",
+        "fin_prdt_cd": "CR0001A",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.33,
+        "crdt_grad_4": 6.14,
+        "crdt_grad_5": 7.06,
+        "crdt_grad_6": 8.13,
+        "crdt_grad_10": 8.42,
+        "crdt_grad_11": 11.2,
+        "crdt_grad_12": 8.42,
+        "crdt_grad_13": 9.29,
+        "crdt_grad_avg": 5.67
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 30,
+    "fields": {
+        "fin_co_no": "0013175",
+        "fin_prdt_cd": "CR0001B",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.81,
+        "crdt_grad_4": 0.62,
+        "crdt_grad_5": 0.83,
+        "crdt_grad_6": 1.36,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.79
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 31,
+    "fields": {
+        "fin_co_no": "0013175",
+        "fin_prdt_cd": "WR0002F",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 11.28,
+        "crdt_grad_4": 12.19,
+        "crdt_grad_5": 14.45,
+        "crdt_grad_6": 16.37,
+        "crdt_grad_10": 16.28,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 13.83
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 32,
+    "fields": {
+        "fin_co_no": "0013909",
+        "fin_prdt_cd": "1",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.1,
+        "crdt_grad_4": 5.8,
+        "crdt_grad_5": 6.89,
+        "crdt_grad_6": 7.35,
+        "crdt_grad_10": 8.83,
+        "crdt_grad_11": 10.65,
+        "crdt_grad_12": 9.61,
+        "crdt_grad_13": 9.61,
+        "crdt_grad_avg": 5.42
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 33,
+    "fields": {
+        "fin_co_no": "0013909",
+        "fin_prdt_cd": "3",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 1.56,
+        "crdt_grad_4": 1.48,
+        "crdt_grad_5": 1.51,
+        "crdt_grad_6": 2.02,
+        "crdt_grad_10": 2.39,
+        "crdt_grad_11": 2.43,
+        "crdt_grad_12": null,
+        "crdt_grad_13": 2.6,
+        "crdt_grad_avg": 1.55
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 34,
+    "fields": {
+        "fin_co_no": "0014674",
+        "fin_prdt_cd": "010200010000000001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 4.5,
+        "crdt_grad_4": 6.06,
+        "crdt_grad_5": 6.25,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 6.15
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 35,
+    "fields": {
+        "fin_co_no": "0014674",
+        "fin_prdt_cd": "010200040000000001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.03,
+        "crdt_grad_4": 6.77,
+        "crdt_grad_5": 7.39,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.71
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 36,
+    "fields": {
+        "fin_co_no": "0014807",
+        "fin_prdt_cd": "601",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "D",
+        "crdt_lend_rate_type_nm": "가감조정금리",
+        "crdt_grad_1": 0.92,
+        "crdt_grad_4": 0.57,
+        "crdt_grad_5": 0.95,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 0.86
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 37,
+    "fields": {
+        "fin_co_no": "0014807",
+        "fin_prdt_cd": "804",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 6.1,
+        "crdt_grad_4": 6.57,
+        "crdt_grad_5": 6.98,
+        "crdt_grad_6": null,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 6.18
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 38,
+    "fields": {
+        "fin_co_no": "0015130",
+        "fin_prdt_cd": "030020001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "C",
+        "crdt_lend_rate_type_nm": "가산금리",
+        "crdt_grad_1": 1.98,
+        "crdt_grad_4": 2.39,
+        "crdt_grad_5": 3.0,
+        "crdt_grad_6": 3.67,
+        "crdt_grad_10": 5.9,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 2.24
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 39,
+    "fields": {
+        "fin_co_no": "0015130",
+        "fin_prdt_cd": "030020003",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 6.03,
+        "crdt_grad_4": 7.58,
+        "crdt_grad_5": 7.92,
+        "crdt_grad_6": 7.95,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 6.58
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 40,
+    "fields": {
+        "fin_co_no": "0017801",
+        "fin_prdt_cd": "20-01-03-021-0001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.49,
+        "crdt_grad_4": 6.6,
+        "crdt_grad_5": 6.78,
+        "crdt_grad_6": 7.08,
+        "crdt_grad_10": null,
+        "crdt_grad_11": null,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 5.95
+    }
+},
+{
+    "model": "finances.loanoption",
+    "pk": 41,
+    "fields": {
+        "fin_co_no": "0017801",
+        "fin_prdt_cd": "20-01-03-311-0001",
+        "dcls_month": "202411",
+        "crdt_lend_rate_type": "A",
+        "crdt_lend_rate_type_nm": "대출금리",
+        "crdt_grad_1": 5.73,
+        "crdt_grad_4": 7.11,
+        "crdt_grad_5": 7.92,
+        "crdt_grad_6": 9.97,
+        "crdt_grad_10": 10.93,
+        "crdt_grad_11": 11.57,
+        "crdt_grad_12": null,
+        "crdt_grad_13": null,
+        "crdt_grad_avg": 6.92
+    }
+}
+]

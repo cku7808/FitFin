@@ -10,6 +10,7 @@ urlpatterns = [
     path('load-min-exchangerate/', views.load_min_exchangerate),
     path('save-deposit-products/', views.save_deposit_products),
     path('save-saving-products/', views.save_saving_products),
+    path('save-laon-products/', views.save_loan_products),
     path('deposit-products/', views.deposit_products),
     path('deposit-products/<str:product_id>/', views.deposit_products_detail),
     path('saving-products/', views.saving_products),
