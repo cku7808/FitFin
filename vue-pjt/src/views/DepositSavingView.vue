@@ -1,6 +1,10 @@
 <template>
     <div class="d-flex align-items-center justify-content-center flex-column col-12">
-      <h2 class="score-dream-bold">예적금 금리 비교 페이지</h2><br>
+      <h2 class="score-dream-bold">
+        예적금 
+        <span class="text-highlight">금리</span>
+        비교하기
+      </h2><br>
       <div class="col-8 d-flex justify-content-start score-dream">
         <div class="col-8 folder-tabs">
           <button
@@ -98,5 +102,7 @@ const productType = ref('deposit')
   padding: 20px;
   z-index: 0;
 }
-
+.text-highlight{
+    color: #79F297;
+}
 </style>

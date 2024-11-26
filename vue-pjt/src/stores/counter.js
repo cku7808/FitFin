@@ -38,17 +38,7 @@ export const useCounterStore = defineStore('counter', () => {
     })
   }
 
-  const loginType = computed(() => {
-    return refreshToken.value === null ? 'general' : 'social'
-  })
-  console.log(loginType.value)
-  const header = computed(() => {
-    if (loginType.value === 'general') {
-      return {Authorization: `Token ${accessToken.value}`}
-    } else {
-      return {Authorization: `Bearer ${accessToken.value}`}
-    }
-  })
+
   
   const logIn = (payload) => {
     const { username, password } = payload;
@@ -111,27 +101,37 @@ export const useCounterStore = defineStore('counter', () => {
         console.log(err)
       })
   };
+  const loginType = computed(() => {
+    return refreshToken.value === null ? 'general' : 'social'
+  })
 
+// console.log(isLogin.value)
 
-  console.log(header.value)
+const header = computed(() => {
+  if (isLogin.value === true & loginType.value === 'general') {
+    return {Authorization: `Token ${accessToken.value}`}
+  } else {
+    return {Authorization: `Bearer ${accessToken.value}`}
+  }
+})
 
   // 사용자 정보
-  const userInfo = ref(null)
-  const loadUserInfo = (header) => {
-    axios({
-          method: 'get',
-          url: `${BASE_URL}/api/v1/userinfo/`,
-          headers: header
-    })
-    .then((res) => {
-        console.log(res.data)
-        userInfo.value = res.data
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-  }
+const userInfo = ref(null)
+const loadUserInfo = (header) => {
+  axios({
+        method: 'get',
+        url: `${BASE_URL}/api/v1/userinfo/`,
+        headers: header
+  })
+  .then((res) => {
+      console.log(res.data)
+      userInfo.value = res.data
+  })
+  .catch((err) => {
+      console.log(err)
+  })
+}
 
-  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo, };
+  return { BASE_URL, logIn, socialLogIn, accessToken, refreshToken, signUp, isLogin, logOut, userInfo, loadUserInfo, header };
 }, { persist: true });
 

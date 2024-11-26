@@ -1,32 +1,38 @@
 <template>
-    <div>
-      <fieldset>
-        <input type="radio" name="address" value="true" v-model="addressType" checked>
-        <label for="">행정 구역 별 입력</label>&nbsp
-
-        <input type="radio" name="address" value="false" v-model="addressType">
-        <label for="">도로명 주소 입력</label>
-      </fieldset>
-
-      <div v-if="addressType === 'true'">
-        <label for="sido">특별시 / 광역시 / 도 : </label>
-        <input type="text" name="sido" v-model="siDo" style="width: 300px; margin-bottom: 10px;"/>
-        
-        <label for="sigungu">시 / 군 / 구 : </label>
-        <input type="text" name="sigungu" v-model="siGunGu" style="width: 300px; margin-bottom: 10px;"/>
-        
-        <label for="eupmyeondong">읍 / 면 / 동 : </label>
-        <input type="text" name="eupmyeondong" v-model="eupMyeonDong" style="width: 300px; margin-bottom: 10px;"/>
+  <div class="d-flex flex-column align-items-center score-dream">
+    <h2 class="mb-5 score-dream-bold">
+      <span class="text-highlight">주변</span>
+      <span>은행 찾기</span>
+    </h2>
+    <div class="d-flex flex-column col-6 justify-content-center text-center">
+      <div class="wrap">
+        <div class="radio_area w-50 me-2">
+          <input type="radio" name="address" id="address1" value="true" v-model="addressType" checked>
+          <label for="address1"><span></span>행정 구역 별 입력</label>&nbsp
+        </div>
+        <div class="radio_area w-50 ms-2">
+          <input type="radio" name="address" id="address2" value="false" v-model="addressType">
+          <label for="address2"><span></span>도로명 주소 입력</label>  
+        </div>  
       </div>
-      <div v-else>
-        <label for="sido">도로명 주소 : </label>
-        <input type="text" name="doro" v-model="doro" style="width: 300px; margin-bottom: 10px;"/>
+
+      <div v-if="addressType === 'true'" class="d-flex justify-content-evenly">
+        <input type="text" name="sido" v-model="siDo" style=" margin-bottom: 10px;" placeholder="특별시/광역시/도" class="form-control "/>&nbsp
+        <input type="text" name="sigungu" v-model="siGunGu" style=" margin-bottom: 10px;" placeholder="시/군/구" class="form-control "/>&nbsp
+        <input type="text" name="eupmyeondong" v-model="eupMyeonDong" style=" margin-bottom: 10px;" placeholder="읍/면/동" class="form-control "/>&nbsp
       </div>
-      
-      
-      <button @click="searchAddressAndBanks(addressInput)">주소 검색</button>
-      <div ref="mapContainer" style="width: 100%; height: 70vh"></div>
+      <div v-else class="text-center">
+        <input type="text" name="doro" v-model="doro" style="width: 100%; margin-bottom: 10px;" placeholder="도로명 주소" class="form-control "/>
+      </div>
+      <br>
+      <button class="button" @click="searchAddressAndBanks(addressInput)">주소 검색</button>
+      <br>
     </div>
+      <div ref="mapContainer" style="width: 60%; height: 70vh">
+        
+      </div>
+
+  </div>
   </template>
   
 
@@ -267,5 +273,58 @@ const closeAllOverlays = () => {
 </script>
 
 <style scoped>
+  @font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .score-dream {
+    font-family: 'S-CoreDream-3Light';
+  }
+  .score-dream-bold {
+  font-family: 'S-CoreDream-3Light';
+  font-weight: bold;
+}
+input:focus {
+    border: 1px solid #79F297 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+input:active {
+  background-color: inherit !important; 
+  border: 1px solid #79F297 !important;
+  box-shadow: none !important;
+}
+.form-select:focus {
+    border: 1px solid #79F297 !important;
+    box-shadow: none !important;
+  }
+.form-select:active {
+  background-color: inherit !important; 
+  border: 1px solid #79F297 !important;
+  box-shadow: none !important;}
+.form-control {
+  margin-bottom: 0px !important;
+}
+.button {
+  background-color: #203359;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  height: 30px;
+}
+.wrap {display:flex;flex-flow:row;justify-content: center;gap:5px;}
 
+.wrap .radio_area label{cursor:pointer;display:flex;align-items:center;gap:15px;height:40px;padding:0 18px 0 15px;border-radius:30px;font-size:15px;font-weight:500;color:#999;background:#f2f2f2;transition:all .2s}
+.wrap .radio_area label span{opacity:.3;display:flex;width:18px;height:18px;border:2px solid #2d3e50;border-radius:50%;transition:all .2s}
+.wrap .radio_area label span:before{content:"";width:6px;height:6px;margin:auto;border-radius:50%;background:#2d3e50;transition:all .2s}
+.wrap .radio_area label:hover{background:#e1e1e1}
+.radio_area input[type=radio]{display:none}
+.radio_area input[type=radio]:checked + label{color:#79F297;background:#2d3e50}
+.radio_area input[type=radio]:checked + label span{opacity:1;border-color:#79F297}
+.radio_area input[type=radio]:checked + label span:before{background:#79F297}
+.text-highlight{
+    color: #79F297;
+}
 </style>
