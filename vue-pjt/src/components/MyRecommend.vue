@@ -3,7 +3,7 @@
         
         <h2 class="mb-5 score-dream-bold">
             <span class="text-highlight">{{ userInfo.username }}</span>
-            <span>님에게 맞는 상품 </span>
+            <span>님에게 맞는 대출 상품 </span>
         </h2>
         
     <div class="container">
@@ -34,18 +34,33 @@
       <!-- 결과 -->
       <div class="results" v-if="results.length > 0">
         <div>선택하신 조건으로 상품이 추천되었습니다.</div>
-        <ul>
+        <!-- <ul>
           <li v-for="(result, index) in results" :key="index">{{ result }}</li>
-        </ul>
+        </ul> -->
       </div>
       <div v-else-if="searched" class="no-results">최소 한 개 이상의 조건을 설정해주세요.</div>
+          
     </div>
+
+    <!-- 추천 상품 카드 -->
+    <div class="recommend-card-container">
+      <div 
+        class="recommend-card"
+        v-for="recommenddata in recommendedloans"
+        :key="recommenddata.id"
+      >
+        <RecommendProduct :recommenddata="recommenddata" />
+      </div>
+    </div>
+    
     </div>
 </template>
 
 <script setup>
+import axios from 'axios';
 import { ref, computed } from 'vue';
 import { useCounterStore } from "@/stores/counter";
+import RecommendProduct from '@/components/RecommendProduct.vue';
 
 const store = useCounterStore();
 const userInfo = computed(() => store.userInfo);
@@ -79,7 +94,23 @@ const searchResults = () => {
     .map((button) => button.label);
   searched.value = true;
   console.log(results.value)
+  recommendloan()
 };
+
+const recommendedloans = ref()
+const recommendloan = () => {
+  axios({
+        method: 'get',
+        url: `${store.BASE_URL}/api/v2/recommend-loan-product/`,
+        headers: store.header,
+    }).then((res) => {
+        console.log(res.data)
+        recommendedloans.value = res.data.my_recommend_detail
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
 
 
 
@@ -191,4 +222,41 @@ const searchResults = () => {
   height: 40px;
   margin-bottom: 5px;
 }
+
+
+/* 추천 상품 카드 */
+.recommend-card-container {
+  display: flex;
+  flex-wrap: wrap; /* 여러 줄로 배치 */
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  gap: 20px; /* 카드 간격 */
+  margin-top: 30px; /* 상단 여백 */
+}
+
+.recommend-card {
+  display: flex;
+  flex-direction: column; /* 내부 요소를 세로로 정렬 */
+  justify-content: space-between; /* 요소 간 간격 고르게 분배 */
+  align-items: center; /* 가로 가운데 정렬 */
+  width: 300px; /* 고정된 너비 */
+  height: 300px; /* 고정된 높이 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  border-radius: 10px; /* 둥근 모서리 */
+  background-color: #fff; /* 배경색 */
+  padding: 15px; /* 내부 여백 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 애니메이션 */
+}
+
+.recommend-card img {
+  max-width: 100%; /* 이미지 크기를 카드에 맞게 조정 */
+  max-height: 100%; /* 이미지 최대 높이 제한 */
+  object-fit: cover; /* 이미지가 카드에 꽉 차도록 조정 */
+}
+
+.recommend-card:hover {
+  transform: scale(1.2); /* 호버 시 살짝 확대 */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); /* 더 강한 그림자 */
+}
+
 </style>
