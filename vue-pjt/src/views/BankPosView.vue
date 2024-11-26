@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column align-items-center score-dream">
     <h2 class="mb-5 score-dream-bold">
-      <span class="text-highlight">주변</span>
+      <span class="text-highlight">주변 </span>
       <span>은행 찾기</span>
     </h2>
     <div class="d-flex flex-column col-6 justify-content-center text-center">
@@ -28,10 +28,10 @@
       <button class="button" @click="searchAddressAndBanks(addressInput)">주소 검색</button>
       <br>
     </div>
-      <div ref="mapContainer" style="width: 60%; height: 70vh">
+      <div ref="mapContainer" style="width: 60%; height: 70vh;" class="card-1">
         
       </div>
-
+      <br>
   </div>
   </template>
   
@@ -39,6 +39,15 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import markerImageSrc from '/map/marker3.png';
+import router from "@/router";
+import { useCounterStore } from "@/stores/counter";
+
+const store = useCounterStore();
+if(store.isLogin === false) {
+  alert("로그인을 먼저 해주세요")
+  router.push({name: "LogInView"})
+}
+
 
 // Kakao Map API Key
 const VITE_KAKAO_MAP_KEY = import.meta.env['VITE_API_KEY_KAKAO_JS']
@@ -326,5 +335,14 @@ input:active {
 .radio_area input[type=radio]:checked + label span:before{background:#79F297}
 .text-highlight{
     color: #79F297;
+}
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border-radius: 10px;
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 </style>

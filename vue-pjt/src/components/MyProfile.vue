@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex align-items-center justify-content-center flex-column score-dream">
+    <div class="d-flex align-items-center justify-content-center flex-column score-dream" v-if="store.isLogin">
         
         <h2 class="mb-5 score-dream-bold">
             <span class="text-highlight">{{ userInfo.username }}</span>
@@ -86,6 +86,11 @@ import { useCounterStore } from "@/stores/counter";
 const router = useRouter();
 const store = useCounterStore();
 const userInfo = computed(() => store.userInfo);
+
+if(store.isLogin === false) {
+  alert("로그인을 먼저 해주세요")
+  router.push({name: "LogInView"})
+}
 
 // 프로필 수정 페이지로 이동
 const editProfile = () => {
