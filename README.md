@@ -1,5 +1,5 @@
 ### 나에게 Fit한 금융, Fitfin
-# <img src='./readme_img/logo.PNG' alt='logo' width=30> FinFit
+# <img src='./readme_img/logo.PNG' alt='logo' width=30> FitFin
 
 ### 목차
 1. [ 팀원 정보 및 업무 분담 내역](#팀원-정보-및-업무-분담-내역)
