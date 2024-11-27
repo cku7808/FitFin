@@ -66,12 +66,12 @@ const store = useCounterStore();
 const userInfo = computed(() => store.userInfo);
 
 const buttons = ref([
-      { label: "나이", active: false, icon: "/recommend/icon_hourglass.png", iconwhite: "/recommend/icon_hourglass_white.png" },
-      { label: "혼인", active: false, icon: "/recommend/icon_diamond.png", iconwhite: "/recommend/icon_diamond_white.png" },
-      { label: "직업", active: false, icon: "/recommend/icon_bag.png", iconwhite: "/recommend/icon_bag_white.png" },
-      { label: "소득", active: false, icon: "/recommend/icon_money.png", iconwhite: "/recommend/icon_money_white.png" },
-      { label: "자산", active: false, icon: "/recommend/icon_piggy.png", iconwhite: "/recommend/icon_piggy_white.png" },
-      { label: "신용", active: false, icon: "/recommend/icon_note.png", iconwhite: "/recommend/icon_note_white.png" },
+      { column_nm:'age', label: "나이", active: false, icon: "/recommend/icon_hourglass.png", iconwhite: "/recommend/icon_hourglass_white.png" },
+      { column_nm:'is_married', label: "혼인", active: false, icon: "/recommend/icon_diamond.png", iconwhite: "/recommend/icon_diamond_white.png" },
+      { column_nm:'job_encoded', label: "직업", active: false, icon: "/recommend/icon_bag.png", iconwhite: "/recommend/icon_bag_white.png" },
+      { column_nm:'income', label: "소득", active: false, icon: "/recommend/icon_money.png", iconwhite: "/recommend/icon_money_white.png" },
+      {column_nm:'assets', label: "자산", active: false, icon: "/recommend/icon_piggy.png", iconwhite: "/recommend/icon_piggy_white.png" },
+      { column_nm:'credit', label: "신용", active: false, icon: "/recommend/icon_note.png", iconwhite: "/recommend/icon_note_white.png" },
     ]);
 
 const results = ref([]);
@@ -91,21 +91,23 @@ const searchResults = () => {
   // 예제: 활성화된 버튼 이름을 결과로 표시
   results.value = buttons.value
     .filter((button) => button.active)
-    .map((button) => button.label);
+    .map((button) => button.column_nm);
   searched.value = true;
   console.log(results.value)
-  recommendloan()
+  recommendloan(results.value)
 };
 
 const recommendedloans = ref()
-const recommendloan = () => {
+const recommendloan = (result_col) => {
   axios({
-        method: 'get',
+        method: 'post',
         url: `${store.BASE_URL}/api/v2/recommend-loan-product/`,
         headers: store.header,
+        data: {result_col,},
     }).then((res) => {
         console.log(res.data)
         recommendedloans.value = res.data.my_recommend_detail
+        console.log(results)
     })
     .catch((err) => {
         console.log(err)

@@ -4,7 +4,7 @@
             <div class="container-fluid d-flex justify-content-center">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <RouterLink :to="{ name: 'MyPageView'}">
+                        <RouterLink :to="{ name: 'MyRecommend'}">
                             <img src="/carousel/carousel1.png" class="d-block w-100 rounded" alt="Slide 1">
                         </RouterLink>
                     </div>
