@@ -113,6 +113,7 @@
 ### 3. 로그인, 회원가입 페이지
 <img src='./readme_img/login.PNG' alt='로그인페이지'/>
 <img src='./readme_img/singup.PNG' alt='회원가입페이지'/>
+
 - 회원가입
     - 아이디 중복 확인
     - 비밀번호 일치 여부 확인
@@ -124,6 +125,7 @@
 <img src='./readme_img/mypage.PNG' alt='마이페이지'/>
 <img src='./readme_img/myproduct.PNG' alt='가입상품관리페이지'/>
 <img src='./readme_img/recommend.PNG' alt='상품추천페이지1'/>
+
 - 회원 정보
     - 사용자 활동 정보: 가입 기간(일), 작성 게시글(수), 좋아요한 게시글(수)
     - 사용자 개인 정보: 이메일, 나이, 직업, 혼인여부, 소득 수준, 자산, 신용 점수 조회
@@ -168,15 +170,11 @@
 - 행정 구역 별 또는 도로명 주소를 입력 받아 주변 은행 15개 지점 검색
 - 마커 클릭 시 은행 이름 및 주소 제공
 
-<!-- ### 8. 금융 상품 자유 게시판
-!!!!! <img src='./readme_img/게시판목록페이지.PNG' alt='게시판목록페이지'/>
-!!!!! <img src='./readme_img/게시판글쓰기페이지.PNG' alt='게시판글쓰기페이지'/>
-!!!!! <img src='./readme_img/게시판상세페이지.PNG' alt='게시판상세페이지'/>
-!!!!! <img src='./readme_img/게시판댓글수정페이지.PNG' alt='게시판수정페이지'/>
-!!!!! <img src='./readme_img/게시판수정페이지.PNG' alt='게시판댓글수정페이지'/>
+### 8. 금융 상품 자유 게시판
+<img src='./readme_img/community.PNG' alt='게시판목록페이지'/>
 
 - 게시물 CRUD와 댓글 CRUD를 제공
-- !!! 좋아요 기능 -->
+- 좋아요 기능
 
 ## 프로젝트 후기
 

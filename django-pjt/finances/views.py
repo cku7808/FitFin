@@ -689,12 +689,18 @@ def create_user_loans(credit_level, loan_df):
     eligible_loans = loan_df[loan_df[column_name].notnull()]["id"].tolist()
     return eligible_loans
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def recommend_loans(request):
     """
     상품 추천을 반환하는 뷰
     """
+    print('1!!!!!!!!!!!!!!!!!!!!!!!1')
+    print(request.data)
+    filtered_col = request.data.get('result_col')
+    print(filtered_col)
+    
+    
     # 사용자 데이터 로드
     # my_username = 'lsexton'  # 테스트용
     my_username = request.user.username
@@ -709,8 +715,12 @@ def recommend_loans(request):
     # 사용자 데이터 준비
     user_df["job_encoded"] = user_df["job"].map(job_mapping)
     user_features = user_df[
-        ["income", "assets", "is_married", "job_encoded", "age", "credit"]
+        filtered_col
     ]
+    # !!!!!!!!!!!!!!!!!
+    # user_features = user_df[
+    #     ["income", "assets", "is_married", "job_encoded", "age", "credit"]
+    # ]
     # 유저 데이터 준비  
     my_df = user_df[user_df['username']==my_username]
     my_idx = user_df[user_df['username']==my_username].index       

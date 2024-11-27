@@ -7,7 +7,7 @@
         <!-- 상품 이름 -->
         <p 
           class="card-text product-name" 
-          :style="{ fontSize: calculatedFontSize + 'px' }">
+          :style="{ fontSize: baseFontSize + 'px' }">
           {{ recommenddata.product_name }}
         </p>
         
@@ -40,17 +40,17 @@ const cardWidth = 250; // 카드 너비 (픽셀 단위)
 
 // 텍스트 길이에 따라 폰트 크기 계산
 // 안전하게 recommenddata와 product_name을 확인하고 계산
-const calculatedFontSize = computed(() => {
-  if (!recommenddata || !recommenddata.product_name) {
-    return baseFontSize; // recommenddata가 없거나 product_name이 없는 경우 기본 폰트 크기 반환
-  }
-  const nameLength = recommenddata.product_name.length; // 상품 이름 길이
-  if (nameLength <= 20) {
-    return baseFontSize; // 길이가 짧으면 기본 폰트 크기 유지
-  }
-  const scaleFactor = 1 - (nameLength - 20) * 0.05; // 길이가 길수록 폰트 크기 축소
-  return Math.max(baseFontSize * scaleFactor, 12); // 최소 폰트 크기 12px 보장
-});
+// const calculatedFontSize = computed(() => {
+//   if (!recommenddata || !recommenddata.product_name) {
+//     return baseFontSize; // recommenddata가 없거나 product_name이 없는 경우 기본 폰트 크기 반환
+//   }
+//   const nameLength = recommenddata.product_name.length; // 상품 이름 길이
+//   if (nameLength <= 20) {
+//     return baseFontSize; // 길이가 짧으면 기본 폰트 크기 유지
+//   }
+//   const scaleFactor = 1 - (nameLength - 20) * 0.05; // 길이가 길수록 폰트 크기 축소
+//   return Math.max(baseFontSize * scaleFactor, 12); // 최소 폰트 크기 12px 보장
+// });
 
 </script>
 
