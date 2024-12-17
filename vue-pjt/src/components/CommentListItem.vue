@@ -2,10 +2,10 @@
   <div class="comment-item">
     <!-- 댓글 내용 -->
     <span class="comment-content">
-      <strong>{{ comment.author }}</strong>: {{ comment.content }}
+      {{ comment.user }} : {{ comment.content }}
     </span>
     <!-- 수정 및 삭제 버튼 -->
-    <span class="comment-actions">
+    <span class="comment-actions" v-if="comment.user === postedUser">
       <button class="btn btn-secondary btn-sm" @click="$emit('edit')">수정</button>
       <button class="btn btn-danger btn-sm" @click="deleteComment">삭제</button>
     </span>
@@ -13,11 +13,12 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { computed, ref, defineProps, onMounted } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import axios from "axios";
 
 const store = useCounterStore();
+const postedUser = ref();
 const props = defineProps({
   comment: Object, // 댓글 정보
 });
@@ -40,6 +41,12 @@ const deleteComment = function () {
       });
   };
   }
+
+
+  onMounted(() => {
+    postedUser.value = store.userInfo?.username || '';
+    console.log('사용자 정보', postedUser)
+});
 </script>
 
 <style scoped>

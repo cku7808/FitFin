@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="updateComment">
-      <textarea v-model="updatedContent" class="form-control" rows="3"></textarea>
+      <textarea v-model="updatedContent" class="form-control" rows="1"></textarea>
       <button type="submit" class="btn btn-success mt-2">수정하기</button>
       <button type="button" class="btn btn-secondary mt-2" @click="$emit('cancelEdit')">취소</button>
     </form>

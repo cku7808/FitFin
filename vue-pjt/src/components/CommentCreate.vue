@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h4>댓글 작성하기</h4>
+    <h5>댓글 작성하기</h5>
     <form @submit.prevent="createComment">
       <textarea
         v-model="content"
         class="form-control"
-        rows="3"
+        rows="1"
         placeholder="댓글을 입력하세요"
       ></textarea>
       <button type="submit" class="btn btn-primary mt-2">작성하기</button>
@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <h4>댓글 목록</h4>
+    <h5>댓글 목록</h5>
     <div v-if="comments.length">
       <div v-for="(comment, index) in comments" :key="comment.id">
         <CommentListItem
@@ -40,8 +40,10 @@ import axios from "axios";
 import CommentListItem from "@/components/CommentListItem.vue";
 import CommentEdit from "@/components/CommentEdit.vue";
 import { useCounterStore } from "@/stores/counter";
+import { useRouter } from "vue-router";
 
 const store = useCounterStore();
+const router = useRouter();
 
 const props = defineProps({
   article: Object,
@@ -53,22 +55,30 @@ const editingCommentId = ref(null);
 
 // 댓글 작성 함수
 const createComment = function () {
-  axios({
-    method: "post",
-    url: `${store.BASE_URL}/api/v3/articles/${props.article.id}/comment/`,
-    headers: store.header,
-    data: {
-      content: content.value,
-    },
-  })
-    .then(() => {
-      console.log("댓글 작성 성공!");
-      content.value = "";
-      loadComments();
+
+  if(store.isLogin === false) {
+    alert("로그인을 먼저 해주세요")
+    router.push({name: "LogInView"})
+  }
+
+  else {
+    axios({
+      method: "post",
+      url: `${store.BASE_URL}/api/v3/articles/${props.article.id}/comment/`,
+      headers: store.header,
+      data: {
+        content: content.value,
+      },
     })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then(() => {
+        console.log("댓글 작성 성공!");
+        content.value = "";
+        loadComments();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 
 // 댓글 목록 불러오기
@@ -79,7 +89,6 @@ const loadComments = function () {
   axios({
     method: "get",
     url: `${store.BASE_URL}/api/v3/articles/${props.article.id}/comment/`,
-    headers: store.header,
   })
     .then((res) => {
       console.log("댓글 목록 로드!");
@@ -135,8 +144,8 @@ const handleUpdate = (index, updatedComment) => {
 }
 
 /* 제목 스타일 */
-h4 {
-  font-size: 1.5rem;
+h5 {
+  /* font-size: 1.5rem; */
   font-weight: bold;
   color: #203359; /* 네이비 */
   margin-bottom: 20px;

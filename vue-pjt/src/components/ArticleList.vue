@@ -1,6 +1,6 @@
 <template>
     <div class="coredream-regular">
-        <button type="button" class="btn btn-primary" @click="createarticle">작성하기</button>
+        <button type="button" class="btn btn-primary" @click="createarticle">게시글 작성하기</button>
         <hr>
         <ArticleListItem
         v-for="article in articlelist"
@@ -14,18 +14,19 @@
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRouter } from "vue-router";
+import { useCounterStore } from '@/stores/counter';
 
 
 import ArticleListItem from '@/components/ArticleListItem.vue';
 
 // 데이터 로드
+const store = useCounterStore()
 const router = useRouter();
-const BASE_URL = 'http://127.0.0.1:8000'
 const articlelist = ref([])
 const loadArticleList = function () {
     axios({
         method: 'get',
-        url: `${BASE_URL}/api/v3/articles/`,
+        url: `${store.BASE_URL}/api/v3/articles/`,
     })
     .then((res) => {
         articlelist.value = res.data
@@ -41,7 +42,14 @@ onMounted(() => {
 
 
 const createarticle = () => {
-  router.push({ name: "ArticleCreate"});
+  if (store.isLogin === false){
+    alert("로그인을 먼저 해주세요")
+    router.push({name: "LogInView"})
+  }
+
+  else{
+    router.push({ name: "ArticleCreate"});
+  }
 }
 
 
