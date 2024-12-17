@@ -11,10 +11,6 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
 from .models import Article, Comment
 
-from django.contrib.auth import get_user_model
-User = get_user_model()
-# temp_user = User.objects.get(pk=1)
-
 # 게시글 (조회, 생성)
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
@@ -28,7 +24,6 @@ def article_list(request):
         if request.user.is_authenticated:
             serializer = ArticleSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
-                # article = serializer.save(user=temp_user)
                 article = serializer.save(user=request.user)
                 return Response({'articleid': article.id}, status=status.HTTP_201_CREATED)
         
@@ -83,7 +78,6 @@ def comment(request, article_pk):
             serializer = CommentSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
                 comment = serializer.save(user=request.user, article=article)
-                # comment = serializer.save(user=temp_user, article=article)
                 return Response({'commentid': comment.id}, status=status.HTTP_201_CREATED)
 
 # 댓글 (삭제, 수정)
