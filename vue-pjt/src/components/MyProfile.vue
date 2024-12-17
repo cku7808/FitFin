@@ -9,7 +9,7 @@
         <div class="d-flex col-8">
             <!-- 좌측: 프로필 사진과 수정하기 버튼 -->
             <div class="profile-left">
-                <img class="profile-image" src="/profile/profile.png" alt="프로필 사진">
+                <img class="profile-image" :src="store.BASE_URL+userInfo.profile_img" alt="프로필 사진">
                 <button class="profile-btn" type="button" @click="editProfile">
                     프로필 수정
                 </button>
@@ -168,6 +168,8 @@ const convertToKorean = (num) => {
 /* 프로필 이미지 */
 .profile-image {
   width: 70%;
+  object-fit: cover; /* 비율을 유지하면서 컨테이너에 꽉 차게 자름 */
+  aspect-ratio: 1 / 1; /* 강제로 정사각형 비율 적용 */
   /* height: 100px; */
   border-radius: 50%;
   margin-bottom: 20px;
