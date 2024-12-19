@@ -9,8 +9,9 @@
         <form @submit.prevent="editProfile" class="d-flex col-12">
           <!-- 좌측: 프로필 사진과 수정하기 버튼 -->
           <div class="profile-left">
+            <!-- 프로필 사진 및 수정 -->
             <input type="file" @change="onImageChange" class="image-upload m-3 form-control"/>
-            <img class="profile-image" :src="profileImageUrl" alt="프로필 사진" />
+            <img class="profile-image" :src="previewImg || (store.BASE_URL+profileImg)" alt="프로필 사진" />
             
             <button type="submit" class="profile-btn">저장하기</button>
           </div>
@@ -108,15 +109,37 @@
   const router = useRouter();
   const store = useCounterStore();
   const userInfo = computed(() => store.userInfo);
-  const profileImageUrl = ref('/profile/profile.png'); // 기본 프로필 이미지
-  
+  const previewImg = ref(null)  // 저장 전 프로필 이미지 미리보기
+  const shortName = ref(null)  // 변경된 프로필 파일명
+
   // 이미지 변경 핸들러
   const onImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      profileImageUrl.value = URL.createObjectURL(file);
-      console.log(URL.createObjectURL(file))
+    const tempImg = event.target.files[0];
+    if (tempImg) {
+      
+      // 저장 전 프로필 이미지 미리보기
+      const reader = new FileReader();
+      reader.onload = (e) => {  // 파일 읽기가 완료되었을 때 실행되는 이벤트 핸들러
+        previewImg.value = e.target.result;  // 미리보기 url 저장
+      };
+      reader.readAsDataURL(tempImg);
+
+      // 파일명이 길면 잘라내기
+      const originalName = tempImg.name;
+      const extension = originalName.split('.').pop();
+    
+      shortName.value = originalName
+      if (originalName.length > 50) {
+        shortName.value = originalName.slice(0, 50) + `.${extension}`;
+      }
+
+      // 변경된 프로필 이미지 파일 저장
+      profileImg.value = tempImg;
     }
+    else {
+      console.log('변경할 프로필 이미지가 비어있습니다');
+    };
+    
   };
   
   // 가입 날짜 계산
@@ -129,10 +152,6 @@
     return daysDifference;
   });
   
-  // 게시글 및 좋아요 수 (예시로 고정값 사용)
-  const postsCount = 10;
-  const likesCount = 15;
-  
   const email = ref(userInfo.value.email)
   const income = ref(userInfo.value.income)
   const assets = ref(userInfo.value.assets)
@@ -140,22 +159,27 @@
   const job = ref(userInfo.value.job)
   const age = ref(userInfo.value.age)
   const credit = ref(userInfo.value.credit)
+  const profileImg = ref(userInfo.value.profile_img)
 
   // 프로필 저장 핸들러
   const editProfile = () => {
+    const formData = new FormData();  // 서버에 파일명 변경해서 보내기 위하여 FormData 사용
+    formData.append('email', email.value);
+    formData.append('age', age.value);
+    formData.append('job', job.value);
+    formData.append('is_married', is_married.value);
+    formData.append('income', income.value);
+    formData.append('assets', assets.value);
+    formData.append('credit', credit.value);
+    formData.append('profile_img', profileImg.value, shortName.value);
+
     axios({
         method: 'put',
         url: `${store.BASE_URL}/api/v1/userinfo/`,
-        headers: store.header,
-        data: {
-            email: email.value,
-            age: age.value,
-            job: job.value,
-            is_married: is_married.value,
-            income: income.value,
-            assets: assets.value,
-            credit: credit.value
-        },
+        headers: {...store.header, // ...스프레드 연산자
+          'Content-Type': 'multipart/form-data', // 데이터 전송 방식 (이미지 포함)
+          },
+        data: formData,
     })
     .then((res) => {
         console.log(res.data)
@@ -219,6 +243,8 @@ input:focus {
   /* 프로필 이미지 */
   .profile-image {
     width: 70%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 50%;
     margin-bottom: 20px;
   }

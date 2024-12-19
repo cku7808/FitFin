@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+# 프로필 이미지 (저장하는 파일명 변경)
+import os
+from uuid import uuid4
+from django.utils import timezone
+
+def upload_to_profile(instance, filename):
+    # 파일 확장자 추출
+    extension = filename.split('.')[-1]
+    # 새로운 파일명 생성 (UUID + 현재 시간)
+    new_filename = f"profile_{uuid4().hex[:10]}_{timezone.now().strftime('%Y%m%d%H%M%S')}.{extension}"
+    # 저장 경로 반환
+    return os.path.join('profile_images/', new_filename)
+
 # 소득 수준
 # 소비 성향
 # 자산
@@ -22,9 +35,6 @@ class User(AbstractUser):
     job = models.CharField(max_length=200)
     age = models.IntegerField(default=0)
     registered_loan = models.JSONField(default=list)
-    # profile_img = models.ImageField(blank=True, null=True, 
-    #                                 default='accounts/profile.png',
-    #                                 upload_to='profile_images/')
     
     # def save(self, *args, **kwargs):
     #     # If the instance already exists in the database
@@ -40,3 +50,6 @@ class User(AbstractUser):
     credit = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(1000)], default=0)
 
+    profile_img = models.ImageField(blank=True, null=True, 
+                                    default='static/accounts/profile.png',
+                                    upload_to=upload_to_profile)
