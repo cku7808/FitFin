@@ -11,10 +11,6 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
 from .models import Article, Comment
 
-from django.contrib.auth import get_user_model
-User = get_user_model()
-# temp_user = User.objects.get(pk=1)
-
 # 게시글 (조회, 생성)
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
@@ -23,13 +19,13 @@ def article_list(request):
         articles = Article.objects.all()
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
-    
+
     elif request.method == 'POST':
-        serializer = ArticleSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            # article = serializer.save(user=temp_user)
-            article = serializer.save(user=request.user)
-            return Response({'articleid': article.id}, status=status.HTTP_201_CREATED)
+        if request.user.is_authenticated:
+            serializer = ArticleSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                article = serializer.save(user=request.user)
+                return Response({'articleid': article.id}, status=status.HTTP_201_CREATED)
         
 # 게시글 (상세 조회, 삭제, 수정)
 @api_view(['GET', 'DELETE', 'PUT'])
@@ -44,20 +40,21 @@ def article_detail(request, article_pk):
         return Response(serializer.data)
     
     elif request.method == 'DELETE':
-        article.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if request.user.is_authenticated and request.user == article.user:
+            article.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
     
     elif request.method == 'PUT':
-        serializer = ArticleSerializer(article, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            serializer = ArticleSerializer(article)
-            return Response(serializer.data)
-        
+        if request.user.is_authenticated and request.user == article.user:
+            serializer = ArticleSerializer(article, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                serializer = ArticleSerializer(article)
+                return Response(serializer.data)
         
 # 좋아요
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def like_article(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     if request.user in article.like_users.all():
@@ -65,11 +62,6 @@ def like_article(request, article_pk):
     else:    
         article.like_users.add(request.user)
     return Response(status=status.HTTP_201_CREATED)
-    # if temp_user in article.like_users.all():
-    #     article.like_users.remove(temp_user)
-    # else:    
-    #     article.like_users.add(temp_user)
-    # return Response(status=status.HTTP_201_CREATED)
 
 # 댓글 (생성, 조회)
 @api_view(['GET', 'POST'])
@@ -81,14 +73,13 @@ def comment(request, article_pk):
         return Response(serializer.data)
     
     elif request.method == 'POST':
-        article = get_object_or_404(Article, pk=article_pk)
-        serializer = CommentSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            comment = serializer.save(user=request.user, article=article)
-            # comment = serializer.save(user=temp_user, article=article)
-            return Response({'commentid': comment.id}, status=status.HTTP_201_CREATED)
+        if request.user.is_authenticated:
+            article = get_object_or_404(Article, pk=article_pk)
+            serializer = CommentSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                comment = serializer.save(user=request.user, article=article)
+                return Response({'commentid': comment.id}, status=status.HTTP_201_CREATED)
 
-        
 # 댓글 (삭제, 수정)
 @api_view(['GET', 'DELETE', 'PUT'])
 @permission_classes([AllowAny])
@@ -100,12 +91,14 @@ def comment_edit(request, article_pk, comment_pk):
         return Response(serializer.data)
     
     elif request.method == 'DELETE':
-        comment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if request.user.is_authenticated and request.user == comment.user:
+            comment.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
     
     elif request.method == 'PUT':
-        serializer = CommentSerializer(comment, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            serializer = CommentSerializer(comment)
-            return Response(serializer.data)
+        if request.user.is_authenticated and request.user == comment.user:
+            serializer = CommentSerializer(comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                serializer = CommentSerializer(comment)
+                return Response(serializer.data)
