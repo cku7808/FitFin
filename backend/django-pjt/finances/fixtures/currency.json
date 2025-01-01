@@ -1,0 +1,2900 @@
+[
+{
+    "model": "finances.currency",
+    "pk": 921,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "377.48",
+        "tts": "385.11",
+        "deal_bas_r": "381.3",
+        "bkpr": "381",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "381.3",
+        "kftc_bkpr": "381"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 922,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "907.04",
+        "tts": "925.37",
+        "deal_bas_r": "916.21",
+        "bkpr": "916",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "916.21",
+        "kftc_bkpr": "916"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 923,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3677.8",
+        "tts": "3752.09",
+        "deal_bas_r": "3714.95",
+        "bkpr": "3714",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3714.95",
+        "kftc_bkpr": "3714"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 924,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1032.31",
+        "tts": "1053.16",
+        "deal_bas_r": "1042.74",
+        "bkpr": "1042",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1042.74",
+        "kftc_bkpr": "1042"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 925,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "994.5",
+        "tts": "1014.59",
+        "deal_bas_r": "1004.55",
+        "bkpr": "1004",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1004.55",
+        "kftc_bkpr": "1004"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 926,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1555.49",
+        "tts": "1586.92",
+        "deal_bas_r": "1571.21",
+        "bkpr": "1571",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1571.21",
+        "kftc_bkpr": "1571"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 927,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "191.05",
+        "tts": "194.9",
+        "deal_bas_r": "192.98",
+        "bkpr": "192",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "192.98",
+        "kftc_bkpr": "192"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 928,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "194.76",
+        "tts": "198.69",
+        "deal_bas_r": "196.73",
+        "bkpr": "196",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "196.73",
+        "kftc_bkpr": "196"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 929,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1452.55",
+        "tts": "1481.9",
+        "deal_bas_r": "1467.23",
+        "bkpr": "1467",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1467.23",
+        "kftc_bkpr": "1467"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 930,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1744.97",
+        "tts": "1780.22",
+        "deal_bas_r": "1762.6",
+        "bkpr": "1762",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1762.6",
+        "kftc_bkpr": "1762"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 931,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "178.13",
+        "tts": "181.72",
+        "deal_bas_r": "179.93",
+        "bkpr": "179",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "179.93",
+        "kftc_bkpr": "179"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 932,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.0873",
+        "tts": "0.08900000000000001",
+        "deal_bas_r": "0.0882",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.0882",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 933,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9854",
+        "tts": "9.1669",
+        "deal_bas_r": "9.0762",
+        "bkpr": "9.07",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "9.0762",
+        "kftc_bkpr": "9.07"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 934,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 935,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4501.89",
+        "tts": "4592.84",
+        "deal_bas_r": "4547.37",
+        "bkpr": "4547",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4547.37",
+        "kftc_bkpr": "4547"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 936,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "310.35",
+        "tts": "316.62",
+        "deal_bas_r": "313.49",
+        "bkpr": "313",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "313.49",
+        "kftc_bkpr": "313"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 937,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "125.89",
+        "tts": "128.44",
+        "deal_bas_r": "127.17",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.17",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 938,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "812.41",
+        "tts": "828.82",
+        "deal_bas_r": "820.62",
+        "bkpr": "820",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "820.62",
+        "kftc_bkpr": "820"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 939,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "369.38",
+        "tts": "376.85",
+        "deal_bas_r": "373.12",
+        "bkpr": "373",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "373.12",
+        "kftc_bkpr": "373"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 940,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "126.36",
+        "tts": "128.91",
+        "deal_bas_r": "127.64",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.64",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 941,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1032.31",
+        "tts": "1053.16",
+        "deal_bas_r": "1042.74",
+        "bkpr": "1042",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1042.74",
+        "kftc_bkpr": "1042"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 942,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "40.23",
+        "tts": "41.04",
+        "deal_bas_r": "40.64",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.64",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 943,
+    "fields": {
+        "date": "20241125",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1386.49",
+        "tts": "1414.5",
+        "deal_bas_r": "1400.5",
+        "bkpr": "1400",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1400.5",
+        "kftc_bkpr": "1400"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 944,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "376.83",
+        "tts": "384.44",
+        "deal_bas_r": "380.64",
+        "bkpr": "380",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "380.64",
+        "kftc_bkpr": "380"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 945,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "900.98",
+        "tts": "919.19",
+        "deal_bas_r": "910.09",
+        "bkpr": "910",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "910.09",
+        "kftc_bkpr": "910"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 946,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3672.08",
+        "tts": "3746.27",
+        "deal_bas_r": "3709.18",
+        "bkpr": "3709",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3709.18",
+        "kftc_bkpr": "3709"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 947,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1028.2",
+        "tts": "1048.97",
+        "deal_bas_r": "1038.59",
+        "bkpr": "1038",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1038.59",
+        "kftc_bkpr": "1038"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 948,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "990.38",
+        "tts": "1010.39",
+        "deal_bas_r": "1000.39",
+        "bkpr": "1000",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1000.39",
+        "kftc_bkpr": "1000"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 949,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1561.06",
+        "tts": "1592.59",
+        "deal_bas_r": "1576.83",
+        "bkpr": "1576",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1576.83",
+        "kftc_bkpr": "1576"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 950,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "190.92",
+        "tts": "194.77",
+        "deal_bas_r": "192.85",
+        "bkpr": "192",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "192.85",
+        "kftc_bkpr": "192"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 951,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "194.38",
+        "tts": "198.31",
+        "deal_bas_r": "196.35",
+        "bkpr": "196",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "196.35",
+        "kftc_bkpr": "196"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 952,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1449.86",
+        "tts": "1479.15",
+        "deal_bas_r": "1464.51",
+        "bkpr": "1464",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1464.51",
+        "kftc_bkpr": "1464"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 953,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1742.26",
+        "tts": "1777.45",
+        "deal_bas_r": "1759.86",
+        "bkpr": "1759",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1759.86",
+        "kftc_bkpr": "1759"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 954,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "177.83",
+        "tts": "181.42",
+        "deal_bas_r": "179.63",
+        "bkpr": "179",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "179.63",
+        "kftc_bkpr": "179"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 955,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.08689999999999999",
+        "tts": "0.0886",
+        "deal_bas_r": "0.08779999999999999",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.08779999999999999",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 956,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9694",
+        "tts": "9.150599999999999",
+        "deal_bas_r": "9.06",
+        "bkpr": "9.06",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "9.06",
+        "kftc_bkpr": "9.06"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 957,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 958,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4498.56",
+        "tts": "4589.45",
+        "deal_bas_r": "4544.01",
+        "bkpr": "4544",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4544.01",
+        "kftc_bkpr": "4544"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 959,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "309.98",
+        "tts": "316.25",
+        "deal_bas_r": "313.12",
+        "bkpr": "313",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "313.12",
+        "kftc_bkpr": "313"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 960,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "124.99",
+        "tts": "127.52",
+        "deal_bas_r": "126.26",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.26",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 961,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "811.02",
+        "tts": "827.41",
+        "deal_bas_r": "819.22",
+        "bkpr": "819",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "819.22",
+        "kftc_bkpr": "819"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 962,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "368.64",
+        "tts": "376.09",
+        "deal_bas_r": "372.37",
+        "bkpr": "372",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "372.37",
+        "kftc_bkpr": "372"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 963,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "125.15",
+        "tts": "127.68",
+        "deal_bas_r": "126.42",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.42",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 964,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1028.2",
+        "tts": "1048.97",
+        "deal_bas_r": "1038.59",
+        "bkpr": "1038",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1038.59",
+        "kftc_bkpr": "1038"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 965,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.85",
+        "tts": "40.66",
+        "deal_bas_r": "40.26",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.26",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 966,
+    "fields": {
+        "date": "20241122",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1384.11",
+        "tts": "1412.08",
+        "deal_bas_r": "1398.1",
+        "bkpr": "1398",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1398.1",
+        "kftc_bkpr": "1398"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 967,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "375.08",
+        "tts": "382.65",
+        "deal_bas_r": "378.87",
+        "bkpr": "378",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "378.87",
+        "kftc_bkpr": "378"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 968,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "896.59",
+        "tts": "914.7",
+        "deal_bas_r": "905.65",
+        "bkpr": "905",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "905.65",
+        "kftc_bkpr": "905"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 969,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3654.82",
+        "tts": "3728.65",
+        "deal_bas_r": "3691.74",
+        "bkpr": "3691",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3691.74",
+        "kftc_bkpr": "3691"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 970,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1025.82",
+        "tts": "1046.55",
+        "deal_bas_r": "1036.19",
+        "bkpr": "1036",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1036.19",
+        "kftc_bkpr": "1036"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 971,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "985.93",
+        "tts": "1005.84",
+        "deal_bas_r": "995.89",
+        "bkpr": "995",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "995.89",
+        "kftc_bkpr": "995"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 972,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1558.81",
+        "tts": "1590.3",
+        "deal_bas_r": "1574.56",
+        "bkpr": "1574",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1574.56",
+        "kftc_bkpr": "1574"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 973,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "190.35",
+        "tts": "194.2",
+        "deal_bas_r": "192.28",
+        "bkpr": "192",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "192.28",
+        "kftc_bkpr": "192"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 974,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "194.74",
+        "tts": "198.67",
+        "deal_bas_r": "196.71",
+        "bkpr": "196",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "196.71",
+        "kftc_bkpr": "196"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 975,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1452.69",
+        "tts": "1482.04",
+        "deal_bas_r": "1467.37",
+        "bkpr": "1467",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1467.37",
+        "kftc_bkpr": "1467"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 976,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1742.9",
+        "tts": "1778.11",
+        "deal_bas_r": "1760.51",
+        "bkpr": "1760",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1760.51",
+        "kftc_bkpr": "1760"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 977,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "177.01",
+        "tts": "180.58",
+        "deal_bas_r": "178.8",
+        "bkpr": "178",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "178.8",
+        "kftc_bkpr": "178"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 978,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.0868",
+        "tts": "0.0885",
+        "deal_bas_r": "0.0877",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.0877",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 979,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.8691",
+        "tts": "9.048200000000001",
+        "deal_bas_r": "8.9587",
+        "bkpr": "8.95",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "8.9587",
+        "kftc_bkpr": "8.95"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 980,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 981,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4479.83",
+        "tts": "4570.34",
+        "deal_bas_r": "4525.09",
+        "bkpr": "4525",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4525.09",
+        "kftc_bkpr": "4525"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 982,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "308.1",
+        "tts": "314.33",
+        "deal_bas_r": "311.22",
+        "bkpr": "311",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "311.22",
+        "kftc_bkpr": "311"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 983,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "124.52",
+        "tts": "127.03",
+        "deal_bas_r": "125.78",
+        "bkpr": "125",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "125.78",
+        "kftc_bkpr": "125"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 984,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "809.8",
+        "tts": "826.15",
+        "deal_bas_r": "817.98",
+        "bkpr": "817",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "817.98",
+        "kftc_bkpr": "817"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 985,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "366.96",
+        "tts": "374.37",
+        "deal_bas_r": "370.67",
+        "bkpr": "370",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "370.67",
+        "kftc_bkpr": "370"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 986,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "124.9",
+        "tts": "127.43",
+        "deal_bas_r": "126.17",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.17",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 987,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1025.82",
+        "tts": "1046.55",
+        "deal_bas_r": "1036.19",
+        "bkpr": "1036",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1036.19",
+        "kftc_bkpr": "1036"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 988,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.75",
+        "tts": "40.56",
+        "deal_bas_r": "40.16",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.16",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 989,
+    "fields": {
+        "date": "20241121",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1377.68",
+        "tts": "1405.51",
+        "deal_bas_r": "1391.6",
+        "bkpr": "1391",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1391.6",
+        "kftc_bkpr": "1391"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 990,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "375.19",
+        "tts": "382.76",
+        "deal_bas_r": "378.98",
+        "bkpr": "378",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "378.98",
+        "kftc_bkpr": "378"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 991,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "900.43",
+        "tts": "918.62",
+        "deal_bas_r": "909.53",
+        "bkpr": "909",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "909.53",
+        "kftc_bkpr": "909"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 992,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3655.57",
+        "tts": "3729.42",
+        "deal_bas_r": "3692.5",
+        "bkpr": "3692",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3692.5",
+        "kftc_bkpr": "3692"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 993,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1030.07",
+        "tts": "1050.88",
+        "deal_bas_r": "1040.48",
+        "bkpr": "1040",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1040.48",
+        "kftc_bkpr": "1040"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 994,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "987.51",
+        "tts": "1007.46",
+        "deal_bas_r": "997.49",
+        "bkpr": "997",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "997.49",
+        "kftc_bkpr": "997"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 995,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1561.83",
+        "tts": "1593.38",
+        "deal_bas_r": "1577.61",
+        "bkpr": "1577",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1577.61",
+        "kftc_bkpr": "1577"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 996,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "190.48",
+        "tts": "194.33",
+        "deal_bas_r": "192.41",
+        "bkpr": "192",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "192.41",
+        "kftc_bkpr": "192"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 997,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "195.78",
+        "tts": "199.73",
+        "deal_bas_r": "197.76",
+        "bkpr": "197",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "197.76",
+        "kftc_bkpr": "197"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 998,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1460.34",
+        "tts": "1489.85",
+        "deal_bas_r": "1475.1",
+        "bkpr": "1475",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1475.1",
+        "kftc_bkpr": "1475"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 999,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1747.74",
+        "tts": "1783.05",
+        "deal_bas_r": "1765.4",
+        "bkpr": "1765",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1765.4",
+        "kftc_bkpr": "1765"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1000,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "177.05",
+        "tts": "180.62",
+        "deal_bas_r": "178.84",
+        "bkpr": "178",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "178.84",
+        "kftc_bkpr": "178"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1001,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.087",
+        "tts": "0.08869999999999999",
+        "deal_bas_r": "0.08789999999999999",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.08789999999999999",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1002,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9155",
+        "tts": "9.0956",
+        "deal_bas_r": "9.0056",
+        "bkpr": "9.0",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "9.0056",
+        "kftc_bkpr": "9.0"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1003,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1004,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4482.72",
+        "tts": "4573.29",
+        "deal_bas_r": "4528.01",
+        "bkpr": "4528",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4528.01",
+        "kftc_bkpr": "4528"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1005,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "308.08",
+        "tts": "314.31",
+        "deal_bas_r": "311.2",
+        "bkpr": "311",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "311.2",
+        "kftc_bkpr": "311"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1006,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "125.52",
+        "tts": "128.05",
+        "deal_bas_r": "126.79",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.79",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1007,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "815.13",
+        "tts": "831.6",
+        "deal_bas_r": "823.37",
+        "bkpr": "823",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "823.37",
+        "kftc_bkpr": "823"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1008,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "367.08",
+        "tts": "374.49",
+        "deal_bas_r": "370.79",
+        "bkpr": "370",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "370.79",
+        "kftc_bkpr": "370"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1009,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "126.21",
+        "tts": "128.76",
+        "deal_bas_r": "127.49",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.49",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1010,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1030.07",
+        "tts": "1050.88",
+        "deal_bas_r": "1040.48",
+        "bkpr": "1040",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1040.48",
+        "kftc_bkpr": "1040"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1011,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.95",
+        "tts": "40.76",
+        "deal_bas_r": "40.36",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.36",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1012,
+    "fields": {
+        "date": "20241120",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1378.08",
+        "tts": "1405.92",
+        "deal_bas_r": "1392",
+        "bkpr": "1392",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1392",
+        "kftc_bkpr": "1392"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1013,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "375.35",
+        "tts": "382.94",
+        "deal_bas_r": "379.15",
+        "bkpr": "379",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "379.15",
+        "kftc_bkpr": "379"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1014,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "896.55",
+        "tts": "914.66",
+        "deal_bas_r": "905.61",
+        "bkpr": "905",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "905.61",
+        "kftc_bkpr": "905"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1015,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3657.24",
+        "tts": "3731.13",
+        "deal_bas_r": "3694.19",
+        "bkpr": "3694",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3694.19",
+        "kftc_bkpr": "3694"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1016,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1029.74",
+        "tts": "1050.55",
+        "deal_bas_r": "1040.15",
+        "bkpr": "1040",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1040.15",
+        "kftc_bkpr": "1040"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1017,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "983.25",
+        "tts": "1003.12",
+        "deal_bas_r": "993.19",
+        "bkpr": "993",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "993.19",
+        "kftc_bkpr": "993"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1018,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1561.17",
+        "tts": "1592.7",
+        "deal_bas_r": "1576.94",
+        "bkpr": "1576",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1576.94",
+        "kftc_bkpr": "1576"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1019,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "190.42",
+        "tts": "194.27",
+        "deal_bas_r": "192.35",
+        "bkpr": "192",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "192.35",
+        "kftc_bkpr": "192"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1020,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "195.83",
+        "tts": "199.78",
+        "deal_bas_r": "197.81",
+        "bkpr": "197",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "197.81",
+        "kftc_bkpr": "197"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1021,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1460.63",
+        "tts": "1490.14",
+        "deal_bas_r": "1475.39",
+        "bkpr": "1475",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1475.39",
+        "kftc_bkpr": "1475"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1022,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1747.26",
+        "tts": "1782.55",
+        "deal_bas_r": "1764.91",
+        "bkpr": "1764",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1764.91",
+        "kftc_bkpr": "1764"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1023,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "177.12",
+        "tts": "180.69",
+        "deal_bas_r": "178.91",
+        "bkpr": "178",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "178.91",
+        "kftc_bkpr": "178"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1024,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.087",
+        "tts": "0.08869999999999999",
+        "deal_bas_r": "0.08789999999999999",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.08789999999999999",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1025,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9237",
+        "tts": "9.104",
+        "deal_bas_r": "9.0139",
+        "bkpr": "9.01",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "9.0139",
+        "kftc_bkpr": "9.01"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1026,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1027,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4484.8",
+        "tts": "4575.41",
+        "deal_bas_r": "4530.11",
+        "bkpr": "4530",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4530.11",
+        "kftc_bkpr": "4530"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1028,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "307.7",
+        "tts": "313.91",
+        "deal_bas_r": "310.81",
+        "bkpr": "310",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "310.81",
+        "kftc_bkpr": "310"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1029,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "125.3",
+        "tts": "127.83",
+        "deal_bas_r": "126.57",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.57",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1030,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "811.96",
+        "tts": "828.37",
+        "deal_bas_r": "820.17",
+        "bkpr": "820",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "820.17",
+        "kftc_bkpr": "820"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1031,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "367.25",
+        "tts": "374.66",
+        "deal_bas_r": "370.96",
+        "bkpr": "370",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "370.96",
+        "kftc_bkpr": "370"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1032,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "126.35",
+        "tts": "128.9",
+        "deal_bas_r": "127.63",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.63",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1033,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1029.74",
+        "tts": "1050.55",
+        "deal_bas_r": "1040.15",
+        "bkpr": "1040",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1040.15",
+        "kftc_bkpr": "1040"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1034,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.84",
+        "tts": "40.65",
+        "deal_bas_r": "40.25",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.25",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1035,
+    "fields": {
+        "date": "20241119",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1378.67",
+        "tts": "1406.52",
+        "deal_bas_r": "1392.6",
+        "bkpr": "1392",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1392.6",
+        "kftc_bkpr": "1392"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1036,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "378.1",
+        "tts": "385.73",
+        "deal_bas_r": "381.92",
+        "bkpr": "381",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "381.92",
+        "kftc_bkpr": "381"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1037,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "897.35",
+        "tts": "915.48",
+        "deal_bas_r": "906.42",
+        "bkpr": "906",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "906.42",
+        "kftc_bkpr": "906"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1038,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3684.43",
+        "tts": "3758.86",
+        "deal_bas_r": "3721.65",
+        "bkpr": "3721",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3721.65",
+        "kftc_bkpr": "3721"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1039,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1034.57",
+        "tts": "1055.48",
+        "deal_bas_r": "1045.03",
+        "bkpr": "1045",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1045.03",
+        "kftc_bkpr": "1045"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1040,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "986.03",
+        "tts": "1005.94",
+        "deal_bas_r": "995.99",
+        "bkpr": "995",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "995.99",
+        "kftc_bkpr": "995"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1041,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1563.22",
+        "tts": "1594.81",
+        "deal_bas_r": "1579.02",
+        "bkpr": "1579",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1579.02",
+        "kftc_bkpr": "1579"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1042,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "191.53",
+        "tts": "195.4",
+        "deal_bas_r": "193.47",
+        "bkpr": "193",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "193.47",
+        "kftc_bkpr": "193"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1043,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "196.17",
+        "tts": "200.14",
+        "deal_bas_r": "198.16",
+        "bkpr": "198",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "198.16",
+        "kftc_bkpr": "198"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1044,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1463.21",
+        "tts": "1492.76",
+        "deal_bas_r": "1477.99",
+        "bkpr": "1477",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1477.99",
+        "kftc_bkpr": "1477"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1045,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1752.55",
+        "tts": "1787.96",
+        "deal_bas_r": "1770.26",
+        "bkpr": "1770",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1770.26",
+        "kftc_bkpr": "1770"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1046,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "178.34",
+        "tts": "181.95",
+        "deal_bas_r": "180.15",
+        "bkpr": "180",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "180.15",
+        "kftc_bkpr": "180"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1047,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.0876",
+        "tts": "0.08929999999999999",
+        "deal_bas_r": "0.0885",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.0885",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1048,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9786",
+        "tts": "9.1599",
+        "deal_bas_r": "9.0693",
+        "bkpr": "9.06",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "9.0693",
+        "kftc_bkpr": "9.06"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1049,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1050,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4514.86",
+        "tts": "4606.07",
+        "deal_bas_r": "4560.47",
+        "bkpr": "4560",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4560.47",
+        "kftc_bkpr": "4560"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1051,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "310.65",
+        "tts": "316.92",
+        "deal_bas_r": "313.79",
+        "bkpr": "313",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "313.79",
+        "kftc_bkpr": "313"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1052,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "125.09",
+        "tts": "127.62",
+        "deal_bas_r": "126.36",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.36",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1053,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "814.44",
+        "tts": "830.89",
+        "deal_bas_r": "822.67",
+        "bkpr": "822",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "822.67",
+        "kftc_bkpr": "822"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1054,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "369.99",
+        "tts": "377.46",
+        "deal_bas_r": "373.73",
+        "bkpr": "373",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "373.73",
+        "kftc_bkpr": "373"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1055,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "126.43",
+        "tts": "128.98",
+        "deal_bas_r": "127.71",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.71",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1056,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1034.57",
+        "tts": "1055.48",
+        "deal_bas_r": "1045.03",
+        "bkpr": "1045",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1045.03",
+        "kftc_bkpr": "1045"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1057,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.87",
+        "tts": "40.68",
+        "deal_bas_r": "40.28",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.28",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1058,
+    "fields": {
+        "date": "20241118",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1388.77",
+        "tts": "1416.82",
+        "deal_bas_r": "1402.8",
+        "bkpr": "1402",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1402.8",
+        "kftc_bkpr": "1402"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1059,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "아랍에미리트",
+        "cur_nm": "디르함",
+        "cur_unit": "AED",
+        "ttb": "379.07",
+        "tts": "386.72",
+        "deal_bas_r": "382.9",
+        "bkpr": "382",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "382.9",
+        "kftc_bkpr": "382"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1060,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "호주",
+        "cur_nm": "달러",
+        "cur_unit": "AUD",
+        "ttb": "898.47",
+        "tts": "916.62",
+        "deal_bas_r": "907.55",
+        "bkpr": "907",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "907.55",
+        "kftc_bkpr": "907"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1061,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "바레인",
+        "cur_nm": "디나르",
+        "cur_unit": "BHD",
+        "ttb": "3694.47",
+        "tts": "3769.1",
+        "deal_bas_r": "3731.79",
+        "bkpr": "3731",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "3731.79",
+        "kftc_bkpr": "3731"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1062,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "브루나이",
+        "cur_nm": "달러",
+        "cur_unit": "BND",
+        "ttb": "1034.57",
+        "tts": "1055.48",
+        "deal_bas_r": "1045.03",
+        "bkpr": "1045",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1045.03",
+        "kftc_bkpr": "1045"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1063,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "캐나다",
+        "cur_nm": "달러",
+        "cur_unit": "CAD",
+        "ttb": "990.03",
+        "tts": "1010.04",
+        "deal_bas_r": "1000.04",
+        "bkpr": "1000",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1000.04",
+        "kftc_bkpr": "1000"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1064,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "스위스",
+        "cur_nm": "프랑",
+        "cur_unit": "CHF",
+        "ttb": "1563.89",
+        "tts": "1595.48",
+        "deal_bas_r": "1579.69",
+        "bkpr": "1579",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1579.69",
+        "kftc_bkpr": "1579"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1065,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "중국",
+        "cur_nm": "위안화",
+        "cur_unit": "CNH",
+        "ttb": "191.97",
+        "tts": "195.84",
+        "deal_bas_r": "193.91",
+        "bkpr": "193",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "193.91",
+        "kftc_bkpr": "193"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1066,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "덴마아크",
+        "cur_nm": "크로네",
+        "cur_unit": "DKK",
+        "ttb": "196.57",
+        "tts": "200.54",
+        "deal_bas_r": "198.56",
+        "bkpr": "198",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "198.56",
+        "kftc_bkpr": "198"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1067,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "유럽연합",
+        "cur_nm": "유로",
+        "cur_unit": "EUR",
+        "ttb": "1466.26",
+        "tts": "1495.89",
+        "deal_bas_r": "1481.08",
+        "bkpr": "1481",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1481.08",
+        "kftc_bkpr": "1481"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1068,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "영국",
+        "cur_nm": "파운드",
+        "cur_unit": "GBP",
+        "ttb": "1763.39",
+        "tts": "1799.02",
+        "deal_bas_r": "1781.21",
+        "bkpr": "1781",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1781.21",
+        "kftc_bkpr": "1781"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1069,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "홍콩",
+        "cur_nm": "달러",
+        "cur_unit": "HKD",
+        "ttb": "178.93",
+        "tts": "182.54",
+        "deal_bas_r": "180.74",
+        "bkpr": "180",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "180.74",
+        "kftc_bkpr": "180"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1070,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "인도네시아",
+        "cur_nm": "루피아",
+        "cur_unit": "IDR",
+        "ttb": "0.08779999999999999",
+        "tts": "0.0895",
+        "deal_bas_r": "0.08869999999999999",
+        "bkpr": "0.08",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "0.08869999999999999",
+        "kftc_bkpr": "0.08"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1071,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "일본",
+        "cur_nm": "옌",
+        "cur_unit": "JPY",
+        "ttb": "8.9061",
+        "tts": "9.086",
+        "deal_bas_r": "8.9961",
+        "bkpr": "8.99",
+        "yy_efee_r": "0.0",
+        "ten_dd_efee_r": "0.0",
+        "kftc_deal_bas_r": "8.9961",
+        "kftc_bkpr": "8.99"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1072,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "한국",
+        "cur_nm": "원",
+        "cur_unit": "KRW",
+        "ttb": "0",
+        "tts": "0",
+        "deal_bas_r": "1",
+        "bkpr": "1",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1",
+        "kftc_bkpr": "1"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1073,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "쿠웨이트",
+        "cur_nm": "디나르",
+        "cur_unit": "KWD",
+        "ttb": "4525.41",
+        "tts": "4616.84",
+        "deal_bas_r": "4571.13",
+        "bkpr": "4571",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "4571.13",
+        "kftc_bkpr": "4571"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1074,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "말레이지아",
+        "cur_nm": "링기트",
+        "cur_unit": "MYR",
+        "ttb": "310.75",
+        "tts": "317.02",
+        "deal_bas_r": "313.89",
+        "bkpr": "313",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "313.89",
+        "kftc_bkpr": "313"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1075,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "노르웨이",
+        "cur_nm": "크로네",
+        "cur_unit": "NOK",
+        "ttb": "124.86",
+        "tts": "127.39",
+        "deal_bas_r": "126.13",
+        "bkpr": "126",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "126.13",
+        "kftc_bkpr": "126"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1076,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "뉴질랜드",
+        "cur_nm": "달러",
+        "cur_unit": "NZD",
+        "ttb": "814.37",
+        "tts": "830.82",
+        "deal_bas_r": "822.6",
+        "bkpr": "822",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "822.6",
+        "kftc_bkpr": "822"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1077,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "사우디",
+        "cur_nm": "리얄",
+        "cur_unit": "SAR",
+        "ttb": "370.72",
+        "tts": "378.21",
+        "deal_bas_r": "374.47",
+        "bkpr": "374",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "374.47",
+        "kftc_bkpr": "374"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1078,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "스웨덴",
+        "cur_nm": "크로나",
+        "cur_unit": "SEK",
+        "ttb": "126.6",
+        "tts": "129.15",
+        "deal_bas_r": "127.88",
+        "bkpr": "127",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "127.88",
+        "kftc_bkpr": "127"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1079,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "싱가포르",
+        "cur_nm": "달러",
+        "cur_unit": "SGD",
+        "ttb": "1034.57",
+        "tts": "1055.48",
+        "deal_bas_r": "1045.03",
+        "bkpr": "1045",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1045.03",
+        "kftc_bkpr": "1045"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1080,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "태국",
+        "cur_nm": "바트",
+        "cur_unit": "THB",
+        "ttb": "39.78",
+        "tts": "40.59",
+        "deal_bas_r": "40.19",
+        "bkpr": "40",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "40.19",
+        "kftc_bkpr": "40"
+    }
+},
+{
+    "model": "finances.currency",
+    "pk": 1081,
+    "fields": {
+        "date": "20241115",
+        "cur_con": "미국",
+        "cur_nm": "달러",
+        "cur_unit": "USD",
+        "ttb": "1392.33",
+        "tts": "1420.46",
+        "deal_bas_r": "1406.4",
+        "bkpr": "1406",
+        "yy_efee_r": "0",
+        "ten_dd_efee_r": "0",
+        "kftc_deal_bas_r": "1406.4",
+        "kftc_bkpr": "1406"
+    }
+}
+]
