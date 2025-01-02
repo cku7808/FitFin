@@ -160,6 +160,7 @@
   const age = ref(userInfo.value.age)
   const credit = ref(userInfo.value.credit)
   const profileImg = ref(userInfo.value.profile_img)
+  
 
   // 프로필 저장 핸들러
   const editProfile = () => {
@@ -171,8 +172,10 @@
     formData.append('income', income.value);
     formData.append('assets', assets.value);
     formData.append('credit', credit.value);
-    formData.append('profile_img', profileImg.value, shortName.value);
-
+    if (shortName.value) {
+      formData.append('profile_img', profileImg.value, shortName.value);
+    }
+    
     axios({
         method: 'put',
         url: `${store.BASE_URL}/api/v1/userinfo/`,
