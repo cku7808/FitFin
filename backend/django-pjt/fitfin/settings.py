@@ -225,11 +225,9 @@ REST_AUTH = {
  'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
 
-MEDIA_ROOT = BASE_DIR/'media'
-MEDIA_URL = '/media/'
-import os
+# MEDIA_ROOT = BASE_DIR/'media'
+# MEDIA_URL = '/media/'
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-# ALLOWED_HOSTS = [
-#     "django-backend-service-579042790724.asia-northeast3.run.app",  # Cloud Run URL
-# ]
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
+MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
