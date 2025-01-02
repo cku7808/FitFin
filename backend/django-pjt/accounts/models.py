@@ -5,7 +5,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # 프로필 이미지 (저장하는 파일명 변경)
 import os
 
-from django.utils import timezone
 
 
 
