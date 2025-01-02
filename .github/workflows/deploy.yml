@@ -35,9 +35,6 @@ jobs:
             --member="serviceAccount:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
             --role="roles/cloudsql.client"
 
-        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_USER }}" \
-            --role="roles/iam.serviceAccountUser"
             
     # 4. Build and push Django image
     - name: Build and push Django image
