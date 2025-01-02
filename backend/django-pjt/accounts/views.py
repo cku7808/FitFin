@@ -101,6 +101,14 @@ def delete_products(request):
 
 
 # 회원 정보
+def upload_to_profile(instance, filename):
+    # 파일 확장자 추출
+    extension = filename.split('.')[-1]
+    # 새로운 파일명 생성 (UUID + 현재 시간)
+    new_filename = f"profile_{uuid4().hex[:10]}_{timezone.now().strftime('%Y%m%d%H%M%S')}.{extension}"
+    # 저장 경로 반환
+    return os.path.join('profile_images/', new_filename)
+
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_info(request):
@@ -112,6 +120,16 @@ def user_info(request):
     elif request.method == 'PUT':
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
+            if 'profile_img' in request.FILES:
+                profile_img = request.FILES['profile_img']
+
+                # 파일명 생성 및 저장
+                file_path = upload_to_profile(user, profile_img.name)  # 경로 생성
+                saved_path = default_storage.save(file_path, profile_img)  # GCS에 파일 저장
+                file_url = default_storage.url(saved_path)  # URL 생성
+
+                # URL을 serializer에 추가
+                serializer.validated_data['profile_img'] = file_url
             serializer.save()
             return Response(status=status.HTTP_200_OK)
 
