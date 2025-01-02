@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Repository Checkout
+    # 1. Checkout repository
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -20,13 +20,25 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-    # 3. Configure Google Cloud SDK
-    - name: Configure gcloud
+    # 3. Add required IAM roles
+    - name: Add required IAM roles
       run: |
-        gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
-        gcloud config set compute/region ${{ secrets.GCP_REGION }}
-        gcloud auth configure-docker
+        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
+            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --role="roles/run.admin"
 
+        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
+            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --role="roles/artifactregistry.writer"
+
+        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
+            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --role="roles/cloudsql.client"
+
+        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
+            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --role="roles/iam.serviceAccountUser"
+            
     # 4. Build and push Django image
     - name: Build and push Django image
       run: |
