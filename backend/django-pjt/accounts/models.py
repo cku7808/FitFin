@@ -7,13 +7,7 @@ import os
 from uuid import uuid4
 from django.utils import timezone
 
-def upload_to_profile(instance, filename):
-    # 파일 확장자 추출
-    extension = filename.split('.')[-1]
-    # 새로운 파일명 생성 (UUID + 현재 시간)
-    new_filename = f"profile_{uuid4().hex[:10]}_{timezone.now().strftime('%Y%m%d%H%M%S')}.{extension}"
-    # 저장 경로 반환
-    return os.path.join('profile_images/', new_filename)
+
 
 # 소득 수준
 # 소비 성향
@@ -41,4 +35,4 @@ class User(AbstractUser):
 
     profile_img = models.ImageField(blank=True, null=True, 
                                     default='static/accounts/profile.png',
-                                    upload_to=upload_to_profile)
+                                    upload_to='profile_images/')
