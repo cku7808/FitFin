@@ -104,6 +104,7 @@ def delete_products(request):
 from django.utils import timezone
 from uuid import uuid4
 import os
+from django.core.files.storage import default_storage
 
 def upload_to_profile(instance, filename):
     # 파일 확장자 추출
