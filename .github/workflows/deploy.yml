@@ -20,29 +20,13 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-    # 3. Add required IAM roles
-    - name: Add required IAM roles
-      run: |
-        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_USER }}" \
-            --role="roles/run.admin"
-
-        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_USER }}" \
-            --role="roles/artifactregistry.writer"
-
-        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="serviceAccount:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
-            --role="roles/cloudsql.client"
-
-            
-    # 4. Build and push Django image
+    # 3. Build and push Django image
     - name: Build and push Django image
       run: |
         docker build -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/django-backend/django-backend:latest ./backend
         docker push ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/django-backend/django-backend:latest
 
-    # 5. Deploy Django to Cloud Run
+    # 4. Deploy Django to Cloud Run
     - name: Deploy Django to Cloud Run
       run: |
         gcloud run deploy django-backend-service \
@@ -52,7 +36,7 @@ jobs:
         --add-cloudsql-instances ${{ secrets.GCP_PROJECT_ID }}:${{ secrets.GCP_REGION }}:${{ secrets.DATABASE_NAME }} \
         --allow-unauthenticated 
 
-    # 6. Build and push Vue image
+    # 5. Build and push Vue image
     - name: Build and push Vue image
       run: |
         docker build \
@@ -60,7 +44,7 @@ jobs:
         -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/vue-frontend/vue-frontend:latest ./frontend
         docker push ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/vue-frontend/vue-frontend:latest
 
-    # 7. Deploy Vue to Cloud Run
+    # 6. Deploy Vue to Cloud Run
     - name: Deploy Vue to Cloud Run
       run: |
         gcloud run deploy vue-frontend-service \
