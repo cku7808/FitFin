@@ -41,16 +41,20 @@ def save_exchangerate():
 
     # 영업일 기준 7일 정보 저장
     api_key = settings.API_KEY['currency']
-    date_num = 0  # 저장
-    date_diff = 0
+    today = datetime.now()
+    date_num = 0  # 저장된 일자 수
+    date_diff = 0  # 오늘과 날짜 차이
     while date_num < 7:
         date = (today - timedelta(days=date_diff)).strftime('%Y%m%d')
         url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&searchdate={date}&data=AP01'
         response = requests.get(url).json()
 
-        if not response:
+        if not response:  # 해당 날짜의 환율 정보가 없으면
             date_diff += 1
             continue
+
+        date_num += 1
+        date_diff += 1
 
         for li in response:  # 환율 정보 저장
             cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
@@ -94,7 +98,7 @@ def save_exchangerate():
                 serializer.save()
 
             # 오늘 환율 정보 backbone 세팅
-            if date_diff == 0:
+            if date_num == 1:
 
                 if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
                     cur_unit += ' 100'
@@ -116,19 +120,12 @@ def save_exchangerate():
                     serializer.save()
 
         # print(date_num, date_diff)
-        date_num += 1
-        date_diff += 1
-
     print('전체 환율 db 업데이트!!!')
     
 
-
-
-
-
 # 오늘 환율 정보 업데이트 (db, 그래프)
 def updatetoday_exchangerate():
-    # 날짜 설정 (업데이트 전후로 오늘 날짜를 오늘 또는 어제로 설정)
+    # 날짜 설정 (업데이트 전후로 오늘 날짜를 db의 날짜 중 제일 최근 날짜로 설정, 어제 날짜를 그 다음 최근 날짜 설정)
     date_now = Currency.objects.all().order_by('-date')[0].date
     date_yes = Currency.objects.exclude(date=date_now).order_by('-date')[0].date
 
@@ -148,7 +145,6 @@ def updatetoday_exchangerate():
             yesterday_diff = yesterday_diff * 100
         
         yesterday_diff = round(yesterday_diff, 2)
-
 
         # 변동 값에 따라 기호 설정 (색상 변경 때문에 front에서 하는게 나을 수도)
         if yesterday_per > 0:
@@ -254,8 +250,10 @@ def updateall_exchangerate():
                 if serializer.is_valid(raise_exception=True):
                     serializer.save()
 
-        # 환율 당일 정보 업데이트
-        updatetoday_exchangerate()
+        # 환율 당일 정보 업데이트 (7일치 데이터 누적 시만 실행)
+        day_count = Currency.objects.values('date').distinct().count()
+        if day_count >= 7:
+            updatetoday_exchangerate()
 
     print('오늘 환율 db 업데이트!!!')
 
