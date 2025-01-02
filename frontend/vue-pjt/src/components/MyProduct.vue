@@ -166,7 +166,7 @@ const renderdepositChart = () => {
         labels: labels,
         datasets: [
         {
-            label: "나의 금리",
+            label: "저축 금리",
             data: baseRates,
             backgroundColor: "rgba(194, 210, 242, 1)",
             borderColor: "rgba(194, 210, 242, 1)",
@@ -222,7 +222,7 @@ const rendersavingChart = () => {
         labels: labels,
         datasets: [
         {
-            label: "나의 금리",
+            label: "저축 금리",
             data: baseRates,
             backgroundColor: "rgba(194, 210, 242, 1)",
             borderColor: "rgba(194, 210, 242, 1)",

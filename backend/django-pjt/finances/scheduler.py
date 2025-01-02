@@ -23,10 +23,109 @@ def test_scheduler():
     # 현재 시간으로 되어있긴한데 django settings.py seoul로 바꿔야될수도
     print("Hello!", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))  
 
+
+## 환율 정보
+# 환율 db 저장 (초기 세팅)
+def save_exchangerate():
+    # api_key = settings.API_KEY['currency']
+    # url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
+    # response = requests.get(url).json()
+
+    # today = datetime.now()
+    # if not response:  # 오늘 환율 아직 업데이트 전이면
+    #     print('오늘자 환율 업데이트 전!')
+    #     today = datetime.now() - timedelta(days=1)
+    
+    Currency.objects.all().delete()  # 초기화
+    TodayCurrency.objects.all().delete()  # 초기화
+
+    # 영업일 기준 7일 정보 저장
+    api_key = settings.API_KEY['currency']
+    today = datetime.now()
+    date_num = 0  # 저장된 일자 수
+    date_diff = 0  # 오늘과 날짜 차이
+    while date_num < 7:
+        date = (today - timedelta(days=date_diff)).strftime('%Y%m%d')
+        url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&searchdate={date}&data=AP01'
+        response = requests.get(url).json()
+
+        if not response:  # 해당 날짜의 환율 정보가 없으면
+            date_diff += 1
+            continue
+
+        date_num += 1
+        date_diff += 1
+
+        for li in response:  # 환율 정보 저장
+            cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
+            cur_unit = li.get('cur_unit').replace('(100)', '')
+            ttb = li.get('ttb').replace(',', '')
+            tts = li.get('tts').replace(',', '')
+            deal_bas_r = li.get('deal_bas_r').replace(',', '')
+            bkpr = li.get('bkpr').replace(',', '')
+            yy_efee_r = li.get('yy_efee_r').replace(',', '')
+            ten_dd_efee_r = li.get('ten_dd_efee_r').replace(',', '')
+            kftc_deal_bas_r = li.get('kftc_deal_bas_r').replace(',', '')
+            kftc_bkpr = li.get('kftc_bkpr').replace(',', '')
+
+            if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
+                ttb = float(ttb)/100
+                tts = float(tts)/100
+                deal_bas_r = float(deal_bas_r)/100
+                bkpr = float(bkpr)/100
+                yy_efee_r = float(yy_efee_r)/100
+                ten_dd_efee_r = float(ten_dd_efee_r)/100
+                kftc_deal_bas_r = float(kftc_deal_bas_r)/100
+                kftc_bkpr = float(kftc_bkpr)/100
+
+            save_data = {
+                'date': date,
+                'cur_con': cur_nm.split()[0],
+                'cur_nm': cur_nm.split()[1],
+                'cur_unit': cur_unit,
+                'ttb': ttb,
+                'tts': tts,
+                'deal_bas_r': deal_bas_r,
+                'bkpr': bkpr,
+                'yy_efee_r': yy_efee_r,
+                'ten_dd_efee_r': ten_dd_efee_r,
+                'kftc_deal_bas_r': kftc_deal_bas_r,
+                'kftc_bkpr': kftc_bkpr,
+            } 
+        
+            serializer = CurrencySerializer(data=save_data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+
+            # 오늘 환율 정보 backbone 세팅
+            if date_num == 1:
+
+                if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
+                    cur_unit += ' 100'
+                    cur_nm += ' 100'
+                    deal_bas_r *= 100
+                
+                save_data = {
+                'cur_con': cur_nm.split()[0],
+                'cur_nm': cur_nm.split()[1],
+                'cur_unit': cur_unit,
+                'deal_bas_r': deal_bas_r,
+                'img': f'/static/finances/{cur_nm.split()[0]}.png',
+                # 'yesterday_diff': yesterday_diff,
+                # 'yesterday_per': yesterday_per,
+                }
+                
+                serializer = TodayCurrencySerializer(data=save_data)
+                if serializer.is_valid(raise_exception=True):
+                    serializer.save()
+
+        # print(date_num, date_diff)
+    print('전체 환율 db 업데이트!!!')
+    
+
 # 오늘 환율 정보 업데이트 (db, 그래프)
 def updatetoday_exchangerate():
-    # 날짜 설정 (업데이트 전후로 오늘 날짜를 오늘 또는 어제로 설정)
-
+    # 날짜 설정 (업데이트 전후로 오늘 날짜를 db의 날짜 중 제일 최근 날짜로 설정, 어제 날짜를 그 다음 최근 날짜 설정)
     date_now = Currency.objects.all().order_by('-date')[0].date
     date_yes = Currency.objects.exclude(date=date_now).order_by('-date')[0].date
 
@@ -46,7 +145,6 @@ def updatetoday_exchangerate():
             yesterday_diff = yesterday_diff * 100
         
         yesterday_diff = round(yesterday_diff, 2)
-
 
         # 변동 값에 따라 기호 설정 (색상 변경 때문에 front에서 하는게 나을 수도)
         if yesterday_per > 0:
@@ -99,101 +197,6 @@ def updatetoday_exchangerate():
         plt.savefig(path_graph, bbox_inches='tight')
         plt.close()
 
-# 환율 db 저장 (초기 세팅)
-def save_exchangerate():
-    api_key = settings.API_KEY['currency']
-    url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&seaerchdate=241122&data=AP01'
-    response = requests.get(url).json()
-
-    today = datetime.now()
-    if not response:  # 오늘 환율 아직 업데이트 전이면
-        print('오늘자 환율 업데이트 전!')
-        today = datetime.now() - timedelta(days=1)
-    
-    Currency.objects.all().delete()  # 초기화
-    TodayCurrency.objects.all().delete()  # 초기화
-
-    # 일주일 정보 저장
-    date_num = 0
-    date_diff = 0
-    while date_num < 7:
-        date = (today - timedelta(days=date_diff)).strftime('%Y%m%d')
-        url = f'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={api_key}&searchdate={date}&data=AP01'
-        response = requests.get(url).json()
-
-        if not response:
-            date_diff += 1
-            continue
-
-        for li in response:  # 환율 정보 저장
-            cur_nm = li.get('cur_nm').replace('유로', '유럽연합 유로').replace('위안화', '중국 위안화')
-            cur_unit = li.get('cur_unit').replace('(100)', '')
-            ttb = li.get('ttb').replace(',', '')
-            tts = li.get('tts').replace(',', '')
-            deal_bas_r = li.get('deal_bas_r').replace(',', '')
-            bkpr = li.get('bkpr').replace(',', '')
-            yy_efee_r = li.get('yy_efee_r').replace(',', '')
-            ten_dd_efee_r = li.get('ten_dd_efee_r').replace(',', '')
-            kftc_deal_bas_r = li.get('kftc_deal_bas_r').replace(',', '')
-            kftc_bkpr = li.get('kftc_bkpr').replace(',', '')
-
-            if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
-                ttb = float(ttb)/100
-                tts = float(tts)/100
-                deal_bas_r = float(deal_bas_r)/100
-                bkpr = float(bkpr)/100
-                yy_efee_r = float(yy_efee_r)/100
-                ten_dd_efee_r = float(ten_dd_efee_r)/100
-                kftc_deal_bas_r = float(kftc_deal_bas_r)/100
-                kftc_bkpr = float(kftc_bkpr)/100
-
-            save_data = {
-                'date': date,
-                'cur_con': cur_nm.split()[0],
-                'cur_nm': cur_nm.split()[1],
-                'cur_unit': cur_unit,
-                'ttb': ttb,
-                'tts': tts,
-                'deal_bas_r': deal_bas_r,
-                'bkpr': bkpr,
-                'yy_efee_r': yy_efee_r,
-                'ten_dd_efee_r': ten_dd_efee_r,
-                'kftc_deal_bas_r': kftc_deal_bas_r,
-                'kftc_bkpr': kftc_bkpr,
-            } 
-        
-            serializer = CurrencySerializer(data=save_data)
-            if serializer.is_valid(raise_exception=True):
-                serializer.save()
-
-            # 오늘 환율 정보 backbone 세팅
-            if date_diff == 0:
-
-                if (cur_unit == 'JPY') or (cur_unit == 'IDR'):
-                    cur_unit += ' 100'
-                    cur_nm += ' 100'
-                    deal_bas_r *= 100
-                
-                save_data = {
-                'cur_con': cur_nm.split()[0],
-                'cur_nm': cur_nm.split()[1],
-                'cur_unit': cur_unit,
-                'deal_bas_r': deal_bas_r,
-                'img': f'/static/finances/{cur_nm.split()[0]}.png',
-                # 'yesterday_diff': yesterday_diff,
-                # 'yesterday_per': yesterday_per,
-                }
-                
-                serializer = TodayCurrencySerializer(data=save_data)
-                if serializer.is_valid(raise_exception=True):
-                    serializer.save()
-
-        # print(date_num, date_diff)
-        date_num += 1
-        date_diff += 1
-
-    print('전체 환율 db 업데이트!!!')
-    
 # 환율 전체 db 업데이트 (당일 환율 갱신됐다고 가정)
 def updateall_exchangerate():
     date_now = datetime.now().strftime('%Y%m%d')
@@ -247,8 +250,10 @@ def updateall_exchangerate():
                 if serializer.is_valid(raise_exception=True):
                     serializer.save()
 
-        # 환율 당일 정보 업데이트
-        updatetoday_exchangerate()
+        # 환율 당일 정보 업데이트 (7일치 데이터 누적 시만 실행)
+        day_count = Currency.objects.values('date').distinct().count()
+        if day_count >= 7:
+            updatetoday_exchangerate()
 
     print('오늘 환율 db 업데이트!!!')
 
