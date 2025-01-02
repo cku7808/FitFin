@@ -30,7 +30,7 @@ jobs:
     # 4. Build and push Django image
     - name: Build and push Django image
       run: |
-        docker build -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/django-backend/django-backend:latest ./django-pjt
+        docker build -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/django-backend/django-backend:latest ./backend
         docker push ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/django-backend/django-backend:latest
 
     # 5. Deploy Django to Cloud Run
@@ -48,7 +48,7 @@ jobs:
       run: |
         docker build \
         --build-arg VITE_API_KEY_KAKAO_JS=${{ secrets.VITE_API_KEY_KAKAO_JS }} \
-        -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/vue-frontend/vue-frontend:latest ./vue-pjt
+        -t ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/vue-frontend/vue-frontend:latest ./frontend
         docker push ${{ secrets.ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/vue-frontend/vue-frontend:latest
 
     # 7. Deploy Vue to Cloud Run
