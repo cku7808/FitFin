@@ -101,6 +101,8 @@ def delete_products(request):
 
 
 # 회원 정보
+from uuid import uuid4
+
 def upload_to_profile(instance, filename):
     # 파일 확장자 추출
     extension = filename.split('.')[-1]
