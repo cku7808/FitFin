@@ -24,19 +24,19 @@ jobs:
     - name: Add required IAM roles
       run: |
         gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --member="user:${{ secrets.GCP_USER }}" \
             --role="roles/run.admin"
 
         gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --member="user:${{ secrets.GCP_USER }}" \
             --role="roles/artifactregistry.writer"
 
         gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --member="serviceAccount:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
             --role="roles/cloudsql.client"
 
         gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT_ID }} \
-            --member="user:${{ secrets.GCP_SERVICE_ACCOUNT }}" \
+            --member="user:${{ secrets.GCP_USER }}" \
             --role="roles/iam.serviceAccountUser"
             
     # 4. Build and push Django image
