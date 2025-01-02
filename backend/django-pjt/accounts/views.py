@@ -103,6 +103,7 @@ def delete_products(request):
 # 회원 정보
 from django.utils import timezone
 from uuid import uuid4
+import os
 
 def upload_to_profile(instance, filename):
     # 파일 확장자 추출
